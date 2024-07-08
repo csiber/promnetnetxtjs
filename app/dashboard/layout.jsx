@@ -1,10 +1,10 @@
 import View from "@/app/ui/dashboard/View/page";
 import Left from "@/app/dashboard/Left/page";
 import Theming from "@/components/providers/Theme";
-
+export const runtime = 'edge';
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="hu">
       <body className="">
         <Theming>
           <div className="max-w-[78rem] mx-auto ">
