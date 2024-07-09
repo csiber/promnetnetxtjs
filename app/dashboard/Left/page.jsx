@@ -63,7 +63,7 @@ function Leftpage() {
               <Image
                 width={1000}
                 height={1000}
-                className="w-28 h-28 rounded-full object-cover"
+                className="w-28 h-28 rounded-full object-cover shadow-md"
                 src="/black.jpeg"
                 alt=""
               />
@@ -83,11 +83,11 @@ function Leftpage() {
                 Polyák Csaba E.V.
               </h1>
               <p className="text-xs font-RubikMedium text-neutral-300 mt-2">
-                info@promnet.hu 📧
+              <Link href={"mailto:info@promnet.hu"} target="blank">info@promnet.hu 📧</Link>
               </p>
 
               <p className="text-xs font-RubikMedium text-neutral-300 mt-1">
-                promnet.hu 🌍
+              <Link href={"/"} target="blank">  promnet.hu 🌍</Link>
               </p>
 
               <div className="flex w-full   ">
@@ -150,12 +150,12 @@ function Leftpage() {
               <div className="flex items-center gap-x-1">
                 <PiShapesThin />
                 <span className="text-xs font-RubikRegular">
-                  2008 óta full stack webfejlesztő
+                  2008 óta <Link href={"https://en.wikipedia.org/wiki/Solution_stack#Full-stack_developer"} target="blank">full stack</Link> webfejlesztő
                 </span>
               </div>
               <div className="flex items-center gap-x-1">
                 <PiMagicWandThin />
-                <span className="text-xs font-RubikRegular">+20 projekt</span>
+                <Link href={"/dashboard/portfolio"}><span className="text-xs font-RubikRegular">+20 projekt</span></Link>
               </div>
             </div>
 

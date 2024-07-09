@@ -15,7 +15,6 @@ export default function RootLayout({ children }) {
         <meta property="og:image" content="/logo-white.png" />
         <meta property="og:url" content="https://www.promnet.hu" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className="bg-[#171717]">
         <Theming>

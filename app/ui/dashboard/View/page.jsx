@@ -70,21 +70,25 @@ function page() {
           </div>
         </div>
 
-        <div className="bg-[#1C1C1C] min-w-min rounded-2xl p-4 border border-neutral-800 mt-3 text-neutral-50">
-          <Image
-            width={1000}
-            height={1000}
-            className="h-32 w-56 object-cover rounded-lg"
-            src="/web.webp"
-            alt=""
-          />
-          <p className="my-3 font-RubikMedium text-sm">Bemutatkozó oldal</p>
-          <button className="bg-[#696969] h-7 p-1 rounded-md text-xs w-full font-RubikMedium ">
-          <a href="mailto:info@promnet.hu" className="bg-[#696969] h-7 p-1 rounded-md text-xs w-full font-RubikMedium text-neutral-50 block text-center">Már 50.000 Ft-tól!</a>
-            <div className="border border-neutral-700 my-5" />
+        <div className="bg-gradient-to-br from-gray-900 to-gray-800 min-w-min rounded-2xl p-4 border border-neutral-800 mt-3 text-neutral-50">
+  <Image
+    width={1000}
+    height={1000}
+    className="h-32 w-56 object-cover rounded-lg"
+    src="/web.gif"
+    alt=""
+  />
+  <p className="my-3 font-medium text-sm">Bemutatkozó oldal kellene?</p>
+  <button className="bg-[#696969] h-7 p-1 rounded-md text-xs w-full font-medium">
+    <a
+      href="mailto:info@promnet.hu?subject=Érdeklődés&"
+      className="h-full w-full block text-center"
+    >
+      Már 50.000 Ft-tól!
+    </a>
+  </button>
+</div>
 
-          </button>
-        </div>
       </div>
     </motion.div>
   );

@@ -90,97 +90,88 @@ function Homepage() {
                 </div>
               </div>
             </Link>
+            <Link href={"/dashboard/portfolio"}>
             <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
               <div className="  flex items-center gap-x-3">
                 <Image
                   height={1000}
                   width={1000}
                   className="w-24 h-24 object-cover rounded-md"
-                  src="/game.jpg"
+                  src="/websiteanimated.gif"
                   alt=""
                 />
                 <div>
-                  <span className="text-sm">July 22, 2023</span>
-                  <h2 className="text-sm font-RubikMedium">
-                    Smooth Animation with React and Framer Motion
+                  <span className="text-sm font-RubikMedium">Projektek</span>
+                  <h2 className="text-sm">
+                  Ha kíváncsi vagy, mivel henyélek éjszaka, itt van pár weboldal, amiket én főztem össze. Van itt minden, mint a bútoroktól a mémgyűjtésig, még a világűrt sem hagytam ki! Kattints ide, ha érdekel, hogy mihez nyúltam, és ha épp unatkozol, böngéssz nyugodtan. Nem állok meg egy kis rajzfilmvilág vagy esküvői webshop elől sem!
                   </h2>
                 </div>
               </div>
             </div>
-            <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-              <div className="  flex items-center gap-x-3">
-                <Image
-                  height={1000}
-                  width={1000}
-                  className="w-24 h-24 object-cover rounded-md"
-                  src="/scult.jpeg"
-                  alt=""
-                />
-                <div>
-                  <span className="text-sm">July 22, 2023</span>
-                  <h2 className="text-sm font-RubikMedium">
-                    Smooth Animation with React and Framer Motion
-                  </h2>
-                </div>
-              </div>
-            </div>
+            </Link>
           </div>
 
           {/* With image */}
 
-          <div className=" mt-6  bg-[#1C1C1C] rounded-lg text-neutral-400">
-            <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-              <div className="  flex items-center gap-x-3">
-                <Image
-                  height={1000}
-                  width={1000}
-                  className="w-24 h-24 object-cover rounded-md"
-                  src="/website.gif"
-                  alt=""
-                />
-                <div>
-                  <span className="text-sm font-RubikMedium">Weboldal fejlesztés kedvező áron!</span>
-                  <h2 className="text-sm">
-                  Tervezz és valósíts meg webprojekteket könnyedén, hogy kiemelkedő online jelenléted legyen, és a digitális térben hatékonyan kommunikálhass ügyfeleiddel. Bízd rám, és segítek elérni az online céljaidat!
-                  </h2>
-                </div>
-              </div>
-            </div>
-            <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-              <div className="  flex items-center gap-x-3">
-                <Image
-                  height={1000}
-                  width={1000}
-                  className="w-24 h-24 object-cover rounded-md"
-                  src="/service.gif"
-                  alt=""
-                />
-                <div>
-                  <span className="text-sm font-RubikMedium">Elektronikai szerviz</span>
-                  <h2 className="text-sm">
-                  Számítógéped egy kicsit szeszélyes? Laptopodnak nincs kedve a munkához? Ne aggódj, itt vagyunk, hogy mindent helyrehozzunk! Több mint 25 éves tapasztalattal állunk rendelkezésre, hogy segítsünk a szoftveres és hardveres kérdésekben egyaránt.
-                  </h2>
-                </div>
-              </div>
-            </div>
-            <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-              <div className="  flex items-center gap-x-3">
-                <Image
-                  height={1000}
-                  width={1000}
-                  className="w-24 h-24 object-cover rounded-md"
-                  src="/hostingbuild.gif"
-                  alt=""
-                />
-                <div>
-                  <span className="text-sm font-RubikMedium">Teljeskörü hoszting kiépitése</span>
-                  <h2 className="text-sm">
-                  Segítek neked kiépíteni akár teljes körű hosting megoldásokat is, bármilyen igényed is legyen! Gyorsan és megbízhatóan intézem el, hogy a weboldalaid vagy játék szervereid zökkenőmentesen fussanak online. Ne tétovázz, ha kérdésed van, vagy el szeretnéd indítani a projektet!
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div className="mt-6 bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg text-neutral-400 relative overflow-hidden">
+  <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
+    <div className="flex items-center gap-x-3">
+      <Image
+        height={1000}
+        width={1000}
+        className="w-24 h-24 object-cover rounded-md"
+        src="/website.gif"
+        alt=""
+      />
+      <div>
+        <span className="text-sm font-medium">Weboldal fejlesztés kedvező áron!</span>
+        <p className="text-sm">
+          Tervezz és valósíts meg webprojekteket könnyedén, hogy kiemelkedő online jelenléted legyen, és a digitális térben hatékonyan kommunikálhass ügyfeleiddel. Bízd rám, és segítek elérni az online céljaidat!
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
+    <div className="flex items-center gap-x-3">
+      <Image
+        height={1000}
+        width={1000}
+        className="w-24 h-24 object-cover rounded-md"
+        src="/service.gif"
+        alt=""
+      />
+      <div>
+        <span className="text-sm font-medium">Elektronikai szerviz</span>
+        <p className="text-sm">
+          Számítógéped egy kicsit szeszélyes? Laptopodnak nincs kedve a munkához? Ne aggódj, itt vagyunk, hogy mindent helyrehozzunk! Több mint 25 éves tapasztalattal állunk rendelkezésre, hogy segítsünk a szoftveres és hardveres kérdésekben egyaránt.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
+    <div className="flex items-center gap-x-3">
+      <Image
+        height={1000}
+        width={1000}
+        className="w-24 h-24 object-cover rounded-md"
+        src="/hostingbuild.gif"
+        alt=""
+      />
+      <div>
+        <span className="text-sm font-medium">Teljeskörű hosting kiépítése</span>
+        <p className="text-sm">
+          Segítek neked kiépíteni akár teljes körű hosting megoldásokat is, bármilyen igényed is legyen! Gyorsan és megbízhatóan intézem el, hogy a weboldalaid vagy játék szervereid zökkenőmentesen fussanak online. Ne tétovázz, ha kérdésed van, vagy el szeretnéd indítani a projektet!
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  {/* Szuper keret hozzáadása */}
+  <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-blue-500 to-blue-300 opacity-25 mix-blend-lighten rounded-lg pointer-events-none"></div>
+</div>
+
 
           {/* without image */}
 
