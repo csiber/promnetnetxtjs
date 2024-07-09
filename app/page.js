@@ -1,7 +1,24 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react"; // useState és useEffect importálása
 
 function Page() {
+  const [countdown, setCountdown] = useState(3); // Visszaszámláló állapota 3-mal
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown((prev) => prev - 1); // Visszaszámláló frissítése
+    }, 1000); // Visszaszámláló 1 másodperces frissítése
+
+    if (countdown === 0) {
+      clearInterval(timer);
+      window.location.href = "/dashboard"; // Átirányítás a /dashboard oldalra
+    }
+
+    return () => clearInterval(timer); // Visszatéréskor a timer törlése
+  }, [countdown]); // A függőség tömb tartalmazza a countdown állapotot
+
   return (
     <div className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center">
       <div className="p-5 relative z-10">
@@ -14,8 +31,8 @@ function Page() {
               src="/logo-white.png"
               alt="Logo"
             />
-            <span className="tooltip">Kattints ide további infókért!</span>
           </Link>
+          <span className="tooltip">Kattints ide további infókért!</span>
         </div>
 
         <p className="text-neutral-400 lg:max-w-lg text-center font-RubikRegular mt-4">
@@ -23,11 +40,11 @@ function Page() {
           Kreatív kódolás, ami még a macskádnak is tetszeni fog! <br />
           Bízd rám a weboldalad, és emelkedj ki a tömegből!
         </p>
-        
+
         <div className="btn-container flex justify-center mt-4">
           <div className="btn border border-neutral-400 rounded-lg p-2 gap-x-5 text-neutral-300">
             <Link href={"/dashboard"}>
-              <span>Kattints ide!</span>
+              <span>Automatikus átirányítás {countdown} másodperc múlva...</span>
             </Link>
           </div>
         </div>
