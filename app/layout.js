@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content="Weboldal fejlesztés gyorsan, olcsón!" />
         <meta property="og:title" content="PromNET - Polyák Csaba E.V." />
         <meta property="og:description" content="Weboldal fejlesztés gyorsan, olcsón!" />
-        <meta property="og:image" content="/og-image.jpg" />
+        <meta property="og:image" content="/logo-white.png" />
         <meta property="og:url" content="https://www.promnet.hu" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
