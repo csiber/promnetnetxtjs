@@ -27,9 +27,10 @@ function Homepage() {
             <PiCodeThin className="text-6xl text-neutral-50" />
 
             <div>
-              <h1 className="text-2xl font-RubikMedium text-neutral-300">
-                Semicolon,{" "}
-                <span className="text-sm text-neutral-400">A Dev Blog</span>
+              <h1 className="text-sm font-Rubik text-neutral-300">
+                Üdvözöllek a{" "}
+                <span className="text-sm font-RubikMedium text-neutral-400">PromNET</span>{" "}
+                <span className="text-sm font-Rubik text-neutral-300">oldalon!</span>
               </h1>
               <p className="max-w-sm text-neutral-400 text-sm">
                 I design and code beautifully simple things, and <br />{" "}

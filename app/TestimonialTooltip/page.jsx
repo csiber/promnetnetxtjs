@@ -37,33 +37,21 @@ function TestimonialTooltip() {
 
   const people = [
     {
-      id: 1,
-      name: "Our Feeds",
-      position: "www.feed.com",
-      image: <SlFeed />,
-    },
-    {
       id: 2,
       name: "Instagram",
-      position: "www.feed.com",
+      position: "https://www.instagram.com/csiber/",
       image: <PiInstagramLogoThin />,
-    },
-    {
-      id: 3,
-      name: "Instagram",
-      position: "www.instagram.com",
-      image: <LuBox />,
     },
     {
       id: 4,
       name: "Youtube",
-      position: "www.youtube.com/joscript",
+      position: "https://www.youtube.com/channel/UCPtGhMR_Jp0D5we5GNPJI_A",
       image: <PiYoutubeLogoThin />,
     },
     {
       id: 5,
       name: "LinkedIn",
-      position: "www.Linkedin.com/joscript",
+      position: "https://www.linkedin.com/in/csaba-polyak-1b368483/",
       image: <PiLinkedinLogoThin />,
     },
   ];

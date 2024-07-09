@@ -36,7 +36,7 @@ function page() {
 
               <Link href={"/"}>
                 <button className="text-xs bg-neutral-700/25 p-1 w-16 h-6 rounded-md">
-                  Home
+                  Kezdőlap
                 </button>
               </Link>
             </div>

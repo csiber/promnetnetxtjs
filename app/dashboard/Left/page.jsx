@@ -75,25 +75,25 @@ function Leftpage() {
               {open && (
                 <div className="border border-lime-400 h-5 flex items-center justify-center rounded-2xl w-fit px-2 absolute top-[4.7rem] right-3 ">
                   <p className="text-[9px] font-RubikMedium text-lime-300">
-                    Open to freelancing
+                    Jelenleg elérhető
                   </p>
                 </div>
               )}
               <h1 className="font-RubikExtraBold text-xl  text-neutral-300 mt-3">
-                Joscript Brown
+                Polyák Csaba E.V.
               </h1>
               <p className="text-xs font-RubikMedium text-neutral-300 mt-2">
-                contact@Joscriptbrown.dev 📧
+                info@promnet.hu 📧
               </p>
 
               <p className="text-xs font-RubikMedium text-neutral-300 mt-1">
-                JoscriptBrown.com 🌍
+                promnet.hu 🌍
               </p>
 
               <div className="flex w-full   ">
                 <div className="flex gap-x-1  text-xs my-4">
                   <p className="bg-[#282828] text-neutral-300 rounded-md px-2 h-5 flex items-center justify-center text-[11px] font-RubikBold">
-                    ReactJS
+                    Wordpress
                   </p>
                   <p className="bg-[#282828] text-neutral-300 rounded-md px-2 h-5 flex items-center justify-center text-[11px] font-RubikBold">
                     Git
@@ -102,7 +102,7 @@ function Leftpage() {
                     NodeJS
                   </p>
                   <p className=" bg-[#282828] text-neutral-300 rounded-md px-2 h-5 flex items-center justify-center text-[11px] font-RubikBold shrink-0 ">
-                    Framer Motion
+                    Laravel
                   </p>
                 </div>
               </div>
@@ -121,7 +121,7 @@ function Leftpage() {
             </div>
           </div>
 
-          <form
+{/*           <form
             onSubmit={handleSubmit}
             className="bg-[#282828] p-1  rounded-md md:flex items-center  justify-between h-9 w-full hidden "
           >
@@ -138,42 +138,41 @@ function Leftpage() {
             >
               Subscribe
             </motion.button>
-          </form>
+          </form> */}
 
           <div className="w-full mt-5 text-neutral-300">
-            <h2 className="font-RubikBold my-4">Bio</h2>
+            <h2 className="font-RubikBold my-4">Info</h2>
             <p className="text-[12px]  font-RubikRegular my-3">
-              The world of digital design and <br /> development is constantly
-              evolving and so <br /> has my role over the last 7 years.{" "}
+            Professzionális webfejlesztés, egyedi megoldások: Neked készítem a legmenőbb weboldalt! Kreatív kódolás, ami még a macskádnak is tetszeni fog. Bízd rám a weboldalad, és emelkedj ki a tömegből!{" "}
             </p>
 
             <div className="mt-6 flex justify-between text-sm">
               <div className="flex items-center gap-x-1">
                 <PiShapesThin />
                 <span className="text-xs font-RubikRegular">
-                  7 Years as a Developer
+                  2008 óta full stack webfejlesztő
                 </span>
               </div>
               <div className="flex items-center gap-x-1">
                 <PiMagicWandThin />
-                <span className="text-xs font-RubikRegular">24 Projects</span>
+                <span className="text-xs font-RubikRegular">+20 projekt</span>
               </div>
             </div>
 
             <div className="border border-[#282828] text-neutral-300 my-6" />
 
             <div className="my-4 ">
-              <h1 className="font-RubikRegular">Work History</h1>
+              <h1 className="font-RubikRegular">Munka napló</h1>
               <div className="mt-7 flex  justify-between">
                 <div className="flex gap-x-3">
                   <PiGoogleLogoThin className="text-xl" />
                   <div className="-mt-1">
-                    <h3 className="text-sm font-RubikMedium">Sr. Developer</h3>
-                    <p className="text-[9px]">Google</p>
+                    <h3 className="text-sm font-RubikMedium">Webfejlesztés</h3>
+                    <p className="text-[9px]">PromNET DEV</p>
                   </div>
                 </div>
                 <small className="text-[9px] text-neutral-300">
-                  January 2020 - Current
+                  2008 - napjainkig
                 </small>
               </div>
               <div className="my-3 flex  justify-between">
@@ -181,13 +180,13 @@ function Leftpage() {
                   <SiAdobe className="text-xl" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">
-                      Jr. Creative Dev
+                      Saját hosztingal rendelkeztem
                     </h3>
-                    <p className="text-[9px]">Adobe</p>
+                    <p className="text-[9px]">PromNET Hosting</p>
                   </div>
                 </div>
                 <small className="text-[9px] text-neutral-300">
-                  Sep 2016 - January 2020
+                  2010 - 2024
                 </small>
               </div>
             </div>
