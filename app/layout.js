@@ -2,6 +2,7 @@ import "./globals.css";
 import Theming from "@/components/providers/Theme";
 import Dashboard from "@/app/dashboard/layout";
 import Head from 'next/head';
+export const runtime = 'edge';
 
 export default function RootLayout({ children }) {
   return (
