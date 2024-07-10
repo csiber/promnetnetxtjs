@@ -33,7 +33,7 @@ function page() {
             <p className="text-xs my-3 text-neutral-400 font-RubikRegular">
             Használd a <b>RES-PCS-TH</b> kuponkódot, hogy 20% kedvezményt kapj webtárhely szolgáltatások rendelésekor!
             </p>
-            <a href="https://mhosting.hu" className="bg-[#696969] h-7 p-1 rounded-md text-xs w-full font-RubikMedium text-neutral-50 block text-center">Irány az mhosting.hu</a>
+            <a href="https://mhosting.hu" className="bg-[#696969] h-7 p-1 rounded-md text-xs w-full font-RubikMedium text-neutral-50 block text-center hover:bg-neutral-800 duration-200 transition-all ease-in">Irány az mhosting.hu</a>
             <div className="border border-neutral-700 my-5" />
 
             <div className="text-neutral-400">
@@ -79,7 +79,7 @@ function page() {
     alt=""
   />
   <p className="my-3 font-medium text-sm">Bemutatkozó oldal kellene?</p>
-  <button className="bg-[#696969] h-7 p-1 rounded-md text-xs w-full font-medium">
+  <button className="bg-[#696969] h-7 p-1 rounded-md text-xs w-full font-medium hover:bg-neutral-800 duration-200 transition-all ease-in">
     <a
       href="mailto:info@promnet.hu?subject=Érdeklődés&"
       className="h-full w-full block text-center"

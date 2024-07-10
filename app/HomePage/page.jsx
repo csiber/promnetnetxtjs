@@ -79,7 +79,7 @@ function Homepage() {
                     width={1000}
                     height={1000}
                     className="w-24 h-24 object-cover rounded-md"
-                    src="/blog.webp"
+                    src="/blog.gif"
                     alt=""
                   />
                   <div>
@@ -133,6 +133,7 @@ function Homepage() {
   </div>
   
   <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
+  <Link href={"/dashboard/service"}>
     <div className="flex items-center gap-x-3">
       <Image
         height={1000}
@@ -148,6 +149,7 @@ function Homepage() {
         </p>
       </div>
     </div>
+  </Link>
   </div>
   
   <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
@@ -175,24 +177,21 @@ function Homepage() {
 
           {/* without image */}
 
-          <div className="mt-6  bg-[#1C1C1C] rounded-lg text-neutral-400">
-            <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-              <div className="  flex items-center gap-x-3">
-                <div>
-                  <h2 className="text-sm font-RubikMedium">
-                    Smooth Animation with React and Framer Motion
-                  </h2>
-                  <div className="flex items-center gap-x-2 font-RubikBold">
-                    <p className="bg-[#282828] w-fit text-neutral-300 rounded-md px-2 h-5 flex items-center justify-center text-[11px] ">
-                      TypeScript
-                    </p>
-                    <div className="w-1 h-1 rounded-full bg-neutral-400" />
-                    <span className="text-xs">Sunday, July 22, 2023</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+<div className="mt-6 bg-[#1C1C1C] rounded-lg text-neutral-400 p-4">
+  <div className="p-4 rounded-lg">
+    <div className="flex items-center gap-x-3">
+      <div className="flex items-center gap-x-2">
+        <h2 className="text-sm font-RubikMedium">PromNET</h2>
+        <div className="w-1 h-1 rounded-full bg-neutral-400" />
+        <span className="text-xs font-RubikMedium">Polyák Csaba E.V.</span>
+        <div className="w-1 h-1 rounded-full bg-neutral-400" />
+        <span className="text-xs font-RubikMedium text-neutral-300">© 2024 PromNET. Minden jog fenntartva.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
         </div>
       </div>
     </motion.div>
