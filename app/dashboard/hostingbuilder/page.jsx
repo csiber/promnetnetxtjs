@@ -79,7 +79,7 @@ function Page() {
         </div>
         <section className="relative md:py-12 py-8">
           <div className="flex flex-wrap justify-center gap-6 mt-8">
-            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[300px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
+            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[290px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
               <Link href="/dashboard/webhosting">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-gray-700 p-3 hover:shadow-lg hover:bg-blue-800">
@@ -95,7 +95,7 @@ function Page() {
               </Link>
             </div>
 
-            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[300px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
+            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[290px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
               <Link href="/dashboard/gamehosting">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-gray-700 p-3 hover:shadow-lg hover:bg-indigo-800">
@@ -111,7 +111,7 @@ function Page() {
               </Link>
             </div>
 
-            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[300px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
+            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[290px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
               <Link href="/dashboard/emailhosting">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-gray-700 p-3 hover:shadow-lg hover:bg-green-800">
@@ -128,7 +128,7 @@ function Page() {
               </Link>
             </div>
 
-            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[300px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
+            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[290px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
               <Link href="/dashboard/mailhosting">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-gray-700 p-3 hover:shadow-lg hover:bg-teal-800">
@@ -146,16 +146,14 @@ function Page() {
               </Link>
             </div>
 
-            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[300px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
+            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[290px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
               <Link href="/dashboard/radioserverhosting">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-gray-700 p-3 hover:shadow-lg hover:bg-red-800">
                     <FaMicrophoneAlt className="text-gray-400 text-2xl animate-pulse" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold">
-                      Rádiószerver hoszting
-                    </h3>
+                    <h3 className="text-lg font-semibold">Rádió hoszting</h3>
                     <p className="text-sm">
                       Online rádióállomások számára szerverkapacitás
                       biztosítása.
@@ -165,7 +163,7 @@ function Page() {
               </Link>
             </div>
 
-            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[300px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
+            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[290px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
               <Link href="/dashboard/vpshosting">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-gray-700 p-3 hover:shadow-lg hover:bg-yellow-800">
@@ -181,7 +179,7 @@ function Page() {
               </Link>
             </div>
 
-            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[300px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
+            <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[290px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
               <Link href="/dashboard/serverhosting">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-gray-700 p-3 hover:shadow-lg hover:bg-orange-800">
@@ -190,8 +188,7 @@ function Page() {
                   <div>
                     <h3 className="text-lg font-semibold">Szerver hoszting</h3>
                     <p className="text-sm">
-                      Fizikai szerverek hosting szolgáltatása nagy teljesítményű
-                      alkalmazásokhoz.
+                      Fizikai szerverek hosting szolgáltatása.
                     </p>
                   </div>
                 </div>
