@@ -8,7 +8,15 @@ import {
   PiShapesThin,
   PiHouseLight,
 } from "react-icons/pi";
-import { FaServer, FaCode } from "react-icons/fa";
+import {
+  FaCode,
+  FaServer,
+  FaUser,
+  FaMapMarkerAlt,
+  FaPhone,
+  FaIdCard,
+  FaMoneyCheck,
+} from "react-icons/fa";
 
 import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
@@ -186,7 +194,7 @@ function Leftpage() {
                   <FaCode className="text-xl" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">Webfejlesztés</h3>
-                    <p className="text-[9px]">PromNET DEV</p>
+                    <p className="text-[12px]">PromNET DEV</p>
                   </div>
                 </div>
                 <small className="text-[9px] text-neutral-300">
@@ -200,12 +208,67 @@ function Leftpage() {
                     <h3 className="text-sm font-RubikMedium">
                       Saját hosztingal rendelkeztem
                     </h3>
-                    <p className="text-[9px]">PromNET Hosting</p>
+                    <p className="text-[12px]">PromNET Hosting</p>
                   </div>
                 </div>
                 <small className="text-[9px] text-neutral-300">
                   2010 - 2024
                 </small>
+              </div>
+            </div>
+
+            <div className="border border-[#282828] text-neutral-300 my-6" />
+
+            <div className="my-4">
+              <h1 className="font-RubikRegular">Vállalkozás adatai</h1>
+              <div className="mt-7 flex justify-between">
+                <div className="flex gap-x-3">
+                  <FaUser className="text-xl" />
+                  <div className="-mt-1">
+                    <h3 className="text-sm font-RubikMedium">Cégnév</h3>
+                    <p className="text-[12px]">Polyák Csaba E.V</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 flex justify-between">
+                <div className="flex gap-x-3">
+                  <FaMapMarkerAlt className="text-xl" />
+                  <div className="-mt-1">
+                    <h3 className="text-sm font-RubikMedium">Cím</h3>
+                    <p className="text-[12px]">
+                      4324 Kállósemjén, Kölcsey Ferenc út 15/A
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 flex justify-between">
+                <div className="flex gap-x-3">
+                  <FaPhone className="text-xl" />
+                  <div className="-mt-1">
+                    <h3 className="text-sm font-RubikMedium">Telefonszám</h3>
+                    <p className="text-[12px]">+36 20 549 4107</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 flex justify-between">
+                <div className="flex gap-x-3">
+                  <FaIdCard className="text-xl" />
+                  <div className="-mt-1">
+                    <h3 className="text-sm font-RubikMedium">
+                      Nyilvántartási szám
+                    </h3>
+                    <p className="text-[12px]">52193909</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 flex justify-between">
+                <div className="flex gap-x-3">
+                  <FaMoneyCheck className="text-xl" />
+                  <div className="-mt-1">
+                    <h3 className="text-sm font-RubikMedium">Adószám</h3>
+                    <p className="text-[12px]">68747961-1-35</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
