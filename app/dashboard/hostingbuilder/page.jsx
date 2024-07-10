@@ -96,7 +96,7 @@ function Page() {
             </div>
 
             <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[300px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
-              <Link href="/gamehosting">
+              <Link href="/dashboard/gamehosting">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-gray-700 p-3 hover:shadow-lg hover:bg-indigo-800">
                     <FaGamepad className="text-gray-400 text-2xl animate-pulse" />
@@ -112,7 +112,7 @@ function Page() {
             </div>
 
             <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[300px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
-              <Link href="/emailhosting">
+              <Link href="/dashboard/emailhosting">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-gray-700 p-3 hover:shadow-lg hover:bg-green-800">
                     <FaEnvelope className="text-gray-400 text-2xl animate-pulse" />
@@ -129,7 +129,7 @@ function Page() {
             </div>
 
             <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[300px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
-              <Link href="/mailhosting">
+              <Link href="/dashboard/mailhosting">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-gray-700 p-3 hover:shadow-lg hover:bg-teal-800">
                     <FaComments className="text-gray-400 text-2xl animate-pulse" />
@@ -147,7 +147,7 @@ function Page() {
             </div>
 
             <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[300px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
-              <Link href="/radioserverhosting">
+              <Link href="/dashboard/radioserverhosting">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-gray-700 p-3 hover:shadow-lg hover:bg-red-800">
                     <FaMicrophoneAlt className="text-gray-400 text-2xl animate-pulse" />
@@ -166,7 +166,7 @@ function Page() {
             </div>
 
             <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[300px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
-              <Link href="/vpshosting">
+              <Link href="/dashboard/vpshosting">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-gray-700 p-3 hover:shadow-lg hover:bg-yellow-800">
                     <FaHdd className="text-gray-400 text-2xl animate-pulse" />
@@ -182,7 +182,7 @@ function Page() {
             </div>
 
             <div className="bg-gray-800 rounded-lg text-neutral-100 p-6 shadow-md w-[300px] transition duration-200 ease-in-out transform hover:scale-105 hover:shadow-lg hover:bg-gray-700">
-              <Link href="/serverhosting">
+              <Link href="/dashboard/serverhosting">
                 <div className="flex items-center gap-4">
                   <div className="rounded-full bg-gray-700 p-3 hover:shadow-lg hover:bg-orange-800">
                     <FaServer className="text-gray-400 text-2xl animate-pulse" />

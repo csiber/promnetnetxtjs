@@ -8,7 +8,7 @@ import {
   PiShapesThin,
   PiHouseLight,
 } from "react-icons/pi";
-import { SiAdobe } from "react-icons/si";
+import { FaServer, FaCode } from "react-icons/fa";
 
 import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
@@ -183,7 +183,7 @@ function Leftpage() {
               <h1 className="font-RubikRegular">Munka napló</h1>
               <div className="mt-7 flex  justify-between">
                 <div className="flex gap-x-3">
-                  <PiGoogleLogoThin className="text-xl" />
+                  <FaCode className="text-xl" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">Webfejlesztés</h3>
                     <p className="text-[9px]">PromNET DEV</p>
@@ -195,7 +195,7 @@ function Leftpage() {
               </div>
               <div className="my-3 flex  justify-between">
                 <div className="flex gap-x-3">
-                  <SiAdobe className="text-xl" />
+                  <FaServer className="text-xl" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">
                       Saját hosztingal rendelkeztem
