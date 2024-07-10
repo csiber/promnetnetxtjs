@@ -57,13 +57,13 @@ function Leftpage() {
         }}
         className=" hidden md:block bg-[#1C1C1C] w-full md:w-80  h-fit sticky top-5 "
       >
-        <div className=" md:w-80 w-full p-3 border border-neutral-800   rounded-2xl h-full bg-[#1C1C1C]  ">
+        <div className=" md:w-80 w-full p-3 border border-neutral-800   rounded-2xl h-full bg-[#1C1C1C] hover:scale-110 animate-grow ">
           <div className="flex">
             <div className="w-full relative">
               <Image
                 width={1000}
                 height={1000}
-                className="w-28 h-28 rounded-full object-cover shadow-md"
+                className="w-28 h-28 rounded-full object-cover shadow-md hover:scale-110 animate-grow"
                 src="/black.jpeg"
                 alt=""
               />
@@ -83,11 +83,16 @@ function Leftpage() {
                 Polyák Csaba E.V.
               </h1>
               <p className="text-xs font-RubikMedium text-neutral-300 mt-2">
-              <Link href={"mailto:info@promnet.hu"} target="blank">info@promnet.hu 📧</Link>
+                <Link href={"mailto:info@promnet.hu"} target="blank">
+                  info@promnet.hu 📧
+                </Link>
               </p>
 
               <p className="text-xs font-RubikMedium text-neutral-300 mt-1">
-              <Link href={"/"} target="blank">  promnet.hu 🌍</Link>
+                <Link href={"/"} target="blank">
+                  {" "}
+                  promnet.hu 🌍
+                </Link>
               </p>
 
               <div className="flex w-full   ">
@@ -121,7 +126,7 @@ function Leftpage() {
             </div>
           </div>
 
-{/*           <form
+          {/*           <form
             onSubmit={handleSubmit}
             className="bg-[#282828] p-1  rounded-md md:flex items-center  justify-between h-9 w-full hidden "
           >
@@ -143,19 +148,32 @@ function Leftpage() {
           <div className="w-full mt-5 text-neutral-300">
             <h2 className="font-RubikBold my-4">Info</h2>
             <p className="text-[12px]  font-RubikRegular my-3">
-            Professzionális webfejlesztés, egyedi megoldások: Neked készítem a legmenőbb weboldalt! Kreatív kódolás, ami még a macskádnak is tetszeni fog. Bízd rám a weboldalad, és emelkedj ki a tömegből!{" "}
+              Professzionális webfejlesztés, egyedi megoldások: Neked készítem a
+              legmenőbb weboldalt! Kreatív kódolás, ami még a macskádnak is
+              tetszeni fog. Bízd rám a weboldalad, és emelkedj ki a tömegből!{" "}
             </p>
 
             <div className="mt-6 flex justify-between text-sm">
               <div className="flex items-center gap-x-1">
                 <PiShapesThin />
                 <span className="text-xs font-RubikRegular">
-                  2008 óta <Link href={"https://en.wikipedia.org/wiki/Solution_stack#Full-stack_developer"} target="blank">full stack</Link> webfejlesztő
+                  2008 óta{" "}
+                  <Link
+                    href={
+                      "https://en.wikipedia.org/wiki/Solution_stack#Full-stack_developer"
+                    }
+                    target="blank"
+                  >
+                    full stack
+                  </Link>{" "}
+                  webfejlesztő
                 </span>
               </div>
               <div className="flex items-center gap-x-1">
                 <PiMagicWandThin />
-                <Link href={"/dashboard/portfolio"}><span className="text-xs font-RubikRegular">+20 projekt</span></Link>
+                <Link href={"/dashboard/portfolio"}>
+                  <span className="text-xs font-RubikRegular">+20 projekt</span>
+                </Link>
               </div>
             </div>
 
