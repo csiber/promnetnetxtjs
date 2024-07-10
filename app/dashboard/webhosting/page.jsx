@@ -38,6 +38,11 @@ function Page() {
                   Kezdőlap
                 </button>
               </Link>
+              <Link href={"/dashboard/hostingbuilder"}>
+                <button className="text-xs bg-neutral-700/25 p-1 w-16 h-6 rounded-md">
+                  Hoszting
+                </button>
+              </Link>
             </div>
           </div>
         </div>
