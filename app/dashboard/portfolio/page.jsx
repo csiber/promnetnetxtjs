@@ -33,7 +33,7 @@ function Page() {
                   </div>
                 </div>
               </Link>
-              <Link href={"/"}>
+              <Link href={"/dashboard"}>
                 <button className="text-xs bg-neutral-700/25 p-1 w-16 h-6 rounded-md">
                   Kezdőlap
                 </button>
@@ -72,7 +72,10 @@ function Page() {
           <div className="container relative">
             <div className="grid grid-cols-1 md:grid-cols-2 mt-10 lg:grid-cols-3 gap-6">
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <a href="https://tukormuhely.hu" className="text-blue-500 hover:underline">
+                <a
+                  href="https://tukormuhely.hu"
+                  className="text-blue-500 hover:underline"
+                >
                   <h3 className="text-lg font-semibold mb-2">Tükörmühely</h3>
                 </a>
                 <p className="text-gray-700 mb-2">
@@ -80,91 +83,171 @@ function Page() {
                 </p>
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <a href="https://webshop.weddingarts.hu/" className="text-blue-500 hover:underline">
-                  <h3 className="text-lg font-semibold mb-2">Weddingarts webáruház</h3>
+                <a
+                  href="https://webshop.weddingarts.hu/"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3 className="text-lg font-semibold mb-2">
+                    Weddingarts webáruház
+                  </h3>
                 </a>
                 <p className="text-gray-700 mb-2">
-                  Esküvöi termékeket értékesitö webáruház, régi munkáink egyike ami még a mai napig megtalálható!
+                  Esküvöi termékeket értékesitö webáruház, régi munkáink egyike
+                  ami még a mai napig megtalálható!
                 </p>
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <a href="https://artbysylviaszluka.hu/" className="text-blue-500 hover:underline">
-                  <h3 className="text-lg font-semibold mb-2">Art by Sylvia Szluka</h3>
+                <a
+                  href="https://artbysylviaszluka.hu/"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3 className="text-lg font-semibold mb-2">
+                    Art by Sylvia Szluka
+                  </h3>
                 </a>
                 <p className="text-gray-700 mb-2">
                   Festészettel, értékesitéssel is foglalkozó weboldal.
                 </p>
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <a href="https://tradehub.hu" className="text-blue-500 hover:underline">
-                  <h3 className="text-lg font-semibold mb-2"  style={{ textDecoration: 'line-through' }}>TradeHUB</h3>
+                <a
+                  href="https://tradehub.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ textDecoration: "line-through" }}
+                  >
+                    TradeHUB
+                  </h3>
                 </a>
                 <p className="text-gray-700 mb-2">
-                  Piac jellegü értékesitö oldal. Ez a weboldal már sajnos nem elérhetö.
+                  Piac jellegü értékesitö oldal. Ez a weboldal már sajnos nem
+                  elérhetö.
                 </p>
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <a href="https://hajnalkarpit.hu" className="text-blue-500 hover:underline">
+                <a
+                  href="https://hajnalkarpit.hu"
+                  className="text-blue-500 hover:underline"
+                >
                   <h3 className="text-lg font-semibold mb-2">Hajnal Kárpit</h3>
                 </a>
                 <p className="text-gray-700 mb-2">
-                  Bútorgyártással, kárpitozással, értékesitéssel foglalkozó bemutatkozó oldal.
+                  Bútorgyártással, kárpitozással, értékesitéssel foglalkozó
+                  bemutatkozó oldal.
                 </p>
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <a href="https://memgyujto.hu" className="text-blue-500 hover:underline">
-                  <h3 className="text-lg font-semibold mb-2"  style={{ textDecoration: 'line-through' }}>Mémgyüjtö</h3>
+                <a
+                  href="https://memgyujto.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ textDecoration: "line-through" }}
+                  >
+                    Mémgyüjtö
+                  </h3>
                 </a>
                 <p className="text-gray-700 mb-2">
                   Vicces képek gyüjteménye. Sajnos már nem elérhető.
                 </p>
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <a href="https://moziverzum.hu" className="text-blue-500 hover:underline">
-                  <h3 className="text-lg font-semibold mb-2"  style={{ textDecoration: 'line-through' }}>Moziverzum</h3>
+                <a
+                  href="https://moziverzum.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ textDecoration: "line-through" }}
+                  >
+                    Moziverzum
+                  </h3>
                 </a>
                 <p className="text-gray-700 mb-2">
                   Filmek, sorozatok gyüjteménye. Sajnos már nem elérhető.
                 </p>
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <a href="https://eletenat.hu" className="text-blue-500 hover:underline">
-                  <h3 className="text-lg font-semibold mb-2"  style={{ textDecoration: 'line-through' }}>Életen át</h3>
+                <a
+                  href="https://eletenat.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ textDecoration: "line-through" }}
+                  >
+                    Életen át
+                  </h3>
                 </a>
                 <p className="text-gray-700 mb-2">
-                  Rendezvényszervező bemutatkozó oldala. Sajnos már nem elérhető.
+                  Rendezvényszervező bemutatkozó oldala. Sajnos már nem
+                  elérhető.
                 </p>
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <a href="https://eurofiveradio.hu" className="text-blue-500 hover:underline">
-                  <h3 className="text-lg font-semibold mb-2"  style={{ textDecoration: 'line-through' }}>Euro Five Rádió</h3>
+                <a
+                  href="https://eurofiveradio.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ textDecoration: "line-through" }}
+                  >
+                    Euro Five Rádió
+                  </h3>
                 </a>
                 <p className="text-gray-700 mb-2">
                   Online rádió portál, közösségi oldal. Sajnos már nem elérhető.
                 </p>
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <a href="https://dinaphotography.hu" className="text-blue-500 hover:underline">
-                  <h3 className="text-lg font-semibold mb-2"  style={{ textDecoration: 'line-through' }}>Dina Photography</h3>
+                <a
+                  href="https://dinaphotography.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ textDecoration: "line-through" }}
+                  >
+                    Dina Photography
+                  </h3>
                 </a>
                 <p className="text-gray-700 mb-2">
-                  Fotózással, portré készitéssel foglalkozó fotós bemutatkozó oldala. Sajnos már nem elérhető.
+                  Fotózással, portré készitéssel foglalkozó fotós bemutatkozó
+                  oldala. Sajnos már nem elérhető.
                 </p>
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <a href="https://statueprint.com" className="text-blue-500 hover:underline">
+                <a
+                  href="https://statueprint.com"
+                  className="text-blue-500 hover:underline"
+                >
                   <h3 className="text-lg font-semibold mb-2">StatuePrint</h3>
                 </a>
                 <p className="text-gray-700 mb-2">
-                  3D nyomtatás témával foglalkozó webshop. Angol nyelvü. 3D modelleket értékesit.
+                  3D nyomtatás témával foglalkozó webshop. Angol nyelvü. 3D
+                  modelleket értékesit.
                 </p>
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
-                <a href="https://promark.promnet.cloud" className="text-blue-500 hover:underline">
-                <h3 className="text-lg font-semibold mb-2" style={{ textDecoration: 'line-through' }}>PromARK</h3>
+                <a
+                  href="https://promark.promnet.cloud"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ textDecoration: "line-through" }}
+                  >
+                    PromARK
+                  </h3>
                 </a>
                 <p className="text-gray-700 mb-2">
-                  PromARK - ARK Survival Evolved - Ascended játékszerverek közösségi oldala. Kb. 1 évig müködö projektem volt. 2024.05. hóban leállitásra került. :(
+                  PromARK - ARK Survival Evolved - Ascended játékszerverek
+                  közösségi oldala. Kb. 1 évig müködö projektem volt. 2024.05.
+                  hóban leállitásra került. :(
                 </p>
               </div>
             </div>

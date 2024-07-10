@@ -41,7 +41,7 @@ function Page() {
                   </div>
                 </div>
               </Link>
-              <Link href={"/"}>
+              <Link href={"/dashboard"}>
                 <button className="text-xs bg-neutral-700/25 p-1 w-16 h-6 rounded-md">
                   Kezdőlap
                 </button>
