@@ -187,38 +187,6 @@ function Leftpage() {
 
             <div className="border border-[#282828] text-neutral-300 my-6" />
 
-            <div className="my-4 ">
-              <h1 className="font-RubikRegular">Munka napló</h1>
-              <div className="mt-7 flex  justify-between">
-                <div className="flex gap-x-3">
-                  <FaCode className="text-xl" />
-                  <div className="-mt-1">
-                    <h3 className="text-sm font-RubikMedium">Webfejlesztés</h3>
-                    <p className="text-[12px]">PromNET DEV</p>
-                  </div>
-                </div>
-                <small className="text-[9px] text-neutral-300">
-                  2008 - napjainkig
-                </small>
-              </div>
-              <div className="my-3 flex  justify-between">
-                <div className="flex gap-x-3">
-                  <FaServer className="text-xl" />
-                  <div className="-mt-1">
-                    <h3 className="text-sm font-RubikMedium">
-                      Saját hosztingal rendelkeztem
-                    </h3>
-                    <p className="text-[12px]">PromNET Hosting</p>
-                  </div>
-                </div>
-                <small className="text-[9px] text-neutral-300">
-                  2010 - 2024
-                </small>
-              </div>
-            </div>
-
-            <div className="border border-[#282828] text-neutral-300 my-6" />
-
             <div className="my-4">
               <h1 className="font-RubikRegular">Vállalkozás adatai</h1>
               <div className="mt-7 flex justify-between">
