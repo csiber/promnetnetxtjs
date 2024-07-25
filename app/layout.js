@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="bg-[#171717]">
         <Theming>
-          {/* <Dashboard /> */}
+          { <Dashboard /> }
           {children}
         </Theming>
       </body>
