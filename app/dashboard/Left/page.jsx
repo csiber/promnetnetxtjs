@@ -65,13 +65,13 @@ function Leftpage() {
         }}
         className=" hidden md:block bg-[#1C1C1C] w-full md:w-80  h-fit sticky top-5 "
       >
-        <div className=" md:w-80 w-full p-3 border border-neutral-800   rounded-2xl h-full bg-[#1C1C1C] hover:scale-110 animate-grow ">
+        <div className=" md:w-80 w-full p-3 border border-neutral-800   rounded-2xl h-full bg-[#1C1C1C] hover:scale-110 ">
           <div className="flex">
             <div className="w-full relative">
               <Image
                 width={1000}
                 height={1000}
-                className="w-28 h-28 rounded-full object-cover shadow-md hover:scale-110 animate-grow"
+                className="w-28 h-28 rounded-full object-cover shadow-md hover:scale-110"
                 src="/black.jpeg"
                 alt=""
               />
