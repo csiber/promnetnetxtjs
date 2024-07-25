@@ -205,6 +205,105 @@ function Page() {
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
                 <a
+                  href="https://babocapelus.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ textDecoration: "line-through" }}
+                  >
+                    Babóca Pelus Webáruház
+                  </h3>
+                </a>
+                <p className="text-gray-700 mb-2">
+                  Babaruhákat, egyéb kellékeket értékesitö webáruház. Sajnos már
+                  nem elérhető.
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-md">
+                <a
+                  href="https://playhost.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ textDecoration: "line-through" }}
+                  >
+                    PlayHost - játékszerver hoszting
+                  </h3>
+                </a>
+                <p className="text-gray-700 mb-2">
+                  Játékszerver bérléssel foglalkozó vállalkozás weboldala.
+                  Sajnos már nem elérhető. A domain eladó!
+                </p>
+              </div>
+
+              <div className="p-6 bg-white rounded-lg shadow-md">
+                <a
+                  href="https://elisnilufer.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ textDecoration: "line-through" }}
+                  >
+                    Elis Nilufer portfolio
+                  </h3>
+                </a>
+                <p className="text-gray-700 mb-2">
+                  Könyviró saját bemutatkozó oldala. Sajnos már nem elérhető.
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-md">
+                <a
+                  href="https://krutimtrans.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ textDecoration: "line-through" }}
+                  >
+                    Kru-Tim Trans portfolio
+                  </h3>
+                </a>
+                <p className="text-gray-700 mb-2">
+                  Szállitmányozással foglalkozó cég online bemutatkozó oldala.
+                  Sajnos már nem elérhető.
+                </p>
+              </div>
+
+              <div className="p-6 bg-white rounded-lg shadow-md">
+                <a
+                  href="https://dobaifood.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ textDecoration: "line-through" }}
+                  >
+                    Dobai Food pizzéria
+                  </h3>
+                </a>
+                <p className="text-gray-700 mb-2">
+                  Pizzéria online rendelés oldala. Sajnos már nem elérhető.
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-md">
+                <a
+                  href="https://vizszivargasbemeres.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3 className="text-lg font-semibold mb-2">
+                    Vizszivárgás bemérés - Rajt Attila E.V.
+                  </h3>
+                </a>
+                <p className="text-gray-700 mb-2">
+                  Viz-gáz-fütés szereléssel foglalkozó vállalkozás bemutatkozó
+                  oldala.
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-md">
+                <a
                   href="https://dinaphotography.hu"
                   className="text-blue-500 hover:underline"
                 >
@@ -225,7 +324,7 @@ function Page() {
                   href="https://statueprint.com"
                   className="text-blue-500 hover:underline"
                 >
-                  <h3 className="text-lg font-semibold mb-2">StatuePrint</h3>
+                  <h3 className="text-lg font-semibold mb-2">Statue Print</h3>
                 </a>
                 <p className="text-gray-700 mb-2">
                   3D nyomtatás témával foglalkozó webshop. Angol nyelvü. 3D
@@ -234,20 +333,55 @@ function Page() {
               </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
                 <a
-                  href="https://promark.promnet.cloud"
+                  href="https://nistoregon.hu"
                   className="text-blue-500 hover:underline"
                 >
-                  <h3
-                    className="text-lg font-semibold mb-2"
-                    style={{ textDecoration: "line-through" }}
-                  >
-                    PromARK
+                  <h3 className="text-lg font-semibold mb-2">
+                    Nistor Egon E.V. portfolio
                   </h3>
                 </a>
                 <p className="text-gray-700 mb-2">
+                  Ablak, ajtó szereléssel foglalkozó vállalkozás bemutatkozó
+                  oldala.
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-md">
+                <a
+                  href="https://promshop.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3 className="text-lg font-semibold mb-2">
+                    PromNET Webáruház
+                  </h3>
+                </a>
+                <p className="text-gray-700 mb-2">
+                  Hálózati eszközökkel foglalkozó webáruház. Saját!
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-md">
+                <a
+                  href="https://techlabinsights.com"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3 className="text-lg font-semibold mb-2">
+                    TechLab Insights
+                  </h3>
+                </a>
+                <p className="text-gray-700 mb-2">
+                  3D nyomtatással, 3D model értékesitéssel foglalkozó angol
+                  nyelvü webáruház.
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-md">
+                <a
+                  href="https://promark.promnet.cloud"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3 className="text-lg font-semibold mb-2">PromARK</h3>
+                </a>
+                <p className="text-gray-700 mb-2">
                   PromARK - ARK Survival Evolved - Ascended játékszerverek
-                  közösségi oldala. Kb. 1 évig müködö projektem volt. 2024.05.
-                  hóban leállitásra került. :(
+                  közösségi oldala. Saját!
                 </p>
               </div>
             </div>
