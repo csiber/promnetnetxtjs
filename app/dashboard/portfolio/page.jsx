@@ -66,11 +66,44 @@ function Page() {
             Portfolio Weboldalak
           </p>
           <div className="w-1 h-1 rounded-full bg-neutral-400" />
-          <span className="text-xs">Frissítve: 2024.07.09.</span>
+          <span className="text-xs">Frissítve: 2024.11.19.</span>
         </div>
         <section className="relative md:py-12 py-8">
           <div className="container relative">
             <div className="grid grid-cols-1 md:grid-cols-2 mt-10 lg:grid-cols-3 gap-6">
+                 <div className="p-6 bg-white rounded-lg shadow-md">
+                <a
+                  href="https://creatify.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3 className="text-lg font-semibold mb-2">Creatify</h3>
+                </a>
+                <p className="text-gray-700 mb-2">
+                  Digitális tartalom értékesitésével foglalkozó webáruház
+                </p>
+              </div>
+                <div className="p-6 bg-white rounded-lg shadow-md">
+                <a
+                  href="https://csumpinet.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3 className="text-lg font-semibold mb-2">CsumpiNET</h3>
+                </a>
+                <p className="text-gray-700 mb-2">
+                  Hát igen, én vagyok a CsumpiNET! :) Webhoszting oldal vicces formában.
+                </p>
+              </div>
+                <div className="p-6 bg-white rounded-lg shadow-md">
+                <a
+                  href="https://onlinetorta.hu"
+                  className="text-blue-500 hover:underline"
+                >
+                  <h3 className="text-lg font-semibold mb-2">Online Torta</h3>
+                </a>
+                <p className="text-gray-700 mb-2">
+                  Torták, sütemények készitéssel és értékesitéssel foglalkozó webáruház.
+                </p>
+              </div>
               <div className="p-6 bg-white rounded-lg shadow-md">
                 <a
                   href="https://tukormuhely.hu"
