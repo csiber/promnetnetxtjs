@@ -204,7 +204,7 @@ function Leftpage() {
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">Cím</h3>
                     <p className="text-[12px]">
-                      4324 Kállósemjén, Kölcsey Ferenc út 15/A
+                      4324 Kállósemjén, Kölcsey Ferenc út 11
                     </p>
                   </div>
                 </div>
