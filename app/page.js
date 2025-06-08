@@ -1,23 +1,27 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react"; // useState és useEffect importálása
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 function Page() {
-  const [countdown, setCountdown] = useState(3); // Visszaszámláló állapota 3-mal
+  const router = useRouter();
+  const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCountdown((prev) => prev - 1); // Visszaszámláló frissítése
-    }, 1000); // Visszaszámláló 1 másodperces frissítése
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          router.push("/dashboard");
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
 
-    if (countdown === 0) {
-      clearInterval(timer);
-      window.location.href = "/dashboard"; // Átirányítás a /dashboard oldalra
-    }
-
-    return () => clearInterval(timer); // Visszatéréskor a timer törlése
-  }, [countdown]); // A függőség tömb tartalmazza a countdown állapotot
+    return () => clearInterval(timer);
+  }, [router]);
 
   return (
     <div className="relative min-h-screen overflow-hidden flex flex-col items-center justify-center">
