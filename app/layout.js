@@ -1,8 +1,5 @@
-"use client";
 import "./globals.css";
 import Theming from "@/components/providers/Theme";
-import Dashboard from "@/app/dashboard/layout";
-export const runtime = 'edge';
 
 export default function RootLayout({ children }) {
   return (
@@ -17,10 +14,7 @@ export default function RootLayout({ children }) {
         <meta name="twitter:card" content="summary_large_image" />
       </head>
       <body className="bg-[#171717]">
-        <Theming>
-          { <Dashboard /> }
-          {children}
-        </Theming>
+        <Theming>{children}</Theming>
       </body>
     </html>
   );
