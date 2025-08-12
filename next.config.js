@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    // Enable Next.js image optimization
-    unoptimized: false,
+    // Disable Next.js image optimization for Cloudflare compatibility
+    unoptimized: true,
   },
 };
 
