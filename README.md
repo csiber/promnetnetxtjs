@@ -2,6 +2,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+> **Node version**
+>
+> Ensure that Node.js 18.17.0 or later is used. Cloudflare Pages reads the version from the `.nvmrc` file during builds; using an older runtime can cause a 500 Internal Server Error at runtime.
+
 First, run the development server:
 
 ```bash
