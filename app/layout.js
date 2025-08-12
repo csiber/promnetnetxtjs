@@ -1,6 +1,8 @@
 import "./globals.css";
 import Theming from "@/components/providers/Theme";
 
+export const runtime = "edge";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="hu">
