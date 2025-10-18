@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { PiArrowLeftThin } from "react-icons/pi";
 import { motion } from "framer-motion";
 
@@ -11,6 +11,7 @@ const projects = [
     href: "https://creatify.hu",
     description: "Digitális tartalom értékesítésével foglalkozó webáruház.",
     status: "live",
+    launch: "2024",
     tags: ["Webshop", "Digitális termékek"],
   },
   {
@@ -18,6 +19,7 @@ const projects = [
     href: "https://csumpinet.hu",
     description: "Webhoszting szolgáltatás könnyed, humoros megközelítésben.",
     status: "live",
+    launch: "2023",
     tags: ["Hosting", "Saját brand"],
   },
   {
@@ -25,6 +27,7 @@ const projects = [
     href: "https://onlinetorta.hu",
     description: "Torták és sütemények rendelését biztosító webáruház.",
     status: "live",
+    launch: "2022",
     tags: ["Webshop", "Gasztronómia"],
   },
   {
@@ -32,6 +35,7 @@ const projects = [
     href: "https://tukormuhely.hu",
     description: "Egyedi tükrök gyártására és értékesítésére fókuszáló oldal.",
     status: "live",
+    launch: "2023",
     tags: ["Bemutatkozó", "Gyártás"],
   },
   {
@@ -39,6 +43,7 @@ const projects = [
     href: "https://webshop.weddingarts.hu/",
     description: "Esküvői dekorációkat és kiegészítőket kínáló webáruház.",
     status: "live",
+    launch: "2024",
     tags: ["Webshop", "Esküvő"],
   },
   {
@@ -46,6 +51,7 @@ const projects = [
     href: "https://artbysylviaszluka.hu/",
     description: "Festmények és művészeti alkotások bemutatása és értékesítése.",
     status: "live",
+    launch: "2024",
     tags: ["Portfólió", "Művészet"],
   },
   {
@@ -54,6 +60,7 @@ const projects = [
     description: "Piac jellegű értékesítő oldal.",
     status: "archived",
     statusNote: "Ez az oldal már nem elérhető.",
+    launch: "2021",
     tags: ["Marketplace"],
   },
   {
@@ -61,6 +68,7 @@ const projects = [
     href: "https://hajnalkarpit.hu",
     description: "Bútorgyártással és kárpitozással foglalkozó vállalkozás bemutatkozása.",
     status: "live",
+    launch: "2024",
     tags: ["Bemutatkozó", "Belsőépítészet"],
   },
   {
@@ -69,6 +77,7 @@ const projects = [
     description: "Vicces képek és mémek gyűjteménye.",
     status: "archived",
     statusNote: "Sajnos már nem elérhető.",
+    launch: "2020",
     tags: ["Közösség", "Szórakozás"],
   },
   {
@@ -77,6 +86,7 @@ const projects = [
     description: "Filmek és sorozatok gyűjteményét összegyűjtő oldal.",
     status: "archived",
     statusNote: "Sajnos már nem elérhető.",
+    launch: "2020",
     tags: ["Szórakozás"],
   },
   {
@@ -85,6 +95,7 @@ const projects = [
     description: "Rendezvényszervező vállalkozás bemutatkozó oldala.",
     status: "archived",
     statusNote: "Sajnos már nem elérhető.",
+    launch: "2021",
     tags: ["Bemutatkozó", "Szolgáltatás"],
   },
   {
@@ -93,6 +104,7 @@ const projects = [
     description: "Online rádió portál és közösségi platform.",
     status: "archived",
     statusNote: "Sajnos már nem elérhető.",
+    launch: "2020",
     tags: ["Média"],
   },
   {
@@ -101,6 +113,7 @@ const projects = [
     description: "Babaholmikat és kiegészítőket értékesítő webshop.",
     status: "archived",
     statusNote: "Sajnos már nem elérhető.",
+    launch: "2021",
     tags: ["Webshop", "Baba"],
   },
   {
@@ -109,6 +122,7 @@ const projects = [
     description: "Játékszerver bérlésével foglalkozó weboldal.",
     status: "archived",
     statusNote: "Sajnos már nem elérhető. A domain eladó!",
+    launch: "2020",
     tags: ["Hosting", "Gaming"],
   },
   {
@@ -117,6 +131,7 @@ const projects = [
     description: "Könyvíró személyes bemutatkozó oldala.",
     status: "archived",
     statusNote: "Sajnos már nem elérhető.",
+    launch: "2019",
     tags: ["Portfólió", "Irodalom"],
   },
   {
@@ -125,6 +140,7 @@ const projects = [
     description: "Szállítmányozással foglalkozó vállalkozás online jelenléte.",
     status: "archived",
     statusNote: "Sajnos már nem elérhető.",
+    launch: "2019",
     tags: ["Bemutatkozó", "Logisztika"],
   },
   {
@@ -133,6 +149,7 @@ const projects = [
     description: "Pizzéria online rendelési felülete.",
     status: "archived",
     statusNote: "Sajnos már nem elérhető.",
+    launch: "2019",
     tags: ["Vendéglátás", "Webshop"],
   },
   {
@@ -140,6 +157,7 @@ const projects = [
     href: "https://vizszivargasbemeres.hu",
     description: "Víz-, gáz- és fűtésszereléssel foglalkozó szolgáltató weboldala.",
     status: "live",
+    launch: "2022",
     tags: ["Bemutatkozó", "Szolgáltatás"],
   },
   {
@@ -148,6 +166,7 @@ const projects = [
     description: "Portréfotózással foglalkozó fotós bemutatkozó oldala.",
     status: "archived",
     statusNote: "Sajnos már nem elérhető.",
+    launch: "2021",
     tags: ["Portfólió", "Fotózás"],
   },
   {
@@ -155,6 +174,7 @@ const projects = [
     href: "https://statueprint.com",
     description: "3D nyomtatott modelleket értékesítő webshop (angol nyelven).",
     status: "live",
+    launch: "2023",
     tags: ["Webshop", "3D nyomtatás"],
   },
   {
@@ -162,6 +182,7 @@ const projects = [
     href: "https://nistoregon.hu",
     description: "Nyílászárók szerelésével foglalkozó vállalkozás bemutatkozó oldala.",
     status: "live",
+    launch: "2023",
     tags: ["Bemutatkozó", "Építőipar"],
   },
   {
@@ -169,6 +190,7 @@ const projects = [
     href: "https://promshop.hu",
     description: "Hálózati eszközöket kínáló webáruház (saját projekt).",
     status: "live",
+    launch: "2022",
     tags: ["Webshop", "Saját brand"],
   },
   {
@@ -176,6 +198,7 @@ const projects = [
     href: "https://techlabinsights.com",
     description: "3D nyomtatással és modellek értékesítésével foglalkozó angol nyelvű oldal.",
     status: "live",
+    launch: "2023",
     tags: ["Blog", "3D nyomtatás"],
   },
   {
@@ -183,6 +206,7 @@ const projects = [
     href: "https://promark.promnet.cloud",
     description: "ARK Survival Evolved – Ascended közösségi oldal (saját projekt).",
     status: "live",
+    launch: "2024",
     tags: ["Gaming", "Közösség", "Saját brand"],
   },
 ];
@@ -201,7 +225,69 @@ const statusConfig = {
   },
 };
 
+const tagGradients = {
+  Webshop: "from-fuchsia-500/30 via-rose-500/20 to-purple-500/20",
+  "Digitális termékek": "from-sky-500/30 via-cyan-500/20 to-blue-500/20",
+  Hosting: "from-indigo-500/30 via-blue-500/20 to-emerald-500/20",
+  "Saját brand": "from-amber-500/30 via-rose-400/20 to-purple-400/20",
+  Gasztronómia: "from-orange-500/30 via-rose-500/20 to-yellow-500/20",
+  Bemutatkozó: "from-emerald-500/30 via-lime-500/20 to-teal-500/20",
+  Gyártás: "from-slate-500/30 via-gray-500/20 to-emerald-500/20",
+  Esküvő: "from-rose-500/30 via-pink-500/20 to-purple-400/20",
+  Portfólió: "from-violet-500/30 via-indigo-500/20 to-sky-400/20",
+  "Művészet": "from-purple-500/30 via-rose-400/20 to-amber-400/20",
+  Marketplace: "from-amber-500/30 via-orange-500/20 to-red-500/20",
+  Belsőépítészet: "from-amber-400/30 via-stone-400/20 to-emerald-400/20",
+  Közösség: "from-blue-500/30 via-indigo-500/20 to-purple-500/20",
+  Szórakozás: "from-fuchsia-500/30 via-purple-500/20 to-indigo-500/20",
+  Szolgáltatás: "from-emerald-500/30 via-teal-500/20 to-sky-500/20",
+  Média: "from-purple-500/30 via-indigo-500/20 to-blue-500/20",
+  Baba: "from-pink-500/30 via-rose-400/20 to-amber-300/20",
+  Gaming: "from-indigo-500/30 via-purple-500/20 to-slate-500/20",
+  Irodalom: "from-amber-400/30 via-orange-400/20 to-rose-400/20",
+  Logisztika: "from-blue-500/30 via-sky-400/20 to-emerald-400/20",
+  Vendéglátás: "from-orange-500/30 via-amber-500/20 to-red-500/20",
+  Fotózás: "from-purple-500/30 via-indigo-400/20 to-blue-400/20",
+  "3D nyomtatás": "from-sky-500/30 via-cyan-400/20 to-indigo-400/20",
+  Építőipar: "from-slate-500/30 via-gray-500/20 to-amber-500/20",
+  Blog: "from-amber-400/30 via-lime-400/20 to-emerald-400/20",
+};
+
 function Page() {
+  const [selectedStatus, setSelectedStatus] = useState("all");
+  const [selectedTag, setSelectedTag] = useState("Mind");
+
+  const tagFilters = useMemo(() => {
+    const allTags = new Set();
+    projects.forEach((project) => {
+      project.tags.forEach((tag) => allTags.add(tag));
+    });
+    return ["Mind", ...Array.from(allTags).sort()];
+  }, []);
+
+  const projectStats = useMemo(() => {
+    const liveCount = projects.filter((project) => project.status === "live").length;
+    const archivedCount = projects.filter((project) => project.status === "archived").length;
+    const newest = projects
+      .filter((project) => project.status === "live")
+      .sort((a, b) => (b.launch ?? "").localeCompare(a.launch ?? ""))[0]?.launch;
+
+    return {
+      total: projects.length,
+      liveCount,
+      archivedCount,
+      newest,
+    };
+  }, []);
+
+  const filteredProjects = useMemo(() => {
+    return projects.filter((project) => {
+      const matchesStatus = selectedStatus === "all" ? true : project.status === selectedStatus;
+      const matchesTag = selectedTag === "Mind" ? true : project.tags.includes(selectedTag);
+      return matchesStatus && matchesTag;
+    });
+  }, [selectedStatus, selectedTag]);
+
   return (
     <motion.div
       className="text-neutral-50"
@@ -263,11 +349,75 @@ function Page() {
           <div className="w-1 h-1 rounded-full bg-neutral-400" />
           <span className="text-xs">Frissítve: 2024.11.19.</span>
         </div>
+        <div className="mb-6 grid gap-4 rounded-2xl border border-white/5 bg-neutral-900/60 p-5 md:grid-cols-[1fr_auto]">
+          <div className="grid grid-cols-2 gap-4 text-sm text-neutral-300 md:grid-cols-4">
+            <div className="rounded-xl border border-white/10 bg-neutral-950/60 p-4">
+              <span className="text-xs uppercase tracking-[0.3em] text-neutral-500">Összes projekt</span>
+              <p className="mt-2 text-2xl font-RubikExtraBold text-neutral-50">{projectStats.total}+</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-emerald-500/10 p-4">
+              <span className="text-xs uppercase tracking-[0.3em] text-emerald-200">Aktív</span>
+              <p className="mt-2 text-2xl font-RubikExtraBold text-emerald-200">{projectStats.liveCount}</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-rose-500/10 p-4">
+              <span className="text-xs uppercase tracking-[0.3em] text-rose-200">Archív</span>
+              <p className="mt-2 text-2xl font-RubikExtraBold text-rose-200">{projectStats.archivedCount}</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-amber-500/10 p-4">
+              <span className="text-xs uppercase tracking-[0.3em] text-amber-200">Legfrissebb launch</span>
+              <p className="mt-2 text-2xl font-RubikExtraBold text-amber-200">{projectStats.newest}</p>
+            </div>
+          </div>
+          <div className="flex flex-col items-start gap-3 text-xs text-neutral-400 md:items-end md:text-right">
+            <p className="max-w-xs text-neutral-300">
+              Válaszd ki, milyen projektek érdekelnek: szűrhetsz státusz és kategória szerint, hogy gyorsan megtaláld a releváns referenciát.
+            </p>
+            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-RubikMedium uppercase tracking-[0.3em] text-neutral-200">
+              Dinamikus szűrés
+            </span>
+          </div>
+        </div>
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-wrap gap-2">
+            {[{ label: "Mind", value: "all" }, { label: "Élő", value: "live" }, { label: "Archív", value: "archived" }].map((filter) => (
+              <button
+                key={filter.value}
+                type="button"
+                onClick={() => setSelectedStatus(filter.value)}
+                className={`rounded-full border px-4 py-2 text-xs font-RubikMedium transition ${
+                  selectedStatus === filter.value
+                    ? "border-emerald-300/60 bg-emerald-500/10 text-emerald-100"
+                    : "border-white/10 bg-transparent text-neutral-300 hover:border-white/30 hover:text-neutral-100"
+                }`}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {tagFilters.map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                onClick={() => setSelectedTag(tag)}
+                className={`rounded-full border px-3 py-1.5 text-[11px] font-RubikMedium transition ${
+                  selectedTag === tag
+                    ? "border-fuchsia-300/60 bg-fuchsia-500/10 text-fuchsia-100"
+                    : "border-white/10 text-neutral-300 hover:border-white/30 hover:text-neutral-100"
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        </div>
         <section className="relative py-8 md:py-12">
           <div className="relative">
             <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {projects.map((project, index) => {
+              {filteredProjects.map((project, index) => {
                 const status = statusConfig[project.status];
+                const primaryTag = project.tags[0];
+                const gradient = tagGradients[primaryTag] ?? "from-neutral-700/40 via-neutral-800/30 to-neutral-900/30";
 
                 return (
                   <motion.article
@@ -275,9 +425,21 @@ function Page() {
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.05 * index, duration: 0.5 }}
-                    className="group flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-neutral-900/80 p-6 text-neutral-100 shadow-[0_20px_60px_-30px_rgba(59,130,246,0.35)] transition hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_30px_90px_-40px_rgba(236,72,153,0.35)]"
+                    className="group flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-neutral-900/80 p-6 text-neutral-100 shadow-[0_20px_60px_-30px_rgba(59,130,246,0.35)] transition hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_40px_100px_-50px_rgba(236,72,153,0.45)]"
                   >
-                    <div className="space-y-3">
+                    <div className="space-y-4">
+                      <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br ${gradient} p-5`}> 
+                        <div className="absolute -right-10 top-4 h-32 w-32 rounded-full bg-white/10 blur-3xl transition duration-500 group-hover:scale-110" />
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs uppercase tracking-[0.3em] text-neutral-200">{project.launch ?? ""}</span>
+                          <span className="rounded-full border border-white/15 bg-white/10 px-2 py-1 text-[10px] uppercase tracking-[0.25em] text-neutral-100">
+                            {primaryTag}
+                          </span>
+                        </div>
+                        <p className="mt-4 text-sm font-RubikMedium text-neutral-100">
+                          {project.description}
+                        </p>
+                      </div>
                       <div className="flex items-center justify-between gap-3">
                         <h3
                           className={`text-lg font-RubikMedium ${
@@ -338,7 +500,9 @@ function Page() {
                 );
               })}
             </div>
-            <p className="mt-6 text-center text-xs text-neutral-500">*A lista nem teljes.</p>
+            <p className="mt-6 text-center text-xs text-neutral-500">
+              *A lista nem teljes. Írj, ha szeretnél további iparági példákat látni!
+            </p>
           </div>
         </section>
       </div>

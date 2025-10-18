@@ -124,9 +124,27 @@ const quickActions = [
   },
 ];
 
+const featureOptions = [
+  "Reszponzív dizájn",
+  "Webshop modul",
+  "Időpontfoglaló",
+  "Blog / tartalommarketing",
+  "Integrációk (CRM, számlázó)",
+  "Hosting és üzemeltetés",
+];
+
 function Leftpage() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState({ type: "idle", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    industry: "",
+    budget: "",
+    timeline: "",
+    message: "",
+    features: [],
+  });
+  const [formStatus, setFormStatus] = useState({ type: "idle", message: "" });
   const [availability, setAvailability] = useState(() => computeAvailability());
 
   const controls = useAnimation();
@@ -155,17 +173,30 @@ function Leftpage() {
     return `Következő szabad időpont: ${dayName} ${formatted}`;
   }, [availability]);
 
-  const handleChange = (e) => {
-    setEmail(e.target.value);
-  };
-
   const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
-  const handleSubmit = async (e) => {
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const toggleFeature = (feature) => {
+    setFormData((prev) => {
+      const hasFeature = prev.features.includes(feature);
+      return {
+        ...prev,
+        features: hasFeature
+          ? prev.features.filter((item) => item !== feature)
+          : [...prev.features, feature],
+      };
+    });
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!isValidEmail(email)) {
-      setStatus({ type: "error", message: "Adj meg egy valós e-mail címet!" });
+    if (!formData.name.trim()) {
+      setFormStatus({ type: "error", message: "Add meg a neved, hogy tudjam, ki keres." });
       controls.start({
         x: [0, -10, 10, -6, 6, 0],
         transition: { duration: 0.5, ease: "easeInOut" },
@@ -173,50 +204,66 @@ function Leftpage() {
       return;
     }
 
-    setStatus({ type: "loading", message: "Feliratkozás folyamatban..." });
-
-    try {
-      const response = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setStatus({
-          type: "error",
-          message:
-            data?.error ??
-            "Hoppá, valami hiba történt. Kérlek, próbáld újra egy kicsit később!",
-        });
-        controls.start({
-          x: [0, -10, 10, -6, 6, 0],
-          transition: { duration: 0.5, ease: "easeInOut" },
-        });
-        return;
-      }
-
-      setStatus({
-        type: "success",
-        message: data?.message ?? "Sikeres feliratkozás! Hamarosan jelentkezem.",
-      });
-      setEmail("");
-    } catch (error) {
-      setStatus({
-        type: "error",
-        message:
-          "Nem sikerült elérni a feliratkozási szolgáltatást. Írj e-mailt, és segítek!",
-      });
+    if (!isValidEmail(formData.email)) {
+      setFormStatus({ type: "error", message: "Adj meg egy érvényes e-mail címet, hogy válaszolhassak." });
       controls.start({
         x: [0, -10, 10, -6, 6, 0],
         transition: { duration: 0.5, ease: "easeInOut" },
       });
+      return;
     }
+
+    if (!formData.budget.trim()) {
+      setFormStatus({ type: "error", message: "A tervezett költségkeret segít a megfelelő ajánlat összeállításában." });
+      controls.start({
+        x: [0, -10, 10, -6, 6, 0],
+        transition: { duration: 0.5, ease: "easeInOut" },
+      });
+      return;
+    }
+
+    const selectedFeatures = formData.features.length
+      ? formData.features.join(", ")
+      : "Nem jelölt meg konkrét funkciót";
+
+    const bodyLines = [
+      `Név: ${formData.name}`,
+      formData.company ? `Cég / márka: ${formData.company}` : null,
+      `E-mail: ${formData.email}`,
+      formData.industry ? `Iparág: ${formData.industry}` : null,
+      `Tervezett költségkeret: ${formData.budget}`,
+      formData.timeline ? `Várt indulás: ${formData.timeline}` : null,
+      `Kiemelt funkciók: ${selectedFeatures}`,
+      formData.message ? `Megjegyzés: ${formData.message}` : null,
+    ]
+      .filter(Boolean)
+      .join("%0D%0A");
+
+    const mailto = `mailto:info@promnet.hu?subject=${encodeURIComponent(
+      "Új projektmegkeresés a promnet.hu oldalról"
+    )}&body=${bodyLines}`;
+
+    setFormStatus({ type: "success", message: "Köszönöm! Az e-mail alkalmazásod megnyílik, hogy elküldhesd a projekt-összefoglalót." });
+    controls.start({ x: [0, 4, -4, 2, -2, 0], transition: { duration: 0.6, ease: "easeInOut" } });
+
+    setTimeout(() => {
+      if (typeof window !== "undefined") {
+        window.location.href = mailto;
+      }
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        industry: "",
+        budget: "",
+        timeline: "",
+        message: "",
+        features: [],
+      });
+    }, 400);
   };
 
-  const statusStyles = {
+  const formStatusStyles = {
     success: "text-emerald-300",
     error: "text-rose-300",
     loading: "text-amber-300",
@@ -336,31 +383,104 @@ function Leftpage() {
 
           <form
             onSubmit={handleSubmit}
-            className="mt-5 hidden h-12 w-full items-center justify-between gap-3 rounded-2xl border border-white/5 bg-[#282828] px-3 md:flex"
+            className="mt-6 hidden w-full flex-col gap-3 rounded-2xl border border-white/5 bg-[#282828] p-4 md:flex"
           >
-            <input
-              value={email}
-              onChange={handleChange}
-              className="h-full w-full bg-transparent text-xs font-RubikMedium text-neutral-200 placeholder:text-neutral-500 focus:outline-none"
-              placeholder="Iratkozz fel a hírlevélre"
-              type="email"
-              aria-label="E-mail cím"
-              required
+            <div className="grid grid-cols-1 gap-3">
+              <input
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+                placeholder="Név"
+                type="text"
+                aria-label="Név"
+              />
+              <input
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+                placeholder="E-mail cím"
+                type="email"
+                aria-label="E-mail cím"
+              />
+              <input
+                name="company"
+                value={formData.company}
+                onChange={handleInputChange}
+                className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+                placeholder="Cég / márkanév (opcionális)"
+                type="text"
+                aria-label="Cég vagy márkanév"
+              />
+              <input
+                name="industry"
+                value={formData.industry}
+                onChange={handleInputChange}
+                className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+                placeholder="Iparág (pl. vendéglátás, e-kereskedelem)"
+                type="text"
+                aria-label="Iparág"
+              />
+              <input
+                name="budget"
+                value={formData.budget}
+                onChange={handleInputChange}
+                className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+                placeholder="Becsült költségkeret (pl. 600 000 Ft)"
+                type="text"
+                aria-label="Becsült költségkeret"
+              />
+              <input
+                name="timeline"
+                value={formData.timeline}
+                onChange={handleInputChange}
+                className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+                placeholder="Mikorra szeretnéd élesíteni?"
+                type="text"
+                aria-label="Tervezett indulás"
+              />
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {featureOptions.map((feature) => {
+                const active = formData.features.includes(feature);
+                return (
+                  <button
+                    key={feature}
+                    type="button"
+                    onClick={() => toggleFeature(feature)}
+                    className={`rounded-full border px-3 py-1.5 text-[11px] font-RubikMedium transition ${
+                      active
+                        ? "border-emerald-300/60 bg-emerald-500/10 text-emerald-100"
+                        : "border-white/10 text-neutral-300 hover:border-white/30 hover:text-neutral-100"
+                    }`}
+                  >
+                    {feature}
+                  </button>
+                );
+              })}
+            </div>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              className="min-h-[80px] rounded-xl border border-white/10 bg-neutral-900/60 px-3 py-2 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+              placeholder="Mesélj az ötletedről, célokról, eddigi tapasztalatokról..."
+              aria-label="Projekt leírás"
             />
             <motion.button
               animate={controls}
-              disabled={status.type === "loading"}
-              className="h-8 w-24 rounded-xl bg-amber-400 text-xs font-RubikMedium text-neutral-900 transition hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-70"
+              className="h-10 rounded-xl bg-amber-400 text-xs font-RubikMedium text-neutral-900 transition hover:bg-amber-300"
               type="submit"
             >
-              {status.type === "loading" ? "Küldés..." : "Feliratkozom"}
+              Projekt összefoglaló küldése
             </motion.button>
           </form>
           <p
-            className={`mt-2 min-h-[1.5rem] text-[11px] font-RubikRegular ${statusStyles[status.type]}`}
+            className={`mt-2 min-h-[1.5rem] text-[11px] font-RubikRegular ${formStatusStyles[formStatus.type]}`}
             aria-live="polite"
           >
-            {status.message}
+            {formStatus.message}
           </p>
 
           <div className="mt-5 w-full text-neutral-300">
