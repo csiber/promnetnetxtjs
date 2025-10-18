@@ -194,6 +194,7 @@ export default function PromarkCaseStudyPage() {
             <Link
               href="https://cal.com/promnet/30-perces-konzultacio"
               target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2 text-sm font-RubikMedium text-sky-100 transition hover:-translate-y-0.5 hover:bg-neutral-800"
               onClick={() => trackCtaClick("case-study-cal", { case: "promark" })}
             >
