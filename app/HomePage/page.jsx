@@ -85,6 +85,39 @@ const pulseAnimation = {
   },
 };
 
+const caseStudies = [
+  {
+    client: "Creatify",
+    industry: "Digitális tartalom értékesítés",
+    summary:
+      "6 hetes redesign és webshop-optimalizáció után a Creatify konverziós rátája 32%-kal nőtt, miközben a support terhelése jelentősen csökkent.",
+    metrics: [
+      { label: "Konverzió", value: "+32%" },
+      { label: "Átlagos kosárérték", value: "+18%" },
+      { label: "Ügyfélszolgálati ticket", value: "-27%" },
+    ],
+    link: {
+      href: "https://creatify.hu",
+      label: "Esettanulmány megnyitása",
+    },
+  },
+  {
+    client: "PromARK",
+    industry: "Játékos közösség",
+    summary:
+      "A teljes infrastruktúra-átállás és egyedi közösségi modulok bevezetése 41%-kal növelte az aktív tagok számát az első három hónapban.",
+    metrics: [
+      { label: "Aktív tagok", value: "+41%" },
+      { label: "Oldalon töltött idő", value: "+22%" },
+      { label: "Szerver leállások", value: "-80%" },
+    ],
+    link: {
+      href: "https://promark.promnet.cloud",
+      label: "Projekt részletei",
+    },
+  },
+];
+
 function Homepage() {
   return (
     <motion.section
@@ -204,6 +237,78 @@ function Homepage() {
             </div>
           </motion.div>
         </motion.div>
+
+        <section className="grid gap-6 rounded-[2.5rem] border border-white/10 bg-neutral-950/70 p-6 shadow-[0_40px_100px_-60px_rgba(59,130,246,0.6)] lg:grid-cols-[1fr,1fr] lg:p-12">
+          <div className="flex flex-col justify-between gap-4">
+            <div className="space-y-3">
+              <span className="inline-flex items-center gap-2 rounded-full border border-fuchsia-500/40 bg-fuchsia-500/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-fuchsia-200">
+                üzleti eredmények
+              </span>
+              <h2 className="text-xl font-RubikMedium text-neutral-50 lg:text-2xl">
+                Valós példák, mérhető hatás
+              </h2>
+              <p className="text-sm leading-relaxed text-neutral-300 lg:text-base">
+                A PromNET projekteknél a modern technológiát stratégiai megközelítéssel kombinálom. A cél minden esetben az, hogy a megjelenés mellett a konverzió, az ügyfélelégedettség és az üzemeltetés is kézzelfoghatóan javuljon.
+              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-3 text-center text-xs font-RubikMedium uppercase tracking-[0.2em] text-neutral-300">
+              {caseStudies[0].metrics.map((metric) => (
+                <div
+                  key={metric.label}
+                  className="rounded-2xl border border-white/10 bg-white/5 px-3 py-4 text-neutral-100 shadow-inner"
+                >
+                  <span className="block text-lg font-RubikExtraBold text-amber-200">{metric.value}</span>
+                  <span className="text-[10px] text-neutral-400">{metric.label}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-neutral-500">
+              *A projektek során a teljesítménymutatókat közösen határozzuk meg, és a fejlesztés végén riportban dokumentáljuk.
+            </p>
+          </div>
+          <div className="space-y-4">
+            {caseStudies.map((caseStudy, index) => (
+              <motion.article
+                key={caseStudy.client}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index, duration: 0.5 }}
+                className="group flex flex-col gap-4 rounded-[2rem] border border-white/10 bg-gradient-to-br from-neutral-900/80 via-neutral-900/40 to-neutral-800/80 p-6 shadow-[0_30px_90px_-40px_rgba(168,85,247,0.4)]"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <h3 className="text-lg font-RubikMedium text-neutral-50">{caseStudy.client}</h3>
+                    <span className="text-xs uppercase tracking-[0.25em] text-neutral-400">{caseStudy.industry}</span>
+                  </div>
+                  <span className="inline-flex items-center justify-center rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-emerald-200">
+                    siker
+                  </span>
+                </div>
+                <p className="text-sm text-neutral-300">{caseStudy.summary}</p>
+                <div className="flex flex-wrap gap-2 text-[11px] text-neutral-400">
+                  {caseStudy.metrics.map((metric) => (
+                    <span
+                      key={`${caseStudy.client}-${metric.label}`}
+                      className="rounded-full border border-white/10 bg-neutral-950/40 px-3 py-1 text-neutral-200"
+                    >
+                      {metric.label}: {metric.value}
+                    </span>
+                  ))}
+                </div>
+                <Link
+                  href={caseStudy.link.href}
+                  target="_blank"
+                  className="inline-flex w-fit items-center gap-2 rounded-full border border-fuchsia-400/30 px-4 py-2 text-xs font-RubikMedium text-fuchsia-200 transition hover:-translate-y-0.5 hover:border-fuchsia-200 hover:text-fuchsia-100"
+                >
+                  {caseStudy.link.label}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </motion.article>
+            ))}
+          </div>
+        </section>
 
         <div className="grid gap-6 lg:grid-cols-2">
           {quickLinks.map(({ href, media, title, subtitle }, index) => (
