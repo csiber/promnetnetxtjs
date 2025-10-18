@@ -380,7 +380,13 @@ function Homepage() {
 
         <div className="grid gap-6 lg:grid-cols-2">
           {quickLinks.map(({ href, media, title, subtitle }, index) => (
-            <Link key={href} href={href} target={href.startsWith("http") ? "_blank" : undefined} className="group">
+            <Link
+              key={href}
+              href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+              className="group"
+            >
               <motion.article
                 className="flex h-full gap-5 rounded-[2rem] border border-white/10 bg-neutral-900/70 p-6 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.8)] transition duration-500 group-hover:-translate-y-2 group-hover:border-white/40 group-hover:shadow-[0_30px_90px_-40px_rgba(168,85,247,0.5)]"
                 initial={enableMotion ? { opacity: 0, y: 20 } : false}
@@ -450,7 +456,7 @@ function Homepage() {
           {blogStatus.state === "error" ? (
             <div className="rounded-2xl border border-rose-500/40 bg-rose-500/10 p-4 text-sm text-rose-200">
               {blogStatus.message}{" "}
-              <Link href="https://blogocska.hu" className="underline" target="_blank">
+              <Link href="https://blogocska.hu" className="underline" target="_blank" rel="noopener noreferrer">
                 blogocska.hu
               </Link>
             </div>
@@ -471,6 +477,7 @@ function Homepage() {
                   <Link
                     href={post.link}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-sky-200 transition hover:text-sky-100"
                   >
                     Elolvasom
