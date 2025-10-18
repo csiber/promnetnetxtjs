@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { XMLParser } from "fast-xml-parser";
 
-export const runtime = "nodejs";
+export const runtime = "edge";
 
 const BLOG_FEED_URL = "https://blogocska.hu/feed";
 
@@ -40,8 +40,8 @@ const toRelativeTime = (dateString) => {
 
 export async function GET(request) {
   try {
-    const { searchParams } = new URL(request.url);
-    const limit = Number.parseInt(searchParams.get("limit") ?? "6", 10) || 6;
+    const limitParam = request.nextUrl?.searchParams?.get("limit");
+    const limit = Number.parseInt(limitParam ?? "6", 10) || 6;
 
     const response = await fetch(BLOG_FEED_URL, {
       headers: { "User-Agent": "PromNET-site" },
