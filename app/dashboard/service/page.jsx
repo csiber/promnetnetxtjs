@@ -13,6 +13,7 @@ import {
   FaRecycle,
   FaWindows,
   FaPrint,
+  FaCheckCircle,
   FaGamepad,
   FaCamera,
   FaBook,
@@ -94,6 +95,41 @@ const urgencyOptions = [
   { label: "Normál (2-3 nap)", value: "normal", multiplier: 1 },
   { label: "Sürgős (24 óra)", value: "urgent", multiplier: 1.3 },
   { label: "Azonnali (6 óra)", value: "immediate", multiplier: 1.6 },
+];
+
+const taskSuggestions = [
+  {
+    task: "Lassú laptop vagy asztali PC",
+    suggestions: [
+      "SSD-re vagy nagyobb kapacitású NVMe meghajtóra váltás a gyorsabb rendszerindításért.",
+      "Memóriabővítés és a háttérben futó indítási programok átvizsgálása.",
+      "Portalanítás és hűtés-karbantartás a teljesítmény visszaállításához.",
+    ],
+  },
+  {
+    task: "Nem kapcsol be az eszköz",
+    suggestions: [
+      "Tápegység, akkumulátor és töltőkábel állapotának ellenőrzése.",
+      "Alaplap és tápellátási áramkör diagnosztikája rövidzárlat kizárására.",
+      "BIOS-reset és firmware frissítés, ha a hardver rendben van.",
+    ],
+  },
+  {
+    task: "Adatmentési feladatok",
+    suggestions: [
+      "Forensik-barát klónozás a sérült meghajtóról további károsodás nélkül.",
+      "NAS vagy felhő alapú redundáns mentési stratégia kialakítása a jövőbeni veszteség elkerülésére.",
+      "Titkosított tárolás és jogosultságkezelés bevezetése üzleti adatokhoz.",
+    ],
+  },
+  {
+    task: "Vírus- vagy kártevőgyanús rendszer",
+    suggestions: [
+      "Offline vírusirtás és rootkit vizsgálat megbízható eszközökkel.",
+      "Felhasználói jogosultságok auditja és többfaktoros védelem bekapcsolása.",
+      "Biztonsági frissítések automatizálása és végpontvédelem telepítése.",
+    ],
+  },
 ];
 
 function Page() {
@@ -231,6 +267,31 @@ function Page() {
                 <span>Oktatás</span>
               </li>
             </ul>
+          </div>
+
+          <div className="mt-6 rounded-2xl border border-white/10 bg-neutral-900/60 p-5">
+            <h3 className="text-lg font-RubikMedium text-neutral-50">Feladatonkénti javaslatok</h3>
+            <p className="mt-2 text-sm text-neutral-300">
+              Gyakori helyzetekhez összegyűjtöttem a legfontosabb teendőket, hogy már az első vizsgálat előtt tudd, mire érdemes figyelni.
+            </p>
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
+              {taskSuggestions.map((item) => (
+                <div
+                  key={item.task}
+                  className="rounded-xl border border-white/10 bg-neutral-950/60 p-4"
+                >
+                  <h4 className="text-sm font-RubikMedium text-neutral-100">{item.task}</h4>
+                  <ul className="mt-3 space-y-2 text-xs text-neutral-300">
+                    {item.suggestions.map((suggestion) => (
+                      <li key={suggestion} className="flex items-start gap-2">
+                        <FaCheckCircle className="mt-0.5 text-emerald-300" />
+                        <span>{suggestion}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="mt-6 grid gap-4 rounded-2xl border border-white/10 bg-neutral-900/60 p-5 md:grid-cols-3">
