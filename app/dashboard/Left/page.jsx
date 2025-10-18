@@ -19,6 +19,7 @@ import {
 import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { trackCtaClick, trackLeadSubmission } from "@/lib/analytics";
 
 const dayNames = [
   "Vasárnap",
@@ -111,16 +112,20 @@ const quickActions = [
     label: "Telefonhívás indítása",
     href: "tel:+36205494107",
     icon: FaPhone,
+    analytics: "telefon",
   },
   {
     label: "Időpont egyeztetése",
     href: "https://cal.com/promnet/30-perces-konzultacio",
     icon: FaCalendarCheck,
+    analytics: "idopont",
+    external: true,
   },
   {
     label: "Üzenet küldése",
-    href: "mailto:info@promnet.hu",
     icon: FaComments,
+    analytics: "uzenet",
+    scrollTarget: "lead-form",
   },
 ];
 
@@ -192,7 +197,7 @@ function Leftpage() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.name.trim()) {
@@ -222,34 +227,46 @@ function Leftpage() {
       return;
     }
 
-    const selectedFeatures = formData.features.length
-      ? formData.features.join(", ")
-      : "Nem jelölt meg konkrét funkciót";
+    if (!formData.message.trim()) {
+      setFormStatus({ type: "error", message: "Írd le röviden a projekt célját, hogy fel tudjam venni a fonalat." });
+      controls.start({
+        x: [0, -10, 10, -6, 6, 0],
+        transition: { duration: 0.5, ease: "easeInOut" },
+      });
+      return;
+    }
 
-    const bodyLines = [
-      `Név: ${formData.name}`,
-      formData.company ? `Cég / márka: ${formData.company}` : null,
-      `E-mail: ${formData.email}`,
-      formData.industry ? `Iparág: ${formData.industry}` : null,
-      `Tervezett költségkeret: ${formData.budget}`,
-      formData.timeline ? `Várt indulás: ${formData.timeline}` : null,
-      `Kiemelt funkciók: ${selectedFeatures}`,
-      formData.message ? `Megjegyzés: ${formData.message}` : null,
-    ]
-      .filter(Boolean)
-      .join("%0D%0A");
+    setFormStatus({ type: "loading", message: "Küldés folyamatban..." });
 
-    const mailto = `mailto:info@promnet.hu?subject=${encodeURIComponent(
-      "Új projektmegkeresés a promnet.hu oldalról"
-    )}&body=${bodyLines}`;
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          source: "sidebar",
+        }),
+      });
 
-    setFormStatus({ type: "success", message: "Köszönöm! Az e-mail alkalmazásod megnyílik, hogy elküldhesd a projekt-összefoglalót." });
-    controls.start({ x: [0, 4, -4, 2, -2, 0], transition: { duration: 0.6, ease: "easeInOut" } });
-
-    setTimeout(() => {
-      if (typeof window !== "undefined") {
-        window.location.href = mailto;
+      if (!response.ok) {
+        const { error } = await response.json();
+        const message = error ?? "Nem sikerült elküldeni az üzenetet.";
+        setFormStatus({ type: "error", message });
+        trackLeadSubmission("error", { location: "sidebar", message });
+        controls.start({
+          x: [0, -10, 10, -6, 6, 0],
+          transition: { duration: 0.5, ease: "easeInOut" },
+        });
+        return;
       }
+
+      setFormStatus({
+        type: "success",
+        message: "Köszönöm a bizalmat! 1 munkanapon belül jelentkezem a részletekkel.",
+      });
+      trackLeadSubmission("success", { location: "sidebar" });
+      controls.start({ x: [0, 4, -4, 2, -2, 0], transition: { duration: 0.6, ease: "easeInOut" } });
+
       setFormData({
         name: "",
         email: "",
@@ -260,7 +277,18 @@ function Leftpage() {
         message: "",
         features: [],
       });
-    }, 400);
+    } catch (error) {
+      console.error("Lead küldési hiba", error);
+      setFormStatus({
+        type: "error",
+        message: "Technikai hiba történt. Írj közvetlenül az info@promnet.hu címre, vagy próbáld újra később.",
+      });
+      trackLeadSubmission("error", { location: "sidebar", reason: "network" });
+      controls.start({
+        x: [0, -10, 10, -6, 6, 0],
+        transition: { duration: 0.5, ease: "easeInOut" },
+      });
+    }
   };
 
   const formStatusStyles = {
@@ -355,35 +383,76 @@ function Leftpage() {
           >
             <span className="text-[11px] font-RubikMedium uppercase tracking-[0.2em] text-amber-200">Azonnali kapcsolódás</span>
             <div className="flex flex-col gap-2">
-              {quickActions.map(({ label, href, icon: Icon }) => (
-                <Link
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  className="group flex items-center justify-between rounded-xl border border-white/5 bg-neutral-900/60 px-3 py-2 text-[12px] transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-neutral-900/80"
-                >
+              {quickActions.map(({ label, href, icon: Icon, analytics, scrollTarget, external }) => {
+                const handleClick = (event) => {
+                  trackCtaClick(analytics, { location: "sidebar" });
+
+                  if (scrollTarget) {
+                    event.preventDefault();
+                    const targetElement = document.getElementById(scrollTarget);
+                    if (targetElement) {
+                      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+                      targetElement.focus?.({ preventScroll: true });
+                    }
+                  }
+                };
+
+                const content = (
                   <span className="flex items-center gap-2 font-RubikMedium text-neutral-200 group-hover:text-neutral-50">
                     <Icon className="text-[14px] text-amber-200" />
                     {label}
                   </span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-3.5 w-3.5 text-neutral-500 transition group-hover:text-amber-200"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
+                );
+
+                return href ? (
+                  <Link
+                    key={label}
+                    href={href}
+                    target={external ? "_blank" : undefined}
+                    onClick={handleClick}
+                    className="group flex items-center justify-between rounded-xl border border-white/5 bg-neutral-900/60 px-3 py-2 text-[12px] transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-neutral-900/80"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              ))}
+                    {content}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-3.5 w-3.5 text-neutral-500 transition group-hover:text-amber-200"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                ) : (
+                  <button
+                    key={label}
+                    type="button"
+                    onClick={handleClick}
+                    className="group flex items-center justify-between rounded-xl border border-white/5 bg-neutral-900/60 px-3 py-2 text-[12px] transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-neutral-900/80"
+                  >
+                    {content}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-3.5 w-3.5 text-neutral-500 transition group-hover:text-amber-200"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                );
+              })}
             </div>
           </motion.div>
 
           <form
             onSubmit={handleSubmit}
+            id="lead-form"
             className="mt-6 hidden w-full flex-col gap-3 rounded-2xl border border-white/5 bg-[#282828] p-4 md:flex"
+            tabIndex={-1}
           >
             <div className="grid grid-cols-1 gap-3">
               <input
@@ -470,10 +539,11 @@ function Leftpage() {
             />
             <motion.button
               animate={controls}
-              className="h-10 rounded-xl bg-amber-400 text-xs font-RubikMedium text-neutral-900 transition hover:bg-amber-300"
+              className="h-10 rounded-xl bg-amber-400 text-xs font-RubikMedium text-neutral-900 transition hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-60"
               type="submit"
+              disabled={formStatus.type === "loading"}
             >
-              Projekt összefoglaló küldése
+              {formStatus.type === "loading" ? "Küldés..." : "Projekt összefoglaló küldése"}
             </motion.button>
           </form>
           <p
@@ -490,6 +560,22 @@ function Leftpage() {
               legmenőbb weboldalt! Kreatív kódolás, ami még a macskádnak is
               tetszeni fog. Bízd rám a weboldalad, és emelkedj ki a tömegből!{" "}
             </p>
+
+            <div className="grid gap-2 rounded-xl border border-emerald-400/20 bg-neutral-900/60 p-3 text-[11px] text-neutral-200">
+              <span className="font-RubikMedium uppercase tracking-[0.2em] text-emerald-300">
+                Minősítések &amp; bizalom
+              </span>
+              <ul className="space-y-1 text-neutral-300">
+                <li>
+                  ✔️ Google Analytics 4 &amp; Tag Manager beállítás 2024-es tanúsítvánnyal
+                </li>
+                <li>✔️ Cloudflare Solution Partner (performance &amp; security)</li>
+                <li>✔️ Resend Transactional Email szakértő</li>
+              </ul>
+              <p className="text-[10px] text-neutral-400">
+                Kérésre részletes referencia PDF-et is küldök az elmúlt 12 hónap projektjeiről.
+              </p>
+            </div>
 
             <div className="mt-6 flex justify-between text-sm">
               <div className="flex items-center gap-x-1">
