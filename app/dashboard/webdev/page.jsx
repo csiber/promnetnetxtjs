@@ -12,6 +12,7 @@ import {
   FaServer,
   FaClock,
 } from "react-icons/fa";
+import { trackCtaClick } from "@/lib/analytics";
 
 const packages = [
   {
@@ -174,8 +175,9 @@ function Page() {
                   ))}
                 </ul>
                 <Link
-                  href="mailto:info@promnet.hu"
+                  href="#lead-form"
                   className="mt-auto inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs font-RubikMedium text-neutral-50 transition hover:-translate-y-0.5 hover:border-amber-300/60 hover:text-amber-100"
+                  onClick={() => trackCtaClick("webdev-lead", { package: pkg.name })}
                 >
                   Ajánlatot kérek
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
