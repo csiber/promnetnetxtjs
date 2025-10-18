@@ -1,32 +1,45 @@
 import { NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import { join } from "path";
 
-export const runtime = "nodejs";
-
-const leadsPath = join(process.cwd(), "data", "leads.json");
-
-const ensureStoreExists = async () => {
-  const dir = join(process.cwd(), "data");
-
-  try {
-    await fs.mkdir(dir, { recursive: true });
-  } catch (error) {
-    console.error("Nem sikerült létrehozni a data könyvtárat", error);
-  }
-
-  try {
-    await fs.access(leadsPath);
-  } catch {
-    await fs.writeFile(leadsPath, JSON.stringify([]));
-  }
-};
+export const runtime = "edge";
 
 const sanitizeString = (value) =>
   value
     .toString()
     .replace(/[\r\n]+/g, " ")
     .trim();
+
+const deliverLeadPayload = async (payload) => {
+  const webhookUrl = process.env.LEADS_WEBHOOK_URL;
+
+  if (!webhookUrl) {
+    console.warn(
+      "LEADS_WEBHOOK_URL környezeti változó nincs beállítva, a lead nem került továbbításra."
+    );
+    return false;
+  }
+
+  try {
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      console.error(
+        "Lead továbbítási hiba a webhook felé",
+        response.status,
+        await response.text().catch(() => "")
+      );
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Lead webhook hívási hiba", error);
+    return false;
+  }
+};
 
 export async function POST(request) {
   try {
@@ -50,8 +63,6 @@ export async function POST(request) {
       );
     }
 
-    await ensureStoreExists();
-
     const payload = {
       id: crypto.randomUUID(),
       name: sanitizeString(body.name),
@@ -70,14 +81,21 @@ export async function POST(request) {
       createdAt: new Date().toISOString(),
     };
 
-    const leadsContent = await fs.readFile(leadsPath, "utf-8");
-    const leads = JSON.parse(leadsContent);
-    leads.push(payload);
-    await fs.writeFile(leadsPath, JSON.stringify(leads, null, 2));
+    const delivered = await deliverLeadPayload(payload);
+
+    if (!delivered) {
+      return NextResponse.json(
+        {
+          error:
+            "A lead adatainak továbbítása nem sikerült. Kérlek, próbáld újra később.",
+        },
+        { status: 502 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Lead mentési hiba", error);
+    console.error("Lead feldolgozási hiba", error);
     return NextResponse.json(
       { error: "Váratlan hiba történt, kérlek próbáld újra később." },
       { status: 500 }
