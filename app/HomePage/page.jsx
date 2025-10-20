@@ -6,6 +6,7 @@ import { PiCodeThin } from "react-icons/pi";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { trackCtaClick } from "@/lib/analytics";
+import { portfolioProjects } from "@/data/portfolio-projects";
 
 const heroText = {
   title: (
@@ -169,6 +170,29 @@ function Homepage() {
         transition: { duration: 8, ease: "easeInOut", repeat: Infinity },
       }
     : {};
+
+  const highlightedProjects = useMemo(() => {
+    return portfolioProjects
+      .filter((project) => project.status === "live")
+      .sort((a, b) => (b.launch ?? "").localeCompare(a.launch ?? ""))
+      .slice(0, 6);
+  }, []);
+
+  const projectSummary = useMemo(() => {
+    const live = portfolioProjects.filter((project) => project.status === "live").length;
+    const archived = portfolioProjects.filter((project) => project.status === "archived").length;
+    const uniqueTags = new Set();
+    portfolioProjects.forEach((project) => {
+      project.tags.forEach((tag) => uniqueTags.add(tag));
+    });
+
+    return {
+      total: portfolioProjects.length,
+      live,
+      archived,
+      tags: uniqueTags.size,
+    };
+  }, []);
 
   return (
     <motion.section
@@ -354,6 +378,105 @@ function Homepage() {
                 </Link>
               </motion.article>
             ))}
+          </div>
+        </section>
+
+        <section className="grid gap-6 rounded-[2.5rem] border border-white/10 bg-neutral-950/70 p-6 lg:grid-cols-[320px,1fr] lg:p-12">
+          <div className="flex flex-col gap-4">
+            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-amber-200">
+              portfólió frissítés
+            </span>
+            <h2 className="text-xl font-RubikMedium text-neutral-50 lg:text-2xl">
+              Legfrissebb, élő webes projektek
+            </h2>
+            <p className="text-sm leading-relaxed text-neutral-300 lg:text-base">
+              Összegyűjtöttem a jelenleg is elérhető munkáimat egy modern, gyorsan áttekinthető listába. Nézd meg, milyen megoldásokkal segítem a partnereket a digitális térben.
+            </p>
+            <div className="grid grid-cols-2 gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-neutral-200">
+              <div>
+                <span className="block text-[11px] uppercase tracking-[0.3em] text-neutral-500">Összes projekt</span>
+                <span className="text-2xl font-RubikExtraBold text-neutral-50">{projectSummary.total}+</span>
+              </div>
+              <div>
+                <span className="block text-[11px] uppercase tracking-[0.3em] text-neutral-500">Aktív</span>
+                <span className="text-2xl font-RubikExtraBold text-emerald-200">{projectSummary.live}</span>
+              </div>
+              <div>
+                <span className="block text-[11px] uppercase tracking-[0.3em] text-neutral-500">Archív</span>
+                <span className="text-2xl font-RubikExtraBold text-rose-200">{projectSummary.archived}</span>
+              </div>
+              <div>
+                <span className="block text-[11px] uppercase tracking-[0.3em] text-neutral-500">Kategóriák</span>
+                <span className="text-2xl font-RubikExtraBold text-amber-200">{projectSummary.tags}</span>
+              </div>
+            </div>
+            <Link
+              href="/dashboard/portfolio"
+              className="inline-flex w-fit items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-5 py-2 text-xs font-RubikMedium uppercase tracking-[0.25em] text-amber-100 transition hover:-translate-y-0.5 hover:border-amber-200 hover:text-amber-50"
+            >
+              Teljes portfólió megnyitása
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {highlightedProjects.map((project, index) => {
+              const isLive = project.status === "live";
+
+              return (
+                <motion.article
+                  key={project.name}
+                  className="flex h-full flex-col gap-4 rounded-2xl border border-white/10 bg-neutral-900/70 p-5 shadow-[0_30px_80px_-50px_rgba(245,158,11,0.45)] transition hover:-translate-y-1 hover:border-white/30"
+                  initial={enableMotion ? { opacity: 0, y: 16 } : false}
+                  animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+                  transition={enableMotion ? { delay: 0.05 * index, duration: 0.5 } : undefined}
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[11px] uppercase tracking-[0.3em] text-neutral-500">{project.launch}</span>
+                      <h3 className="text-base font-RubikMedium text-neutral-50">{project.name}</h3>
+                    </div>
+                    <span
+                      className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-RubikMedium uppercase tracking-wide ${
+                        isLive
+                          ? "border border-emerald-300/60 bg-emerald-500/10 text-emerald-100"
+                          : "border border-rose-300/40 bg-rose-500/10 text-rose-100"
+                      }`}
+                    >
+                      <span className={`h-2 w-2 rounded-full ${isLive ? "bg-emerald-300" : "bg-rose-300"}`} />
+                      {isLive ? "Élő" : "Archív"}
+                    </span>
+                  </div>
+                  <p className="text-sm leading-relaxed text-neutral-300">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 text-[11px] text-neutral-400">
+                    {project.tags.map((tag) => (
+                      <span key={`${project.name}-${tag}`} className="rounded-full border border-white/10 bg-neutral-950/60 px-2 py-1">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-auto flex items-center justify-between gap-3 text-xs text-neutral-300">
+                    {project.statusNote ? <span className="text-rose-300">{project.statusNote}</span> : <span />}
+                    <Link
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-RubikMedium transition ${
+                        isLive
+                          ? "border border-amber-300/60 text-amber-200 hover:border-amber-200 hover:text-amber-100"
+                          : "border border-white/10 text-neutral-400 hover:border-rose-300/40 hover:text-rose-200"
+                      }`}
+                    >
+                      {isLive ? "Megnyitás" : "Részletek"}
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </motion.article>
+              );
+            })}
           </div>
         </section>
 
