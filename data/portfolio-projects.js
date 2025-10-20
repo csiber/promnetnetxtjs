@@ -1,5 +1,58 @@
 export const portfolioProjects = [
   {
+    name: "AIKA Hub",
+    href: "https://aikahub.com",
+    description: "Az AIKA univerzum központi információs és közösségi oldala.",
+    status: "live",
+    launch: "2024",
+    tags: ["AIKA", "Közösség"],
+  },
+  {
+    name: "AIKA: World",
+    href: "https://aikaworld.com",
+    description:
+      "A fő Unreal Engine-alapú singleplayer / open-world RPG projekt.",
+    status: "live",
+    launch: "2024",
+    tags: ["AIKA", "Gaming"],
+  },
+  {
+    name: "HSWLP Platform",
+    href: "https://hswlp.com",
+    description:
+      "Automatizált weboldal-generáló és hoszting rendszer Cloudflare Pages alapokon.",
+    status: "live",
+    launch: "2024",
+    tags: ["Infrastruktúra", "Hosting"],
+  },
+  {
+    name: "HSWLP IdeaBoard",
+    href: "https://ideaboard.hswlp.com",
+    description:
+      "Belső ötlet- és feladatgyűjtő rendszer, fejlesztési backlog és roadmap kezelésére.",
+    status: "live",
+    launch: "2024",
+    tags: ["AIKA", "Termelékenység"],
+  },
+  {
+    name: "Yumekai App",
+    href: "https://yumekai.app",
+    description:
+      "Kísérleti webalkalmazás, AI-alapú interaktív élményekkel és prototípus funkciókkal.",
+    status: "live",
+    launch: "2024",
+    tags: ["AIKA", "Kísérleti"],
+  },
+  {
+    name: "Blogocska",
+    href: "https://blogocska.hu",
+    description:
+      "Könnyed, személyes blogoldal technológiai és kreatív bejegyzésekkel.",
+    status: "live",
+    launch: "2024",
+    tags: ["Blog", "Saját brand"],
+  },
+  {
     name: "Creatify",
     href: "https://creatify.hu",
     description: "Digitális tartalom értékesítésével foglalkozó webáruház.",
