@@ -6,7 +6,7 @@ pages_build_output_dir = ".vercel/output/static"
 [vars]
 APP_ENV = "production"
 
-[env.staging]
+[env.preview]
 vars = { APP_ENV = "staging" }
 
 [env.production]
