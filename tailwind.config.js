@@ -1,6 +1,20 @@
 // tailwind.config.js
 // import { nextui } from "@nextui-org/react";
 
+const withOpacity = (variable, fallbackOpacityVariable) => {
+  return ({ opacityValue }) => {
+    if (opacityValue !== undefined) {
+      return `rgb(var(${variable}) / ${opacityValue})`;
+    }
+
+    if (fallbackOpacityVariable !== undefined) {
+      return `rgb(var(${variable}) / var(${fallbackOpacityVariable}))`;
+    }
+
+    return `rgb(var(${variable}) / 1)`;
+  };
+};
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
@@ -13,17 +27,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--color-background)",
-        foreground: "var(--color-foreground)",
-        muted: "var(--color-muted)",
-        border: "var(--color-border)",
-        card: "var(--color-card)",
+        background: withOpacity("--color-background"),
+        foreground: withOpacity("--color-foreground"),
+        muted: withOpacity("--color-muted"),
+        border: withOpacity("--color-border", "--color-border-opacity"),
+        card: withOpacity("--color-card", "--color-card-opacity"),
         accent: {
-          DEFAULT: "var(--color-accent)",
-          foreground: "var(--color-accent-foreground)",
+          DEFAULT: withOpacity("--color-accent"),
+          foreground: withOpacity("--color-accent-foreground"),
         },
-        success: "var(--color-success)",
-        warning: "var(--color-warning)",
+        success: withOpacity("--color-success"),
+        warning: withOpacity("--color-warning"),
       },
       borderRadius: {
         xl: "1.5rem",
