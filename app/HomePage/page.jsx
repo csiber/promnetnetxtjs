@@ -78,6 +78,27 @@ const services = [
   },
 ];
 
+const collaborationSteps = [
+  {
+    title: "Felmérés és célkitűzés",
+    description:
+      "Közösen elemezzük a jelenlegi digitális jelenlétedet, majd meghatározzuk az üzleti célokat és mérőszámokat.",
+    icon: <PiMegaphoneThin aria-hidden="true" className="h-6 w-6 text-sky-200" />,
+  },
+  {
+    title: "Megoldás-tervezés",
+    description:
+      "Prototípusokat, UX koncepciót és technológiai tervet készítek, hogy pontosan lásd, milyen irányba indulunk.",
+    icon: <PiCodeThin aria-hidden="true" className="h-6 w-6 text-emerald-200" />,
+  },
+  {
+    title: "Megvalósítás és támogatás",
+    description:
+      "Iteratív fejlesztés, folyamatos visszajelzés és átlátható státuszriportok mellett jutunk el az éles indításig.",
+    icon: <PiCloudThin aria-hidden="true" className="h-6 w-6 text-amber-200" />,
+  },
+];
+
 const caseStudies = [
   {
     slug: "creatify",
@@ -104,9 +125,6 @@ const caseStudies = [
     ],
   },
 ];
-
-const consultationEmbedUrl =
-  "https://cal.com/embed/promnet/30-perces-konzultacio?background_color=171717&text_color=f8fafc&primary_color=8b5cf6";
 
 function Homepage() {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -497,21 +515,46 @@ function Homepage() {
         <section className="grid gap-6 rounded-[2.5rem] border border-white/10 bg-neutral-900/70 p-6 lg:p-10">
           <div className="flex flex-col gap-3">
             <span className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-emerald-200">
-              időpontfoglalás
+              együttműködés
             </span>
-            <h2 className="text-xl font-RubikMedium text-neutral-50 lg:text-2xl">Foglalj 30 perces online konzultációt</h2>
+            <h2 className="text-xl font-RubikMedium text-neutral-50 lg:text-2xl">Így lesz az ötletből kézzelfogható digitális megoldás</h2>
             <p className="text-sm text-neutral-300 lg:text-base">
-              A Cal.com naptárban azonnal látod a szabad idősávokat. Foglalás után megerősítő e-mailt kapsz Google Meet linkkel és teendőlistával.
+              A folyamat minden lépésénél fókuszban tartjuk az üzleti céljaidat: közösen térképezzük fel a kihívásokat, majd transzparens mérföldkövekkel haladunk a bevezetésig.
             </p>
           </div>
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-neutral-950/60">
-            <iframe
-              title="Cal.com foglalási űrlap"
-              src={consultationEmbedUrl}
-              className="h-[560px] w-full"
-              loading="lazy"
-              allow="fullscreen"
-            />
+          <div className="grid gap-4 md:grid-cols-3">
+            {collaborationSteps.map((step, index) => (
+              <motion.article
+                key={step.title}
+                className="flex h-full flex-col gap-4 rounded-2xl border border-white/10 bg-neutral-950/60 p-6"
+                initial={enableMotion ? { opacity: 0, y: 20 } : {}}
+                animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+                transition={enableMotion ? { delay: 0.1 * index, duration: 0.5 } : undefined}
+              >
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-neutral-900/70">
+                  {step.icon}
+                </span>
+                <div className="space-y-2">
+                  <h3 className="text-base font-RubikMedium text-neutral-100">{step.title}</h3>
+                  <p className="text-sm text-neutral-300">{step.description}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-950/60 p-6 text-sm text-neutral-300">
+            <p className="max-w-2xl">
+              Ha szeretnél személyre szabott ajánlatot vagy részletesebb tervet kapni, írj egy rövid bemutatkozást a projektedről, és 24 órán belül válaszolok.
+            </p>
+            <Link
+              href="mailto:info@promnet.hu"
+              className="inline-flex items-center gap-2 rounded-full border border-emerald-300/60 bg-emerald-500/10 px-4 py-2 text-sm font-RubikMedium text-emerald-100 transition hover:border-emerald-200 hover:text-emerald-50"
+              onClick={() => trackCtaClick("kapcsolat-email", { location: "homepage-collaboration" })}
+            >
+              Kapcsolatfelvétel
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
           </div>
         </section>
 
