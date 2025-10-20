@@ -4,28 +4,32 @@
 
 :root {
   color-scheme: light;
-  --color-background: #f8fafc;
-  --color-foreground: #0f172a;
-  --color-muted: #334155;
-  --color-border: rgba(15, 23, 42, 0.08);
-  --color-card: rgba(255, 255, 255, 0.82);
-  --color-accent: #7c3aed;
-  --color-accent-foreground: #f8fafc;
-  --color-success: #16a34a;
-  --color-warning: #f59e0b;
+  --color-background: 248 250 252;
+  --color-foreground: 15 23 42;
+  --color-muted: 51 65 85;
+  --color-border: 15 23 42;
+  --color-border-opacity: 0.08;
+  --color-card: 255 255 255;
+  --color-card-opacity: 0.82;
+  --color-accent: 124 58 237;
+  --color-accent-foreground: 248 250 252;
+  --color-success: 22 163 74;
+  --color-warning: 245 158 11;
 }
 
 .dark {
   color-scheme: dark;
-  --color-background: #0b0c10;
-  --color-foreground: #f8fafc;
-  --color-muted: #cbd5f5;
-  --color-border: rgba(148, 163, 184, 0.16);
-  --color-card: rgba(15, 23, 42, 0.72);
-  --color-accent: #a855f7;
-  --color-accent-foreground: #0b0c10;
-  --color-success: #22c55e;
-  --color-warning: #fbbf24;
+  --color-background: 11 12 16;
+  --color-foreground: 248 250 252;
+  --color-muted: 203 213 245;
+  --color-border: 148 163 184;
+  --color-border-opacity: 0.16;
+  --color-card: 15 23 42;
+  --color-card-opacity: 0.72;
+  --color-accent: 168 85 247;
+  --color-accent-foreground: 11 12 16;
+  --color-success: 34 197 94;
+  --color-warning: 251 191 36;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,25 +58,25 @@
   }
 
   ::selection {
-    background: var(--color-accent);
-    color: var(--color-accent-foreground);
+    background: rgb(var(--color-accent));
+    color: rgb(var(--color-accent-foreground));
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-accent);
+    outline: 3px solid rgb(var(--color-accent));
     outline-offset: 4px;
   }
 }
 
 @supports (color: color-mix(in srgb, red, blue)) {
   ::selection {
-    background: color-mix(in srgb, var(--color-accent) 80%, transparent);
+    background: color-mix(in srgb, rgb(var(--color-accent)) 80%, transparent);
   }
 }
 
 @supports (outline: color-mix(in srgb, red, blue)) {
   :focus-visible {
-    outline: 3px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+    outline: 3px solid color-mix(in srgb, rgb(var(--color-accent)) 60%, transparent);
   }
 }
 
