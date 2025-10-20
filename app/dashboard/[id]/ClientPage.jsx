@@ -75,8 +75,9 @@ function ClientPage() {
             width={1000}
             height={1000}
             className="rounded-lg h-56 w-full object-cover"
-            src="/pic.jpg"
-            alt=""
+            src="/web.webp"
+            alt="Illusztráció a cikkhez"
+            loading="lazy"
           />
 
           <p className="my-7">
@@ -106,8 +107,9 @@ function ClientPage() {
               height={1000}
               width={1000}
               className="rounded-lg h-56 w-full object-cover"
-              src="/pic.jpg"
-              alt=""
+              src="/web.webp"
+              alt="Webfejlesztési illusztráció"
+              loading="lazy"
             />
           </div>
 
