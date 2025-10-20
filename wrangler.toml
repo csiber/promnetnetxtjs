@@ -2,3 +2,12 @@ name = "promnet"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
+
+[vars]
+APP_ENV = "production"
+
+[env.staging]
+vars = { APP_ENV = "staging" }
+
+[env.production]
+vars = { APP_ENV = "production" }

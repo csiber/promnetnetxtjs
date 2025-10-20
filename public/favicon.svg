@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">PromNET ikon</title>
+  <desc id="desc">Stilizált P betű ibolya és indigó színátmenetben</desc>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#grad)" />
+  <path
+    d="M20 16h14c9.388 0 16 5.91 16 15.4 0 10.016-6.888 16.6-17.12 16.6H26v10h-6V16zm12.8 22c5.008 0 8.2-3.296 8.2-7.76 0-4.208-2.848-6.64-8.056-6.64H26v14.4h6.8z"
+    fill="#f8fafc"
+  />
+</svg>

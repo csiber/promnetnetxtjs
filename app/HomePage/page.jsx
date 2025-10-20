@@ -2,11 +2,17 @@
 
 import Link from "next/link";
 import React, { useEffect, useMemo, useState } from "react";
-import { PiCodeThin } from "react-icons/pi";
+import {
+  PiCodeThin,
+  PiBrowsersThin,
+  PiCloudThin,
+  PiMegaphoneThin,
+  PiStackThin,
+} from "react-icons/pi";
 import { motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
 import { trackCtaClick } from "@/lib/analytics";
 import { portfolioProjects } from "@/data/portfolio-projects";
+import InfoCard from "@/components/ui/InfoCard";
 
 const heroText = {
   title: (
@@ -27,40 +33,48 @@ const heroText = {
 const quickLinks = [
   {
     href: "/dashboard/case-studies/creatify",
-    media: "/websiteanimated.gif",
     title: "Creatify esettanulmány",
-    subtitle:
-      "Hogyan hoztunk 32%-os konverziónövekedést egy digitális tartalom platformnál célzott redesignnal és mérésekkel?",
+    domain: "promnet.hu",
+    description:
+      "32%-os konverziónövekedés UX finomhangolással, célzott mérésekkel és működő csatornák optimalizálásával.",
+    icon: <PiBrowsersThin aria-hidden="true" className="h-6 w-6" />,
+    iconAlt: "Webes esettanulmány ikon",
   },
   {
     href: "https://blogocska.hu",
-    media: "/blog.gif",
-    title: "Személyes blogom, hasznos tutorialokkal",
-    subtitle: "Technikai cikkek, kulisszatitkok és tanulási segédanyagok magyarul.",
+    title: "Technikai blog magyarul",
+    domain: "blogocska.hu",
+    description: "Tananyagok és kulisszatitkok fejlesztőknek, marketingeseknek és üzleti döntéshozóknak.",
+    icon: <PiMegaphoneThin aria-hidden="true" className="h-6 w-6" />,
+    iconAlt: "Blog ikon",
+    external: true,
   },
 ];
 
 const services = [
   {
     href: "/dashboard/webdev",
-    media: "/website.gif",
-    title: "Weboldal fejlesztés kedvező áron",
-    description:
-      "UX fókuszú weboldalak és webshopok Next.js, Laravel és WordPress alapon. Teljes körű mérés, SEO és hosting támogatás.",
-  },
-  {
-    href: "/dashboard/service",
-    media: "/service.gif",
-    title: "Elektronikai szerviz",
-    description:
-      "Notebook, PC és hálózati eszközök javítása + helyszíni kiszállás Szabolcsban. Gyors diagnosztika, átlátható árazás.",
+    title: "Webfejlesztés & UX",
+    domain: "promnet.hu",
+    description: "Digitális termékek tervezése és fejlesztése mérésekkel, SEO-val és üzleti fókuszú UX-szel.",
+    icon: <PiBrowsersThin aria-hidden="true" className="h-6 w-6" />,
+    iconAlt: "Webfejlesztés ikon",
   },
   {
     href: "/dashboard/hostingbuilder",
-    media: "/hostingbuild.gif",
-    title: "Teljeskörű hosting kiépítése",
-    description:
-      "Költséghatékony felhős infrastruktúra tervezése, CI/CD bevezetés, monitorozás és biztonsági mentések egy kézből.",
+    title: "Hosting & DevOps",
+    domain: "promnet.hu",
+    description: "Felhős infrastruktúra, CI/CD, biztonsági mentések és monitorozás egy kézből.",
+    icon: <PiCloudThin aria-hidden="true" className="h-6 w-6" />,
+    iconAlt: "Felhő infrastruktúra ikon",
+  },
+  {
+    href: "/dashboard/service",
+    title: "Elektronikai szerviz",
+    domain: "promnet.hu",
+    description: "Notebook, PC és hálózati eszköz szerviz helyszíni kiszállással és gyors diagnosztikával.",
+    icon: <PiStackThin aria-hidden="true" className="h-6 w-6" />,
+    iconAlt: "Szerviz ikon",
   },
 ];
 
@@ -501,51 +515,30 @@ function Homepage() {
           </div>
         </section>
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          {quickLinks.map(({ href, media, title, subtitle }, index) => (
-            <Link
-              key={href}
-              href={href}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="group"
-            >
-              <motion.article
-                className="flex h-full gap-5 rounded-[2rem] border border-white/10 bg-neutral-900/70 p-6 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.8)] transition duration-500 group-hover:-translate-y-2 group-hover:border-white/40 group-hover:shadow-[0_30px_90px_-40px_rgba(168,85,247,0.5)]"
-                initial={enableMotion ? { opacity: 0, y: 20 } : false}
+        <section className="space-y-6 rounded-[2.5rem] border border-border/70 bg-card/40 p-6 shadow-soft lg:p-10">
+          <div className="space-y-3">
+            <span className="promnet-badge">kiemelt tartalom</span>
+            <h2 className="text-xl font-semibold text-foreground lg:text-2xl">
+              Gyorsan elérhető anyagok és inspirációk
+            </h2>
+            <p className="text-sm text-muted lg:text-base">
+              Valós projektekből származó tapasztalatok, dokumentált esettanulmányok és a kulisszák mögött készülő tartalmak.
+            </p>
+          </div>
+          <div className="promnet-grid">
+            {quickLinks.map((card, index) => (
+              <motion.div
+                key={card.href}
+                className="h-full"
+                initial={enableMotion ? { opacity: 0, y: 16 } : false}
                 animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-                transition={enableMotion ? { delay: 0.1 * index, duration: 0.6, ease: "easeOut" } : undefined}
+                transition={enableMotion ? { delay: 0.1 * index, duration: 0.5 } : undefined}
               >
-                <motion.div
-                  className="relative flex-none"
-                  whileHover={enableMotion ? { scale: 1.05 } : undefined}
-                  transition={enableMotion ? { type: "spring", stiffness: 200, damping: 15 } : undefined}
-                >
-                  <Image
-                    width={160}
-                    height={160}
-                    loading={index === 0 ? "eager" : "lazy"}
-                    className="h-28 w-28 rounded-[1.3rem] object-cover ring-2 ring-white/10"
-                    src={media}
-                    alt="Ajánlott tartalom"
-                  />
-                  <motion.span
-                    className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-fuchsia-500/40 px-4 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-neutral-200"
-                    initial={enableMotion ? { opacity: 0, y: 8 } : false}
-                    animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-                    transition={enableMotion ? { delay: 0.25, duration: 0.5 } : undefined}
-                  >
-                    link
-                  </motion.span>
-                </motion.div>
-                <div className="space-y-3 text-neutral-200">
-                  <h2 className="text-base font-RubikMedium leading-tight lg:text-lg">{title}</h2>
-                  {subtitle ? <p className="text-sm text-neutral-400 lg:text-base">{subtitle}</p> : null}
-                </div>
-              </motion.article>
-            </Link>
-          ))}
-        </div>
+                <InfoCard {...card} />
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
         <section className="grid gap-6 rounded-[2.5rem] border border-white/10 bg-neutral-900/70 p-6 lg:p-10">
           <div className="flex flex-wrap items-center justify-between gap-4">
@@ -619,60 +612,30 @@ function Homepage() {
           </div>
         </section>
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          {services.map(({ href, media, title, description }, index) => (
-            <Link key={href} href={href} className="group">
-              <motion.article
-                className="flex h-full flex-col gap-5 overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-neutral-900/80 via-neutral-900/50 to-neutral-800/80 p-6 shadow-[0_30px_80px_-40px_rgba(59,130,246,0.45)] transition duration-500 group-hover:-translate-y-2 group-hover:border-white/40"
-                initial={enableMotion ? { opacity: 0, y: 24 } : false}
-                animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-                transition={enableMotion ? { delay: 0.1 * index + 0.2, duration: 0.6, ease: "easeOut" } : undefined}
-                whileHover={enableMotion ? { rotate: -1.2 } : undefined}
-              >
-                <motion.div
-                  className="flex h-24 w-24 items-center justify-center rounded-2xl bg-neutral-900/60"
-                  whileHover={enableMotion ? { scale: 1.05 } : undefined}
-                >
-                  <Image
-                    width={160}
-                    height={160}
-                    loading="lazy"
-                    className="h-16 w-16 rounded-xl object-cover"
-                    src={media}
-                    alt="Szolgáltatás illusztráció"
-                  />
-                </motion.div>
-                <div className="space-y-3 text-neutral-200">
-                  <h3 className="text-base font-semibold lg:text-lg">{title}</h3>
-                  <p className="text-sm leading-relaxed text-neutral-400 lg:text-base">{description}</p>
-                </div>
-                <motion.span
-                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-fuchsia-300 transition group-hover:translate-x-2"
-                  whileHover={enableMotion ? { gap: 6 } : undefined}
-                >
-                  Tovább a részletekhez
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </motion.span>
-              </motion.article>
-            </Link>
-          ))}
-        </div>
-
-        <motion.footer
-          className="flex flex-wrap items-center justify-between gap-3 rounded-[2rem] border border-white/10 bg-neutral-900/60 px-6 py-5 text-neutral-300"
-          initial={enableMotion ? { opacity: 0, y: 20 } : false}
-          animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-          transition={enableMotion ? { delay: 0.6, duration: 0.6 } : undefined}
-        >
-          <div className="flex items-center gap-2 text-sm font-RubikMedium text-neutral-200">
-            <span>PromNET</span>
-            <span className="h-1 w-1 rounded-full bg-neutral-500" />
-            <span>Polyák Csaba E.V.</span>
+        <section className="space-y-6 rounded-[2.5rem] border border-border/70 bg-card/50 p-6 shadow-soft lg:p-10">
+          <div className="space-y-3">
+            <span className="promnet-badge">szolgáltatások</span>
+            <h2 className="text-xl font-semibold text-foreground lg:text-2xl">
+              Megoldások a stratégia, fejlesztés és üzemeltetés metszetében
+            </h2>
+            <p className="text-sm text-muted lg:text-base">
+              Három fókuszterület, ahol mérhető üzleti eredményeket szállítok – legyen szó új digitális termék építéséről vagy meglévő infrastruktúra stabilizálásáról.
+            </p>
           </div>
-          <span className="text-xs text-neutral-400">© 2024 PromNET. Minden jog fenntartva.</span>
-        </motion.footer>
+          <div className="promnet-grid">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.href}
+                className="h-full"
+                initial={enableMotion ? { opacity: 0, y: 18 } : false}
+                animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+                transition={enableMotion ? { delay: 0.12 * index, duration: 0.5 } : undefined}
+              >
+                <InfoCard {...service} />
+              </motion.div>
+            ))}
+          </div>
+        </section>
       </div>
     </motion.section>
   );

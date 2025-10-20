@@ -84,8 +84,8 @@ function page() {
             width={1000}
             height={1000}
             className="h-32 w-56 object-cover rounded-lg"
-            src="/web.gif"
-            alt=""
+            src="/web.webp"
+            alt="Webfejlesztési grafika"
           />
           <p className="my-3 font-medium text-sm">Bemutatkozó oldal kellene?</p>
           <button className="bg-[#696969] h-7 p-1 rounded-md text-xs w-full font-medium hover:bg-neutral-800 duration-200 transition-all ease-in hover:scale-110 animate-grow">
