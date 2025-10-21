@@ -17,6 +17,15 @@ export const portfolioProjects = [
     tags: ["AIKA", "Gaming"],
   },
   {
+    name: "AIKA Resonance",
+    href: "https://resonance.aikahub.com/",
+    description:
+      "Az AIKA Resonance single player, sztori alapú akciójáték hivatalos oldala.",
+    status: "live",
+    launch: "2024",
+    tags: ["AIKA", "Gaming"],
+  },
+  {
     name: "HSWLP Platform",
     href: "https://hswlp.com",
     description:
