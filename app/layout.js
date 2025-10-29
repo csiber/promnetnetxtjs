@@ -5,6 +5,7 @@ import { ConsentProvider } from "@/components/providers/ConsentProvider";
 import AnalyticsGate from "@/components/providers/AnalyticsGate";
 import ConsentBanner from "@/components/consent/ConsentBanner";
 import SiteFooter from "@/components/layout/SiteFooter";
+import Snowfall from "@/components/ui/Snowfall";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { baseUrl, siteMetadata } from "@/lib/seo";
@@ -113,9 +114,16 @@ export default function RootLayout({ children }) {
       <body className={`${rubik.variable} min-h-screen bg-background text-foreground font-sans`}>
         <Theming>
           <ConsentProvider>
-            <div className="flex min-h-screen flex-col">
-              <main className="flex-1">{children}</main>
-              <SiteFooter />
+            <div className="relative flex min-h-screen flex-col overflow-hidden">
+              <div aria-hidden className="winter-backdrop" />
+              <div aria-hidden className="winter-glow winter-glow-top" />
+              <div aria-hidden className="winter-glow winter-glow-bottom" />
+              <div aria-hidden className="winter-noise" />
+              <Snowfall />
+              <div className="relative z-10 flex min-h-screen flex-col">
+                <main className="flex-1">{children}</main>
+                <SiteFooter />
+              </div>
             </div>
             <ConsentBanner />
             <AnalyticsGate>
