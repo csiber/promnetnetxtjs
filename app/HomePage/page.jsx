@@ -229,7 +229,7 @@ function Homepage() {
   return (
     <motion.section
       {...heroSectionMotion}
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden rounded-[3rem]"
     >
       <div className="absolute inset-0 -z-20 bg-gradient-to-b from-[#10051c] via-neutral-950 to-black" />
       <motion.div
