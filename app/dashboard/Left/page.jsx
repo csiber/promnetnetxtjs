@@ -307,7 +307,7 @@ function Leftpage() {
           opacity: 1,
           transition: { duration: 0.3, type: "spring", stiffness: 200 },
         }}
-        className="hidden h-fit w-full md:sticky md:top-5 md:block md:w-80 bg-[#1C1C1C]"
+        className="hidden h-fit w-full overflow-hidden rounded-[2.75rem] bg-[#1C1C1C] md:sticky md:top-5 md:block md:w-80"
       >
         <div className="h-full w-full rounded-2xl border border-neutral-800 bg-[#1C1C1C] p-3 md:w-80">
           <div className="flex">
