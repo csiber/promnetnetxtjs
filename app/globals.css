@@ -94,7 +94,8 @@
 
 @layer components {
   .promnet-surface {
-    @apply relative overflow-hidden rounded-[2.75rem] border border-white/10 bg-card/90 backdrop-blur-xl transition-transform duration-200 ease-out;
+    @apply relative overflow-hidden border border-white/10 bg-card/90 backdrop-blur-xl transition-transform duration-200 ease-out;
+    border-radius: 2.75rem;
     box-shadow: 0 32px 80px -44px rgba(15, 23, 42, 0.55), 0 -26px 70px -54px rgba(15, 23, 42, 0.35);
   }
 
