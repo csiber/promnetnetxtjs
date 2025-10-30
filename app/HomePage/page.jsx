@@ -273,45 +273,84 @@ function Homepage() {
         </div>
 
         <motion.div
-          className="relative overflow-hidden rounded-[2.75rem] border border-yellow-500/60 bg-gradient-to-r from-indigo-600 via-purple-600 to-fuchsia-600 p-[1px] shadow-[0_40px_120px_-60px_rgba(236,72,153,0.9)]"
+          className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-neutral-950/80 shadow-[0_60px_120px_-50px_rgba(99,102,241,0.55)]"
           whileHover={enableMotion ? { scale: 1.01 } : undefined}
         >
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(250,204,21,0.35),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.3),transparent_60%)]"
+          />
           <motion.div
-            className="flex flex-col gap-6 rounded-[2.5rem] bg-black/70 p-6 text-neutral-100 shadow-inner shadow-fuchsia-500/10 md:flex-row md:items-center md:justify-between"
+            className="relative flex flex-col gap-8 rounded-[2.5rem] bg-gradient-to-br from-black/70 via-black/40 to-black/60 p-8 text-neutral-100 md:flex-row md:items-center md:justify-between"
             initial={enableMotion ? { opacity: 0, y: 24 } : false}
             animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
             transition={enableMotion ? { delay: 0.2, duration: 0.6 } : undefined}
           >
-            <div className="space-y-2">
-              <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
+            <div className="max-w-3xl space-y-4">
+              <span className="inline-flex items-center gap-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-amber-200">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-200/10 text-amber-200">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="h-5 w-5"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M2.25 5.25c0 8.284 6.716 15 15 15h2.25a1.5 1.5 0 001.5-1.5v-2.799a1.5 1.5 0 00-1.329-1.494l-3.558-.406a1.5 1.5 0 00-1.38.784l-.83 1.537a11.048 11.048 0 01-4.943-4.943l1.537-.83a1.5 1.5 0 00.784-1.38l-.406-3.558A1.5 1.5 0 009.048 3H6.75a1.5 1.5 0 00-1.5 1.5V5.25z"
+                    />
+                  </svg>
+                </span>
                 Kérdésed van? Hívj bizalommal!
               </span>
-              <p className="max-w-3xl text-sm text-neutral-100 md:text-base">
+              <p className="text-base leading-relaxed text-neutral-100 md:text-lg">
                 Ha bármilyen kérdésed lenne, hívj vagy írj, és megbeszéljük a részleteket. Mondd el, mit szeretnél elérni, és biztosan találunk rá megoldást!
               </p>
             </div>
-            <div className="flex flex-col gap-3 text-sm text-neutral-200 md:text-base">
+            <div className="flex flex-col gap-3 text-sm text-neutral-200 md:w-auto md:min-w-[240px] md:text-base">
               <a
                 href="tel:+36205494107"
                 onClick={() => trackCtaClick("telefon", { location: "hero" })}
-                className="inline-flex items-center justify-center rounded-full bg-yellow-300 px-6 py-3 font-semibold text-black transition hover:-translate-y-0.5 hover:bg-yellow-200"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-amber-300 px-6 py-3 font-semibold text-black shadow-[0_20px_40px_-20px_rgba(250,204,21,0.75)] transition hover:-translate-y-0.5 hover:bg-amber-200"
               >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="h-5 w-5"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M2.25 5.25c0 8.284 6.716 15 15 15h2.25a1.5 1.5 0 001.5-1.5v-2.799a1.5 1.5 0 00-1.329-1.494l-3.558-.406a1.5 1.5 0 00-1.38.784l-.83 1.537a11.048 11.048 0 01-4.943-4.943l1.537-.83a1.5 1.5 0 00.784-1.38l-.406-3.558A1.5 1.5 0 009.048 3H6.75a1.5 1.5 0 00-1.5 1.5V5.25z"
+                  />
+                </svg>
                 Telefonhívás indítása
               </a>
               <a
                 href="mailto:info@promnet.hu"
                 onClick={() => trackCtaClick("email", { location: "hero" })}
-                className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 font-semibold transition hover:-translate-y-0.5 hover:border-white/40 hover:text-white"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 font-semibold text-neutral-100 transition hover:-translate-y-0.5 hover:border-white/40 hover:text-white"
               >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="h-5 w-5"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-6.75 4.05a2.25 2.25 0 01-2.26 0l-6.75-4.05a2.25 2.25 0 01-1.07-1.916V6.75"
+                  />
+                </svg>
                 E-mail írása
               </a>
             </div>
