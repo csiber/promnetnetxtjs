@@ -12,6 +12,7 @@ import {
 import { motion, useReducedMotion } from "framer-motion";
 import { trackCtaClick } from "@/lib/analytics";
 import { portfolioProjects } from "@/data/portfolio-projects";
+import { caseStudies } from "@/data/case-studies";
 import InfoCard from "@/components/ui/InfoCard";
 
 const heroText = {
@@ -96,33 +97,6 @@ const collaborationSteps = [
     description:
       "Iteratív fejlesztés, folyamatos visszajelzés és átlátható státuszriportok mellett jutunk el az éles indításig.",
     icon: <PiCloudThin aria-hidden="true" className="h-6 w-6 text-amber-200" />,
-  },
-];
-
-const caseStudies = [
-  {
-    slug: "creatify",
-    client: "Creatify",
-    industry: "Digitális tartalom értékesítés",
-    summary:
-      "6 hetes redesign és webshop-optimalizáció után a Creatify konverziós rátája 32%-kal nőtt, miközben a support terhelése 27%-kal csökkent.",
-    metrics: [
-      { label: "Konverzió", value: "+32%" },
-      { label: "Átlagos kosárérték", value: "+18%" },
-      { label: "Ügyfélszolgálati ticket", value: "-27%" },
-    ],
-  },
-  {
-    slug: "promark",
-    client: "PromARK",
-    industry: "Játékos közösség",
-    summary:
-      "Teljes infrastruktúra-átállás és egyedi modulok bevezetése 41%-kal növelte az aktív tagok számát három hónap alatt.",
-    metrics: [
-      { label: "Aktív tagok", value: "+41%" },
-      { label: "Oldalon töltött idő", value: "+22%" },
-      { label: "Szerver leállások", value: "-80%" },
-    ],
   },
 ];
 

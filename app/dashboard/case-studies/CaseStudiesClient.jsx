@@ -3,23 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { PiArrowLeftThin } from "react-icons/pi";
-
-const studies = [
-  {
-    slug: "creatify",
-    title: "Creatify digitális platform",
-    summary:
-      "Funkcionális redesign, kampány landingek és mérési stratégia, amely 32%-os konverziónövekedést eredményezett 6 hét alatt.",
-    tags: ["Webshop", "UX", "Automatizáció"],
-  },
-  {
-    slug: "promark",
-    title: "PromARK közösségi infrastruktúra",
-    summary:
-      "Dedikált szerverpark, egyedi közösségi modulok és automatikus skálázás, 41%-kal több aktív taggal három hónapon belül.",
-    tags: ["Infra", "Next.js", "Közösség"],
-  },
-];
+import { caseStudies } from "@/data/case-studies";
 
 export default function CaseStudiesPage() {
   return (
@@ -77,7 +61,7 @@ export default function CaseStudiesPage() {
         </p>
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {studies.map((study, index) => (
+          {caseStudies.map((study, index) => (
             <Link key={study.slug} href={`/dashboard/case-studies/${study.slug}`}>
               <motion.article
                 className="flex h-full flex-col gap-3 rounded-2xl border border-white/10 bg-neutral-900/60 p-5 text-neutral-100 transition hover:-translate-y-1 hover:border-emerald-200/40"
@@ -85,10 +69,10 @@ export default function CaseStudiesPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
               >
-                <h2 className="text-lg font-RubikMedium text-neutral-50">{study.title}</h2>
-                <p className="text-sm text-neutral-300">{study.summary}</p>
+                <h2 className="text-lg font-RubikMedium text-neutral-50">{study.overview.title}</h2>
+                <p className="text-sm text-neutral-300">{study.overview.summary}</p>
                 <div className="mt-auto flex flex-wrap gap-2 text-[11px] uppercase tracking-[0.2em] text-neutral-400">
-                  {study.tags.map((tag) => (
+                  {study.overview.tags.map((tag) => (
                     <span key={tag} className="rounded-full border border-white/10 px-3 py-1">
                       {tag}
                     </span>
