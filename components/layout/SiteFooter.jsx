@@ -14,7 +14,7 @@ export default function SiteFooter() {
         <section aria-label="Legfrissebb kiadás" className="max-w-xl space-y-4">
           <div className="promnet-badge w-fit">Verzió napló</div>
           <h2 className="text-lg font-semibold text-foreground">
-            PromNET {currentRelease.version} – {currentRelease.date}
+            PromNET v{currentRelease.version} – {currentRelease.date}
           </h2>
           <ul className="space-y-2 text-sm text-muted">
             {currentRelease.highlights.map((item) => (
