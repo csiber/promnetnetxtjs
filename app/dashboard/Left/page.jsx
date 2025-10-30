@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   PiBookOpenTextLight,
   PiMagicWandThin,
@@ -151,6 +151,9 @@ function Leftpage() {
   });
   const [formStatus, setFormStatus] = useState({ type: "idle", message: "" });
   const [availability, setAvailability] = useState(() => computeAvailability());
+  const [isMobileFormOpen, setMobileFormOpen] = useState(false);
+  const dialogRef = useRef(null);
+  const lastFocusedElement = useRef(null);
 
   const controls = useAnimation();
 
@@ -161,6 +164,65 @@ function Leftpage() {
     const interval = setInterval(tick, 60_000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (!isMobileFormOpen) {
+      return undefined;
+    }
+
+    lastFocusedElement.current =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
+    const dialogNode = dialogRef.current;
+    if (!dialogNode) {
+      return undefined;
+    }
+
+    const focusableElements = Array.from(
+      dialogNode.querySelectorAll(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+      )
+    ).filter((element) => element instanceof HTMLElement);
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1] ?? firstElement;
+
+    if (firstElement) {
+      firstElement.focus();
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setMobileFormOpen(false);
+        return;
+      }
+
+      if (event.key === "Tab" && focusableElements.length > 0) {
+        if (event.shiftKey) {
+          if (document.activeElement === firstElement) {
+            event.preventDefault();
+            lastElement?.focus();
+          }
+        } else if (document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement?.focus();
+        }
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+      if (lastFocusedElement.current instanceof HTMLElement) {
+        lastFocusedElement.current.focus();
+      }
+    };
+  }, [isMobileFormOpen]);
 
   const availabilityText = useMemo(() => {
     if (!availability.nextChange) {
@@ -195,6 +257,19 @@ function Leftpage() {
           : [...prev.features, feature],
       };
     });
+  };
+
+  const closeMobileForm = () => {
+    setMobileFormOpen(false);
+  };
+
+  const openLeadForm = () => {
+    if (typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches) {
+      setMobileFormOpen(true);
+      return true;
+    }
+
+    return false;
   };
 
   const handleSubmit = async (e) => {
@@ -298,6 +373,102 @@ function Leftpage() {
     idle: "text-neutral-400",
   };
 
+  const LeadFormFields = () => (
+    <>
+      <div className="grid grid-cols-1 gap-3">
+        <input
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+          placeholder="Név"
+          type="text"
+          aria-label="Név"
+        />
+        <input
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+          placeholder="E-mail cím"
+          type="email"
+          aria-label="E-mail cím"
+        />
+        <input
+          name="company"
+          value={formData.company}
+          onChange={handleInputChange}
+          className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+          placeholder="Cég / márkanév (opcionális)"
+          type="text"
+          aria-label="Cég vagy márkanév"
+        />
+        <input
+          name="industry"
+          value={formData.industry}
+          onChange={handleInputChange}
+          className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+          placeholder="Iparág (pl. vendéglátás, e-kereskedelem)"
+          type="text"
+          aria-label="Iparág"
+        />
+        <input
+          name="budget"
+          value={formData.budget}
+          onChange={handleInputChange}
+          className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+          placeholder="Becsült költségkeret (pl. 600 000 Ft)"
+          type="text"
+          aria-label="Becsült költségkeret"
+        />
+        <input
+          name="timeline"
+          value={formData.timeline}
+          onChange={handleInputChange}
+          className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+          placeholder="Mikorra szeretnéd élesíteni?"
+          type="text"
+          aria-label="Tervezett indulás"
+        />
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {featureOptions.map((feature) => {
+          const active = formData.features.includes(feature);
+          return (
+            <button
+              key={feature}
+              type="button"
+              onClick={() => toggleFeature(feature)}
+              className={`rounded-full border px-3 py-1.5 text-[11px] font-RubikMedium transition ${
+                active
+                  ? "border-emerald-300/60 bg-emerald-500/10 text-emerald-100"
+                  : "border-white/10 text-neutral-300 hover:border-white/30 hover:text-neutral-100"
+              }`}
+            >
+              {feature}
+            </button>
+          );
+        })}
+      </div>
+      <textarea
+        name="message"
+        value={formData.message}
+        onChange={handleInputChange}
+        className="min-h-[80px] rounded-xl border border-white/10 bg-neutral-900/60 px-3 py-2 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+        placeholder="Mesélj az ötletedről, célokról, eddigi tapasztalatokról..."
+        aria-label="Projekt leírás"
+      />
+      <motion.button
+        animate={controls}
+        className="h-10 rounded-xl bg-amber-400 text-xs font-RubikMedium text-neutral-900 transition hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-60"
+        type="submit"
+        disabled={formStatus.type === "loading"}
+      >
+        {formStatus.type === "loading" ? "Küldés..." : "Projekt összefoglaló küldése"}
+      </motion.button>
+    </>
+  );
+
   return (
     <div>
       <motion.div
@@ -389,6 +560,9 @@ function Leftpage() {
 
                   if (scrollTarget) {
                     event.preventDefault();
+                    if (openLeadForm()) {
+                      return;
+                    }
                     const targetElement = document.getElementById(scrollTarget);
                     if (targetElement) {
                       targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -446,6 +620,18 @@ function Leftpage() {
                 );
               })}
             </div>
+            <div className="mt-3 md:hidden">
+              <button
+                type="button"
+                onClick={() => {
+                  trackCtaClick("lead-mobile-open", { location: "sidebar" });
+                  setMobileFormOpen(true);
+                }}
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-amber-300/40 bg-amber-500/10 px-4 py-2 text-[12px] font-RubikMedium text-amber-100 transition hover:-translate-y-0.5 hover:border-amber-200 hover:text-amber-50"
+              >
+                Ajánlatkérő űrlap megnyitása
+              </button>
+            </div>
           </motion.div>
 
           <form
@@ -454,97 +640,7 @@ function Leftpage() {
             className="mt-6 hidden w-full flex-col gap-3 rounded-2xl border border-white/5 bg-[#282828] p-4 md:flex"
             tabIndex={-1}
           >
-            <div className="grid grid-cols-1 gap-3">
-              <input
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
-                placeholder="Név"
-                type="text"
-                aria-label="Név"
-              />
-              <input
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
-                placeholder="E-mail cím"
-                type="email"
-                aria-label="E-mail cím"
-              />
-              <input
-                name="company"
-                value={formData.company}
-                onChange={handleInputChange}
-                className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
-                placeholder="Cég / márkanév (opcionális)"
-                type="text"
-                aria-label="Cég vagy márkanév"
-              />
-              <input
-                name="industry"
-                value={formData.industry}
-                onChange={handleInputChange}
-                className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
-                placeholder="Iparág (pl. vendéglátás, e-kereskedelem)"
-                type="text"
-                aria-label="Iparág"
-              />
-              <input
-                name="budget"
-                value={formData.budget}
-                onChange={handleInputChange}
-                className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
-                placeholder="Becsült költségkeret (pl. 600 000 Ft)"
-                type="text"
-                aria-label="Becsült költségkeret"
-              />
-              <input
-                name="timeline"
-                value={formData.timeline}
-                onChange={handleInputChange}
-                className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
-                placeholder="Mikorra szeretnéd élesíteni?"
-                type="text"
-                aria-label="Tervezett indulás"
-              />
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {featureOptions.map((feature) => {
-                const active = formData.features.includes(feature);
-                return (
-                  <button
-                    key={feature}
-                    type="button"
-                    onClick={() => toggleFeature(feature)}
-                    className={`rounded-full border px-3 py-1.5 text-[11px] font-RubikMedium transition ${
-                      active
-                        ? "border-emerald-300/60 bg-emerald-500/10 text-emerald-100"
-                        : "border-white/10 text-neutral-300 hover:border-white/30 hover:text-neutral-100"
-                    }`}
-                  >
-                    {feature}
-                  </button>
-                );
-              })}
-            </div>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              className="min-h-[80px] rounded-xl border border-white/10 bg-neutral-900/60 px-3 py-2 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
-              placeholder="Mesélj az ötletedről, célokról, eddigi tapasztalatokról..."
-              aria-label="Projekt leírás"
-            />
-            <motion.button
-              animate={controls}
-              className="h-10 rounded-xl bg-amber-400 text-xs font-RubikMedium text-neutral-900 transition hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-60"
-              type="submit"
-              disabled={formStatus.type === "loading"}
-            >
-              {formStatus.type === "loading" ? "Küldés..." : "Projekt összefoglaló küldése"}
-            </motion.button>
+            <LeadFormFields />
           </form>
           <p
             className={`mt-2 min-h-[1.5rem] text-[11px] font-RubikRegular ${formStatusStyles[formStatus.type]}`}
@@ -552,6 +648,44 @@ function Leftpage() {
           >
             {formStatus.message}
           </p>
+
+          {isMobileFormOpen ? (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 py-6 md:hidden">
+              <div
+                ref={dialogRef}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="mobile-lead-form-title"
+                className="relative w-full max-w-md rounded-3xl border border-white/10 bg-[#1f1f1f] p-6 shadow-[0_30px_80px_-40px_rgba(251,191,36,0.4)]"
+              >
+                <button
+                  type="button"
+                  onClick={closeMobileForm}
+                  className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/30 text-neutral-200 transition hover:border-white/30 hover:text-white"
+                  aria-label="Űrlap bezárása"
+                >
+                  <span aria-hidden="true" className="text-lg font-RubikMedium">
+                    ×
+                  </span>
+                </button>
+                <h2 id="mobile-lead-form-title" className="text-lg font-RubikMedium text-neutral-50">
+                  Projekt összefoglaló küldése
+                </h2>
+                <p className="mt-1 text-sm text-neutral-400">
+                  Írd le röviden, mire van szükséged, és legkésőbb 1 munkanapon belül válaszolok a részletekkel.
+                </p>
+                <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3">
+                  <LeadFormFields />
+                </form>
+                <p
+                  className={`mt-3 min-h-[1.5rem] text-xs font-RubikRegular ${formStatusStyles[formStatus.type]}`}
+                  aria-live="polite"
+                >
+                  {formStatus.message}
+                </p>
+              </div>
+            </div>
+          ) : null}
 
           <div className="mt-5 w-full text-neutral-300">
             <h2 className="font-RubikBold my-4">Info</h2>
