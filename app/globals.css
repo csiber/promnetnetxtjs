@@ -94,11 +94,13 @@
 
 @layer components {
   .promnet-surface {
-    @apply rounded-3xl border bg-card/90 shadow-soft backdrop-blur-md transition-transform duration-200 ease-out;
+    @apply relative overflow-hidden rounded-[2.75rem] border border-white/10 bg-card/90 backdrop-blur-xl transition-transform duration-200 ease-out;
+    box-shadow: 0 32px 80px -44px rgba(15, 23, 42, 0.55), 0 -26px 70px -54px rgba(15, 23, 42, 0.35);
   }
 
   .promnet-surface:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    box-shadow: 0 40px 110px -52px rgba(15, 23, 42, 0.6), 0 -32px 90px -60px rgba(15, 23, 42, 0.4);
   }
 
   .promnet-grid {
