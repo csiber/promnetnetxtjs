@@ -1,6 +1,6 @@
 {
   "name": "promnet",
-  "version": "0.7.11",
+  "version": "15.10.30",
   "private": true,
   "scripts": {
     "email": "email dev",
