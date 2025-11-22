@@ -478,9 +478,9 @@ function Leftpage() {
           opacity: 1,
           transition: { duration: 0.3, type: "spring", stiffness: 200 },
         }}
-        className="hidden h-fit w-full overflow-hidden rounded-[2.75rem] bg-[#1C1C1C] md:sticky md:top-5 md:block md:w-80"
+        className="h-fit w-full overflow-hidden rounded-2xl bg-[#1C1C1C] shadow-[0_20px_60px_-40px_rgba(0,0,0,0.5)] md:sticky md:top-5 md:block md:w-80 md:rounded-[2.75rem]"
       >
-        <div className="h-full w-full rounded-2xl border border-neutral-800 bg-[#1C1C1C] p-3 md:w-80">
+        <div className="h-full w-full rounded-2xl border border-neutral-800 bg-[#1C1C1C] p-4 md:w-80 md:p-3">
           <div className="flex">
             <div className="relative w-full">
               <Image
@@ -739,52 +739,44 @@ function Leftpage() {
 
             <div className="my-4">
               <h1 className="font-RubikRegular">Vállalkozás adatai</h1>
-              <div className="mt-7 flex justify-between">
-                <div className="flex gap-x-3">
-                  <FaUser className="text-xl" />
+              <div className="mt-5 space-y-4 text-left">
+                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-neutral-900/40 p-3">
+                  <FaUser className="text-xl text-neutral-200" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">Cégnév</h3>
-                    <p className="text-[12px]">Polyák Csaba E.V</p>
+                    <p className="text-[12px] text-neutral-300">Polyák Csaba E.V</p>
                   </div>
                 </div>
-              </div>
-              <div className="mt-4 flex justify-between">
-                <div className="flex gap-x-3">
-                  <FaMapMarkerAlt className="text-xl" />
+                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-neutral-900/40 p-3">
+                  <FaMapMarkerAlt className="text-xl text-neutral-200" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">Cím</h3>
-                    <p className="text-[12px]">
+                    <p className="text-[12px] text-neutral-300">
                       4324 Kállósemjén, Kölcsey Ferenc út 11
                     </p>
                   </div>
                 </div>
-              </div>
-              <div className="mt-4 flex justify-between">
-                <div className="flex gap-x-3">
-                  <FaPhone className="text-xl" />
+                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-neutral-900/40 p-3">
+                  <FaPhone className="text-xl text-neutral-200" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">Telefonszám</h3>
-                    <p className="text-[12px]">+36 20 549 4107</p>
+                    <p className="text-[12px] text-neutral-300">+36 20 549 4107</p>
                   </div>
                 </div>
-              </div>
-              <div className="mt-4 flex justify-between">
-                <div className="flex gap-x-3">
-                  <FaIdCard className="text-xl" />
+                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-neutral-900/40 p-3">
+                  <FaIdCard className="text-xl text-neutral-200" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">
                       Nyilvántartási szám
                     </h3>
-                    <p className="text-[12px]">52193909</p>
+                    <p className="text-[12px] text-neutral-300">52193909</p>
                   </div>
                 </div>
-              </div>
-              <div className="mt-4 flex justify-between">
-                <div className="flex gap-x-3">
-                  <FaMoneyCheck className="text-xl" />
+                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-neutral-900/40 p-3">
+                  <FaMoneyCheck className="text-xl text-neutral-200" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">Adószám</h3>
-                    <p className="text-[12px]">68747961-1-35</p>
+                    <p className="text-[12px] text-neutral-300">68747961-1-35</p>
                   </div>
                 </div>
               </div>
