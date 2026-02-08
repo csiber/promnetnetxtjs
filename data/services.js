@@ -47,12 +47,11 @@ const createServiceSchema = ({ name, description, serviceType, path, priceRange 
 
 export const serviceSchemas = {
   "/dashboard/webdev": createServiceSchema({
-    name: "Webfejlesztés és UX",
+    name: "Játék, animáció és 3D",
     description:
-      "Reszponzív weboldalak és webshopok tervezése, fejlesztése, mérési csomagokkal és folyamatos támogatással magyar vállalkozások számára.",
-    serviceType: ["Webfejlesztés", "UX tervezés", "E-kereskedelem"],
+      "Játék- és animációkészítés, 3D grafika, 3D modellezés és 3D nyomtatás kreatív és technikai projektekhez.",
+    serviceType: ["Játékfejlesztés", "Animáció", "3D grafika", "3D modellezés", "3D nyomtatás"],
     path: "/dashboard/webdev",
-    priceRange: { low: "249000", high: "800000" },
   }),
   "/dashboard/service": createServiceSchema({
     name: "Elektronikai szerviz",

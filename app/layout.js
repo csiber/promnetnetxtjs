@@ -28,7 +28,7 @@ const structuredData = {
   telephone: "+36 20 549 4107",
   email: "info@promnet.hu",
   description:
-    "Full stack webfejlesztés, digitális termék- és infrastruktúra fejlesztés magyar vállalkozásoknak.",
+    "Játék- és animációkészítés, 3D grafika, 3D modellezés és 3D nyomtatás.",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Kölcsey Ferenc út 11.",
@@ -46,9 +46,11 @@ const structuredData = {
     name: "Magyarország",
   },
   serviceType: [
-    "Weboldal fejlesztés",
-    "Webáruház készítés",
-    "Rendszergazdai szolgáltatás",
+    "Játékfejlesztés",
+    "Animáció",
+    "3D grafika",
+    "3D modellezés",
+    "3D nyomtatás",
     "Elektronikai szerviz",
   ],
 };

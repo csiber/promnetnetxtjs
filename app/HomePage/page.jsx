@@ -19,14 +19,14 @@ const heroText = {
   title: (
     <>
       Üdvözöllek a <span className="text-sm font-RubikMedium text-neutral-200">PromNET</span>{" "}
-      <span className="text-sm font-Rubik text-neutral-200">oldalon!</span>
+      <span className="text-sm font-Rubik text-neutral-200">stúdióban!</span>
     </>
   ),
   description: (
     <>
-      Szia! Polyák Csaba vagyok, full stack fejlesztő, aki szenvedélyesen tervez és hoz létre modern,
-      felhasználóbarát webes megoldásokat. Tapasztalatom segít abban, hogy ügyfeleimnek egyedi és hatékony online jelenlétet
-      biztosítsak – a stratégiától az üzemeltetésig.
+      Szia! Polyák Csaba vagyok, játék- és animációkészítéssel, 3D grafikával, 3D modellezéssel és 3D nyomtatással
+      foglalkozom. Webfejlesztési megkereséseket már nem vállalok, a fókusz a kreatív és technikai 3D munkákon van az
+      ötlettől a végső átadásig.
     </>
   ),
 };
@@ -55,11 +55,11 @@ const quickLinks = [
 const services = [
   {
     href: "/dashboard/webdev",
-    title: "Webfejlesztés & UX",
+    title: "Játék, animáció & 3D",
     domain: "promnet.hu",
-    description: "Digitális termékek tervezése és fejlesztése mérésekkel, SEO-val és üzleti fókuszú UX-szel.",
+    description: "Játék- és animációkészítés, 3D grafika, 3D modellezés és 3D nyomtatás.",
     icon: <PiBrowsersThin aria-hidden="true" className="h-6 w-6" />,
-    iconAlt: "Webfejlesztés ikon",
+    iconAlt: "Játék és 3D ikon",
   },
   {
     href: "/dashboard/hostingbuilder",
@@ -81,21 +81,21 @@ const services = [
 
 const collaborationSteps = [
   {
-    title: "Felmérés és célkitűzés",
+    title: "Felmérés és irány",
     description:
-      "Közösen elemezzük a jelenlegi digitális jelenlétedet, majd meghatározzuk az üzleti célokat és mérőszámokat.",
+      "Közösen meghatározzuk a briefet, a kreatív irányt, a terjedelmet és az ütemezést a játék, animáció vagy 3D projektben.",
     icon: <PiMegaphoneThin aria-hidden="true" className="h-6 w-6 text-sky-200" />,
   },
   {
-    title: "Megoldás-tervezés",
+    title: "Gyártás és iteráció",
     description:
-      "Prototípusokat, UX koncepciót és technológiai tervet készítek, hogy pontosan lásd, milyen irányba indulunk.",
+      "Modellezés, textúrázás, animáció és interaktív prototípusok, átlátható review körökkel és frissítésekkel.",
     icon: <PiCodeThin aria-hidden="true" className="h-6 w-6 text-emerald-200" />,
   },
   {
-    title: "Megvalósítás és támogatás",
+    title: "Átadás és támogatás",
     description:
-      "Iteratív fejlesztés, folyamatos visszajelzés és átlátható státuszriportok mellett jutunk el az éles indításig.",
+      "Végső render, assetek vagy nyomtatásra kész fájlok dokumentált átadással és opcionális támogatással.",
     icon: <PiCloudThin aria-hidden="true" className="h-6 w-6 text-amber-200" />,
   },
 ];
