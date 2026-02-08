@@ -690,9 +690,8 @@ function Leftpage() {
           <div className="mt-5 w-full text-neutral-300">
             <h2 className="font-RubikBold my-4">Info</h2>
             <p className="text-[12px]  font-RubikRegular my-3">
-              Professzionális webfejlesztés, egyedi megoldások: Neked készítem a
-              legmenőbb weboldalt! Kreatív kódolás, ami még a macskádnak is
-              tetszeni fog. Bízd rám a weboldalad, és emelkedj ki a tömegből!{" "}
+              Játék- és animációkészítésre, 3D grafikára, 3D modellezésre és 3D nyomtatásra fókuszálok. Webfejlesztési
+              projekteket már nem vállalok, viszont kreatív 3D munkák és gyártási támogatás elérhető.
             </p>
 
             <div className="grid gap-2 rounded-xl border border-emerald-400/20 bg-neutral-900/60 p-3 text-[11px] text-neutral-200">
@@ -722,9 +721,9 @@ function Leftpage() {
                     }
                     target="blank"
                   >
-                    full stack
+                    korábbi full stack
                   </Link>{" "}
-                  webfejlesztő
+                  webfejlesztő (webes projektekre már nem vállalok megkeresést)
                 </span>
               </div>
               <div className="flex items-center gap-x-1">

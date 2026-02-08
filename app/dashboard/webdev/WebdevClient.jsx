@@ -6,84 +6,84 @@ import { PiArrowLeftThin } from "react-icons/pi";
 import { motion } from "framer-motion";
 import {
   FaGlobe,
-  FaWordpress,
-  FaCode,
   FaHandshake,
-  FaServer,
   FaClock,
+  FaCubes,
+  FaPalette,
+  FaFolderOpen,
 } from "react-icons/fa";
 import { trackCtaClick } from "@/lib/analytics";
 
 const packages = [
   {
-    name: "Alap bemutatkozó",
-    price: "249 000 Ft-tól",
-    target: "Kisvállalkozások, szolgáltatók",
-    delivery: "2-3 hét",
+    name: "Játék- és animációkészítés",
+    price: "Egyedi projektár",
+    target: "Stúdiók, indie csapatok, kreatív márkák",
+    delivery: "Ütemezés a terjedelem alapján",
     features: [
-      "3-5 oldalas reszponzív weboldal",
-      "Egyedi design + arculati illesztés",
-      "Kontakt űrlap és alap analitika",
-      "1 év tárhely + domain a partner hostingban",
+      "Storyboardok, animatikok és vizuális irány",
+      "Karakter- és környezetfejlesztés",
+      "Animáció, VFX és motion design",
+      "Átadás broadcast- és web-kompatibilis formátumban",
     ],
   },
   {
-    name: "Pro webshop",
-    price: "449 000 Ft-tól",
-    target: "E-kereskedelmi projektek",
-    delivery: "3-5 hét",
+    name: "3D grafika & vizualizáció",
+    price: "Egyedi projektár",
+    target: "Termékcsapatok, marketing, vizualizáció",
+    delivery: "Ütemezés a terjedelem alapján",
     features: [
-      "Termék- és kategóriakezelés",
-      "Online fizetési integráció",
-      "Kampánymérés és konverziókövetés",
-      "Marketing automatizmusok (hírlevél, elhagyott kosár)",
+      "Fotorealisztikus renderek és turntable anyagok",
+      "Világítás, anyagok és jelenet felépítés",
+      "Animációra kész assetek és textúrák",
+      "Nagy felbontású képek és videó exportok",
     ],
   },
   {
-    name: "Egyedi rendszer",
-    price: "Egyedi ajánlat",
-    target: "Komplex, integrációt igénylő projektek",
-    delivery: "4-8 hét",
+    name: "3D modellezés & nyomtatás",
+    price: "Egyedi projektár",
+    target: "Prototípusok, gyűjtői darabok, egyedi alkatrészek",
+    delivery: "Ütemezés a terjedelem alapján",
     features: [
-      "Folyamatfeltérképezés és UX workshop",
-      "Speciális modulok (időpontfoglaló, CRM integráció)",
-      "Skálázható infrastruktúra és CI/CD",
-      "Külön karbantartási és üzemeltetési SLA",
+      "Tiszta topológia és nyomtatható mesh-ek",
+      "Tűrések és falvastagság ellenőrzés",
+      "Támasz generálás és szeletelési útmutató",
+      "FDM/SLA workflow-ra előkészített fájlok",
     ],
   },
 ];
 
 const processSteps = [
   {
-    title: "Discovery & brief",
-    description: "Közös kickoff, célmeghatározás, versenytárselemzés, technológiai stack kiválasztása.",
+    title: "Brief és kreatív irány",
+    description: "Terjedelem, referenciák, moodboardok és gyártási ütemezés megtervezése.",
   },
   {
-    title: "Wireframe & design sprint",
-    description: "Navigáció, UX-flow, prototípus és vizuális irány egyeztetése, módosítási körök dokumentálva.",
+    title: "Design és asset gyártás",
+    description: "Modellezés, textúrázás, riggelés és animáció iteratív visszajelzésekkel.",
   },
   {
-    title: "Fejlesztés & integráció",
-    description: "Reszponzív build, tartalom bekötés, tesztfázis automatizált ellenőrzésekkel (SEO, sebesség, akadálymentesség).",
+    title: "Renderelés és előkészítés",
+    description: "Világítás, render, export és csomagolás game engine, videó vagy nyomtatás számára.",
   },
   {
-    title: "Átadás & támogatás",
-    description: "Launch terv, oktató anyagok, mérési dashboard beállítása és 30 napos finomhangolási időszak.",
+    title: "Átadás és támogatás",
+    description: "Végső assetek, dokumentáció és opcionális finomhangolás az átadás után.",
   },
 ];
 
 const extras = [
   {
-    title: "Teljes körű üzemeltetés",
-    description: "Monitoring, biztonsági mentések, szerverfrissítések és SLA szerinti reakcióidő. Ideális, ha a fejlesztés után sem szeretnél technikai teendőkkel foglalkozni.",
+    title: "Game engine integráció",
+    description: "Unity vagy Unreal kompatibilis assetek, optimalizálás és LOD beállítások.",
   },
   {
-    title: "Tartalommarketing csomag",
-    description: "Landing oldalak, blogcikkek, automatizált hírlevelek – a konverziónöveléshez tartalmi támogatást is kapsz.",
+    title: "Nyomtatási teszt támogatás",
+    description: "Anyagjavaslatok, nyomtatási beállítások és tesztfutás visszajelzés.",
   },
   {
-    title: "Rendszerintegrációk",
-    description: "CRM, számlázó, készletkezelő vagy marketing eszközök összekötése biztonságos API integrációval.",
+    title: "Asset könyvtár felépítés",
+    description: "Rendszerezett forrásfájlok, elnevezési szabványok és átadási checklist.",
   },
 ];
 
@@ -140,17 +140,21 @@ function WebdevClient() {
           transition={{ delay: 0.4 }}
           className="text-3xl font-RubikExtraBold text-center text-neutral-100"
         >
-          Weboldal fejlesztés
+          Játék, animáció & 3D
         </motion.h1>
         <div className="flex items-center gap-x-2 justify-center my-4 font-RubikRegular">
           <p className="bg-[#282828] w-fit text-neutral-300 rounded-md px-2 h-5 flex items-center justify-center text-[10px]">
-            Portfolio Weboldalak, Céges oldal, Webáruház
+            Játék, animáció, 3D grafika, modellezés, 3D nyomtatás
           </p>
           <div className="w-1 h-1 rounded-full bg-neutral-400" />
           <span className="text-xs text-neutral-300">
             Frissítve: 2024.07.09.
           </span>
         </div>
+        <p className="text-center text-sm text-neutral-300">
+          Webfejlesztési szolgáltatásokat már nem vállalok. Kérlek, csak játék, animáció, 3D grafika, 3D modellezés vagy 3D
+          nyomtatás kapcsán keress.
+        </p>
         <section className="relative md:py-12 py-8">
           <div className="mt-6 grid gap-6 lg:grid-cols-3">
             {packages.map((pkg) => (
@@ -179,7 +183,7 @@ function WebdevClient() {
                   className="mt-auto inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs font-RubikMedium text-neutral-50 transition hover:-translate-y-0.5 hover:border-amber-300/60 hover:text-amber-100"
                   onClick={() => trackCtaClick("webdev-lead", { package: pkg.name })}
                 >
-                  Ajánlatot kérek
+                  Projekt indítása
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
@@ -206,33 +210,33 @@ function WebdevClient() {
               </div>
             </div>
             <div className="flex flex-col gap-4 rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-6 text-neutral-50">
-              <h3 className="text-lg font-RubikMedium">Mit tartalmaz minden csomag?</h3>
+              <h3 className="text-lg font-RubikMedium">Mit tartalmaz minden projekt?</h3>
               <ul className="space-y-3 text-sm text-neutral-100">
                 <li className="flex items-start gap-2">
-                  <FaWordpress className="mt-1 h-3.5 w-3.5 text-neutral-900" />
-                  <span>Modern, reszponzív felület optimalizálva mobilra és asztali gépre is.</span>
+                  <FaCubes className="mt-1 h-3.5 w-3.5 text-neutral-900" />
+                  <span>Átlátható scope, referenciák és gyártási roadmap.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <FaCode className="mt-1 h-3.5 w-3.5 text-neutral-900" />
-                  <span>Egyedi fejlesztés: nem sablonból dolgozom, így a márkád is megkülönböztethető marad.</span>
+                  <FaPalette className="mt-1 h-3.5 w-3.5 text-neutral-900" />
+                  <span>Egyedi assetek, amelyek illeszkednek a márkához és az art directionhöz.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <FaServer className="mt-1 h-3.5 w-3.5 text-neutral-900" />
-                  <span>1 év tárhely és domain partner hostingban, folyamatos státuszriporttal.</span>
+                  <FaFolderOpen className="mt-1 h-3.5 w-3.5 text-neutral-900" />
+                  <span>Verziózott átadás és rendezett projektstruktúra.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <FaHandshake className="mt-1 h-3.5 w-3.5 text-neutral-900" />
-                  <span>Transzparens kommunikáció, közös Trello / ClickUp board és heti státusz összefoglaló.</span>
+                  <span>Transzparens kommunikáció közös boardokkal és heti frissítésekkel.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <FaClock className="mt-1 h-3.5 w-3.5 text-neutral-900" />
-                  <span>Garantált határidők és launch támogatás – a weboldal az egyeztetett időre éles.</span>
+                  <span>Megbízható ütemezés és a megjelenési dátumhoz igazított átadás.</span>
                 </li>
               </ul>
             </div>
           </div>
           <div className="mt-10 grid gap-4 rounded-2xl border border-white/10 bg-neutral-900/60 p-6 text-neutral-100">
-            <h2 className="text-xl font-RubikMedium text-neutral-50">További opciók a növekedéshez</h2>
+            <h2 className="text-xl font-RubikMedium text-neutral-50">További opciók</h2>
             <div className="grid gap-4 md:grid-cols-3">
               {extras.map((extra) => (
                 <div key={extra.title} className="rounded-xl border border-white/10 bg-neutral-950/60 p-4">
@@ -242,7 +246,7 @@ function WebdevClient() {
               ))}
             </div>
             <p className="text-xs text-neutral-400">
-              Személyre szabott kombinációk is kérhetők – vedd fel a kapcsolatot velem, és segítek kiválasztani a legjobb megoldást.
+              Egyedi kombinációk is kérhetők — vedd fel a kapcsolatot, és közösen meghatározzuk a legjobb megoldást.
             </p>
           </div>
         </section>
