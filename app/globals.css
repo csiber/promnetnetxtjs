@@ -4,15 +4,15 @@
 
 :root {
   color-scheme: light;
-  --color-background: 226 239 255;
-  --color-foreground: 7 20 40;
-  --color-muted: 42 68 104;
-  --color-border: 12 32 72;
+  --color-background: 232 238 252;
+  --color-foreground: 12 22 38;
+  --color-muted: 62 86 122;
+  --color-border: 24 40 68;
   --color-border-opacity: 0.08;
   --color-card: 255 255 255;
-  --color-card-opacity: 0.82;
-  --color-accent: 14 165 233;
-  --color-accent-foreground: 5 12 24;
+  --color-card-opacity: 0.9;
+  --color-accent: 56 189 248;
+  --color-accent-foreground: 8 18 33;
   --color-success: 37 99 235;
   --color-warning: 56 189 248;
   --neo-glow: 14 165 233;
@@ -38,13 +38,13 @@
 
 .dark {
   color-scheme: dark;
-  --color-background: 6 12 24;
-  --color-foreground: 226 232 240;
-  --color-muted: 140 163 190;
-  --color-border: 148 163 184;
-  --color-border-opacity: 0.18;
-  --color-card: 12 20 34;
-  --color-card-opacity: 0.72;
+  --color-background: 11 18 32;
+  --color-foreground: 232 238 252;
+  --color-muted: 153 170 198;
+  --color-border: 88 108 142;
+  --color-border-opacity: 0.22;
+  --color-card: 14 22 38;
+  --color-card-opacity: 0.78;
   --color-accent: 56 189 248;
   --color-accent-foreground: 6 12 26;
   --color-success: 59 130 246;
@@ -86,7 +86,8 @@
     font-feature-settings: "ss03" on, "liga" on;
     min-height: 100vh;
     background-color: rgb(var(--color-background));
-    background-image: var(--neo-gradient);
+    background-image: radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.08), transparent 55%),
+      radial-gradient(circle at 80% 0%, rgba(37, 99, 235, 0.08), transparent 50%);
     background-attachment: fixed;
     background-size: cover;
   }
@@ -184,6 +185,61 @@
 
   .neo-button {
     @apply inline-flex items-center justify-center gap-2 rounded-full border border-accent/50 bg-accent/15 px-6 py-3 text-sm font-semibold text-accent transition hover:-translate-y-0.5 hover:border-accent hover:bg-accent/25;
+  }
+
+  .section {
+    @apply mx-auto w-full max-w-6xl px-6;
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold tracking-tight text-foreground;
+  }
+
+  @media (min-width: 1024px) {
+    .section-title {
+      font-size: 2.75rem;
+    }
+  }
+
+  .section-body {
+    @apply text-base text-muted leading-relaxed;
+  }
+
+  .section-kicker {
+    @apply text-xs uppercase tracking-[0.3em] text-accent;
+  }
+
+  .hero-visual {
+    @apply relative h-[320px] w-full overflow-hidden rounded-xl border border-white/10 bg-card/50;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-visual {
+      height: 420px;
+    }
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        rgba(56, 189, 248, 0.18) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(56, 189, 248, 0.12) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.6;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.45), transparent 70%);
+    filter: blur(12px);
   }
 }
 
