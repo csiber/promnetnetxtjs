@@ -134,6 +134,16 @@ function Homepage() {
       transition={enableMotion ? { duration: 0.6, ease: "easeOut" } : undefined}
       className="pb-24"
     >
+      <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 pt-8 text-sm text-muted">
+        <span className="font-semibold text-foreground">PromNET</span>
+        <nav className="flex flex-wrap gap-4">
+          <Link href="#szolgaltatasok" className="hover:text-foreground">Szolgáltatások</Link>
+          <Link href="#miert-promnet" className="hover:text-foreground">Miért PromNET</Link>
+          <Link href="#referenciak" className="hover:text-foreground">Referenciák</Link>
+          <Link href="#kapcsolat" className="hover:text-foreground">Kapcsolat</Link>
+        </nav>
+      </header>
+
       <section className="section">
         <div className="grid items-center gap-10 lg:grid-cols-[1.1fr,0.9fr]">
           <div className="space-y-6">
@@ -173,7 +183,7 @@ function Homepage() {
         </div>
       </section>
 
-      <section className="section">
+      <section id="szolgaltatasok" className="section">
         <div className="space-y-8">
           <div>
             <p className="section-kicker">Szolgáltatások</p>
@@ -196,6 +206,47 @@ function Homepage() {
       </section>
 
       <section className="section">
+        <div className="grid gap-10 lg:grid-cols-[1fr,1fr]">
+          <div className="space-y-6">
+            <p className="section-kicker">Stúdió</p>
+            <h2 className="section-title">Komoly mérnöki fókusz, kis csapat</h2>
+            <p className="section-body">
+              A PromNET nem ügynökség. Mérnöki fókuszú stúdióként dolgozom: átlátható scope, stabil üzemeltetés és
+              hosszú távon fenntartható rendszerek. A cél nem a gyors látvány, hanem a működés.
+            </p>
+            <ul className="space-y-3 text-base text-muted">
+              <li className="flex items-start gap-3">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
+                <span>Produkciós rendszerek skálázása és stabilizálása</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
+                <span>Integrációk, adatfolyamok, API-kapcsolatok</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
+                <span>Üzemeltetés: monitorozás, incident kezelés, optimalizálás</span>
+              </li>
+            </ul>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-card/70 p-6">
+            <p className="section-kicker">Technológiai fókusz</p>
+            <h3 className="mt-3 text-lg font-semibold text-foreground">Gyakran használt stack</h3>
+            <p className="mt-2 text-sm text-muted">
+              Nem vendor listát írok, hanem eszközöket választok a problémához. Ezekkel dolgozom a legtöbbet.
+            </p>
+            <div className="mt-4 grid gap-2 text-sm text-muted">
+              <span>Node.js / TypeScript</span>
+              <span>PostgreSQL / Redis</span>
+              <span>Docker / Kubernetes</span>
+              <span>Terraform / CI-CD</span>
+              <span>Cloudflare / Hetzner / AWS</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="miert-promnet" className="section">
         <div className="grid gap-10 lg:grid-cols-[1fr,0.9fr]">
           <div className="space-y-6">
             <p className="section-kicker">Miért PromNET</p>
@@ -379,6 +430,33 @@ function Homepage() {
                 </p>
               ) : null}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div id="kapcsolat" className="grid gap-10 lg:grid-cols-[1fr,1fr]">
+          <div className="space-y-4">
+            <p className="section-kicker">Kapcsolat</p>
+            <h2 className="section-title">Gyors egyeztetés, tiszta irány</h2>
+            <p className="section-body">
+              Írj pár mondatot a problémáról vagy az ötletedről. Visszajelzek, hogy mi a reális irány, mennyi idő és milyen
+              lépések kellenek hozzá.
+            </p>
+            <div className="text-sm text-muted">
+              <p>info@promnet.hu</p>
+              <p>+36 20 549 4107</p>
+              <p>4324 Kállósemjén, Kölcsey Ferenc út 11.</p>
+            </div>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-card/70 p-6">
+            <p className="section-kicker">Működés</p>
+            <h3 className="mt-3 text-lg font-semibold text-foreground">Praktikus keretek</h3>
+            <ul className="mt-4 space-y-2 text-sm text-muted">
+              <li>Átlátható scope és mérföldkövek</li>
+              <li>Heti státusz és rövid, technikai összefoglaló</li>
+              <li>Dokumentált átadás és opcionális üzemeltetés</li>
+            </ul>
           </div>
         </div>
       </section>
