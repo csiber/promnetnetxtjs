@@ -51,6 +51,25 @@ const processSteps = [
   "Üzemeltetés",
 ];
 
+const pixelArt = [
+  "0000111111000000",
+  "0001111111110000",
+  "0011110000111000",
+  "0111101111011100",
+  "0111011110111100",
+  "1111011110111110",
+  "1111011110111110",
+  "1111011110111110",
+  "1111011110111110",
+  "0111011110111100",
+  "0111101111011100",
+  "0011110000111000",
+  "0001111111110000",
+  "0000111111000000",
+  "0000001110000000",
+  "0000011111000000",
+];
+
 const quickLinks = [
   {
     href: "/dashboard/case-studies/creatify",
@@ -61,7 +80,8 @@ const quickLinks = [
   {
     href: "https://blogocska.hu",
     title: "Technikai blog magyarul",
-    description: "Jegyzetek, technikai leírások és rövid összefoglalók fejlesztőknek.",
+    description:
+      "Jegyzetek, technikai leírások és rövid összefoglalók fejlesztőknek.",
     external: true,
   },
 ];
@@ -91,7 +111,8 @@ function Homepage() {
         if (cancelled) return;
         setBlogStatus({
           state: "error",
-          message: "Nem sikerült betölteni a cikkeket. Látogasd meg közvetlenül a blogot!",
+          message:
+            "Nem sikerült betölteni a cikkeket. Látogasd meg közvetlenül a blogot!",
         });
       }
     };
@@ -114,7 +135,9 @@ function Homepage() {
     if (selectedCategory === "Összes") {
       return blogPosts;
     }
-    return blogPosts.filter((post) => (post.categories ?? []).includes(selectedCategory));
+    return blogPosts.filter((post) =>
+      (post.categories ?? []).includes(selectedCategory),
+    );
   }, [blogPosts, selectedCategory]);
 
   const references = useMemo(() => {
@@ -137,10 +160,18 @@ function Homepage() {
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 pt-8 text-sm text-muted">
         <span className="font-semibold text-foreground">PromNET</span>
         <nav className="flex flex-wrap gap-4">
-          <Link href="#szolgaltatasok" className="hover:text-foreground">Szolgáltatások</Link>
-          <Link href="#miert-promnet" className="hover:text-foreground">Miért PromNET</Link>
-          <Link href="#referenciak" className="hover:text-foreground">Referenciák</Link>
-          <Link href="#kapcsolat" className="hover:text-foreground">Kapcsolat</Link>
+          <Link href="#szolgaltatasok" className="hover:text-foreground">
+            Szolgáltatások
+          </Link>
+          <Link href="#miert-promnet" className="hover:text-foreground">
+            Miért PromNET
+          </Link>
+          <Link href="#referenciak" className="hover:text-foreground">
+            Referenciák
+          </Link>
+          <Link href="#kapcsolat" className="hover:text-foreground">
+            Kapcsolat
+          </Link>
         </nav>
       </header>
 
@@ -153,13 +184,16 @@ function Homepage() {
             </h1>
             <p className="section-body max-w-xl">{heroText.description}</p>
             <p className="section-body max-w-xl">
-              A cél egyszerű: stabil backend, tiszta üzemeltetés, és olyan integrációk, amik nem borulnak meg egy
-              növekedési hullámtól. Ha a frontend kell, akkor is a backendhez igazítva dolgozom.
+              A cél egyszerű: stabil backend, tiszta üzemeltetés, és olyan
+              integrációk, amik nem borulnak meg egy növekedési hullámtól. Ha a
+              frontend kell, akkor is a backendhez igazítva dolgozom.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
                 href="mailto:info@promnet.hu"
-                onClick={() => trackCtaClick("projekt-inditas", { location: "hero" })}
+                onClick={() =>
+                  trackCtaClick("projekt-inditas", { location: "hero" })
+                }
                 className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition hover:-translate-y-0.5"
               >
                 Projekt indítása
@@ -175,8 +209,29 @@ function Homepage() {
           <div className="hero-visual">
             <div className="hero-grid" />
             <div className="hero-glow" style={{ top: "20%", left: "15%" }} />
-            <div className="hero-glow" style={{ bottom: "-10%", right: "10%" }} />
-            <div className="absolute inset-0 flex items-end p-6 text-sm text-muted">
+            <div
+              className="hero-glow"
+              style={{ bottom: "-10%", right: "10%" }}
+            />
+            <div className="absolute inset-0 flex flex-col items-end justify-between p-6 text-sm text-muted">
+              <div className="pixel-console">
+                <div className="pixel-titlebar">
+                  <span className="pixel-dot" />
+                  <span className="pixel-dot" />
+                  <span className="pixel-dot" />
+                  <span>PROMNET console</span>
+                </div>
+                <div className="pixel-grid" aria-hidden="true">
+                  {pixelArt.flatMap((row, rowIndex) =>
+                    row.split("").map((cell, colIndex) => (
+                      <span
+                        key={`${rowIndex}-${colIndex}`}
+                        className={`pixel${cell === "1" ? " pixel-on" : ""}`}
+                      />
+                    ))
+                  )}
+                </div>
+              </div>
               <span>infra / api / observability</span>
             </div>
           </div>
@@ -187,17 +242,22 @@ function Homepage() {
         <div className="space-y-8">
           <div>
             <p className="section-kicker">Szolgáltatások</p>
-            <h2 className="section-title mt-3">Fókuszált technológiai szolgáltatások</h2>
+            <h2 className="section-title mt-3">
+              Fókuszált technológiai szolgáltatások
+            </h2>
             <p className="section-body mt-3 max-w-2xl">
-              Nincs túlmagyarázás: ha backend, integráció vagy DevOps kell, itt van három tiszta irány. A scope-ot közösen
-              pontosítjuk, és az alapján dolgozom.
+              Nincs túlmagyarázás: ha backend, integráció vagy DevOps kell, itt
+              van három tiszta irány. A scope-ot közösen pontosítjuk, és az
+              alapján dolgozom.
             </p>
           </div>
           <div className="grid gap-10 lg:grid-cols-3">
             {services.map((service) => (
               <div key={service.title} className="space-y-3">
                 <div className="text-accent">{service.icon}</div>
-                <h3 className="text-lg font-semibold text-foreground">{service.title}</h3>
+                <h3 className="text-lg font-semibold text-foreground">
+                  {service.title}
+                </h3>
                 <p className="section-body">{service.description}</p>
               </div>
             ))}
@@ -211,8 +271,9 @@ function Homepage() {
             <p className="section-kicker">Stúdió</p>
             <h2 className="section-title">Komoly mérnöki fókusz, kis csapat</h2>
             <p className="section-body">
-              A PromNET nem ügynökség. Mérnöki fókuszú stúdióként dolgozom: átlátható scope, stabil üzemeltetés és
-              hosszú távon fenntartható rendszerek. A cél nem a gyors látvány, hanem a működés.
+              A PromNET nem ügynökség. Mérnöki fókuszú stúdióként dolgozom:
+              átlátható scope, stabil üzemeltetés és hosszú távon fenntartható
+              rendszerek. A cél nem a gyors látvány, hanem a működés.
             </p>
             <ul className="space-y-3 text-base text-muted">
               <li className="flex items-start gap-3">
@@ -225,15 +286,20 @@ function Homepage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
-                <span>Üzemeltetés: monitorozás, incident kezelés, optimalizálás</span>
+                <span>
+                  Üzemeltetés: monitorozás, incident kezelés, optimalizálás
+                </span>
               </li>
             </ul>
           </div>
           <div className="rounded-xl border border-white/10 bg-card/70 p-6">
             <p className="section-kicker">Technológiai fókusz</p>
-            <h3 className="mt-3 text-lg font-semibold text-foreground">Gyakran használt stack</h3>
+            <h3 className="mt-3 text-lg font-semibold text-foreground">
+              Gyakran használt stack
+            </h3>
             <p className="mt-2 text-sm text-muted">
-              Nem vendor listát írok, hanem eszközöket választok a problémához. Ezekkel dolgozom a legtöbbet.
+              Nem vendor listát írok, hanem eszközöket választok a problémához.
+              Ezekkel dolgozom a legtöbbet.
             </p>
             <div className="mt-4 grid gap-2 text-sm text-muted">
               <span>Node.js / TypeScript</span>
@@ -252,8 +318,9 @@ function Homepage() {
             <p className="section-kicker">Miért PromNET</p>
             <h2 className="section-title mt-3">Senior backend/infra fókusz</h2>
             <p className="section-body">
-              A cél nem a látvány, hanem a működés. Produkciós rendszerekben gondolkodom, ahol a stabilitás, a
-              átláthatóság és a terhelhetőség számít.
+              A cél nem a látvány, hanem a működés. Produkciós rendszerekben
+              gondolkodom, ahol a stabilitás, a átláthatóság és a terhelhetőség
+              számít.
             </p>
             <ul className="space-y-3 text-base text-muted">
               {trustPoints.map((point) => (
@@ -274,14 +341,17 @@ function Homepage() {
                 className="h-20 w-20 rounded-full object-cover"
               />
               <div>
-                <h3 className="text-lg font-semibold text-foreground">Polyák Csaba</h3>
+                <h3 className="text-lg font-semibold text-foreground">
+                  Polyák Csaba
+                </h3>
                 <p className="text-sm text-muted">Backend / infra mérnök</p>
               </div>
             </div>
             <p className="mt-4 text-sm text-muted">
-              Évek óta backend rendszerek, integrációk és infrastruktúra tervezése a fókuszom. A célom egyszerű: stabil,
-              átlátható rendszerek, amik skálázhatóak és fenntarthatóak. A mellékágak (3D, szerviz) nem írják felül ezt a
-              fókuszt.
+              Évek óta backend rendszerek, integrációk és infrastruktúra
+              tervezése a fókuszom. A célom egyszerű: stabil, átlátható
+              rendszerek, amik skálázhatóak és fenntarthatóak. A mellékágak (3D,
+              szerviz) nem írják felül ezt a fókuszt.
             </p>
           </div>
         </div>
@@ -291,9 +361,12 @@ function Homepage() {
         <div className="space-y-8">
           <div>
             <p className="section-kicker">Referenciák</p>
-            <h2 className="section-title mt-3">Weboldal és rendszer referenciák</h2>
+            <h2 className="section-title mt-3">
+              Weboldal és rendszer referenciák
+            </h2>
             <p className="section-body mt-3 max-w-2xl">
-              Az összes jelenlegi referencia itt van listázva. Ha valami archív, azt is jelzem, hogy tiszta legyen a kép.
+              Az összes jelenlegi referencia itt van listázva. Ha valami archív,
+              azt is jelzem, hogy tiszta legyen a kép.
             </p>
           </div>
           <div className="space-y-6">
@@ -302,14 +375,18 @@ function Homepage() {
                 <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                      <h3 className="text-lg font-semibold text-foreground">{project.name}</h3>
+                      <h3 className="text-lg font-semibold text-foreground">
+                        {project.name}
+                      </h3>
                       <span className="text-[11px] uppercase tracking-[0.25em] text-muted">
                         {project.status === "live" ? "élő" : "archív"}
                       </span>
                     </div>
                     <p className="text-sm text-muted">{project.description}</p>
                     <p className="text-xs uppercase tracking-[0.25em] text-muted">
-                      {project.stack.length > 0 ? project.stack.join(" · ") : "backend / infra"}
+                      {project.stack.length > 0
+                        ? project.stack.join(" · ")
+                        : "backend / infra"}
                     </p>
                   </div>
                   <Link
@@ -333,8 +410,9 @@ function Homepage() {
             <p className="section-kicker">Folyamat</p>
             <h2 className="section-title mt-3">Egyenes, mérhető lépések</h2>
             <p className="section-body mt-3 max-w-2xl">
-              Rövid egyeztetés, tiszta architektúra, kontrollált fejlesztés, stabil üzemeltetés. Itt nincsenek meglepetések,
-              csak átlátható lépések.
+              Rövid egyeztetés, tiszta architektúra, kontrollált fejlesztés,
+              stabil üzemeltetés. Itt nincsenek meglepetések, csak átlátható
+              lépések.
             </p>
           </div>
           <div className="grid gap-6 lg:grid-cols-4">
@@ -343,7 +421,9 @@ function Homepage() {
                 <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-card/60 text-sm font-semibold text-foreground">
                   0{index + 1}
                 </span>
-                <span className="text-sm font-semibold text-foreground">{step}</span>
+                <span className="text-sm font-semibold text-foreground">
+                  {step}
+                </span>
               </div>
             ))}
           </div>
@@ -354,20 +434,30 @@ function Homepage() {
         <div className="grid gap-10 lg:grid-cols-[1fr,1fr]">
           <div className="space-y-6">
             <p className="section-kicker">Kiemelt tartalom</p>
-            <h2 className="section-title">Hasznos anyagok és rövid összefoglalók</h2>
+            <h2 className="section-title">
+              Hasznos anyagok és rövid összefoglalók
+            </h2>
             <p className="section-body">
-              Rövid anyagok, amik segítenek megérteni a szemléletemet és a technikai döntéseket. Nem marketing, hanem
-              tényleges tapasztalatokból épített jegyzetek.
+              Rövid anyagok, amik segítenek megérteni a szemléletemet és a
+              technikai döntéseket. Nem marketing, hanem tényleges
+              tapasztalatokból épített jegyzetek.
             </p>
             <div className="space-y-4">
               {quickLinks.map((linkItem) => (
-                <div key={linkItem.title} className="border-b border-white/10 pb-4">
-                  <h3 className="text-base font-semibold text-foreground">{linkItem.title}</h3>
+                <div
+                  key={linkItem.title}
+                  className="border-b border-white/10 pb-4"
+                >
+                  <h3 className="text-base font-semibold text-foreground">
+                    {linkItem.title}
+                  </h3>
                   <p className="text-sm text-muted">{linkItem.description}</p>
                   <Link
                     href={linkItem.href}
                     className="mt-2 inline-flex text-sm font-semibold text-accent"
-                    {...(linkItem.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    {...(linkItem.external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
                   >
                     Megnyitás
                   </Link>
@@ -378,7 +468,10 @@ function Homepage() {
           <div>
             <p className="section-kicker">Friss cikkek</p>
             <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-muted">
-              <label htmlFor="blog-category" className="text-[11px] uppercase tracking-[0.2em] text-muted">
+              <label
+                htmlFor="blog-category"
+                className="text-[11px] uppercase tracking-[0.2em] text-muted"
+              >
                 Szűrés
               </label>
               <select
@@ -394,25 +487,41 @@ function Homepage() {
                 ))}
               </select>
             </div>
-            {blogStatus.state === "loading" ? <p className="mt-4 text-sm text-muted">{blogStatus.message}</p> : null}
+            {blogStatus.state === "loading" ? (
+              <p className="mt-4 text-sm text-muted">{blogStatus.message}</p>
+            ) : null}
             {blogStatus.state === "error" ? (
               <div className="mt-4 rounded-xl border border-accent/40 bg-accent/10 p-4 text-sm text-accent">
                 {blogStatus.message}{" "}
-                <Link href="https://blogocska.hu" className="underline" target="_blank" rel="noopener noreferrer">
+                <Link
+                  href="https://blogocska.hu"
+                  className="underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   blogocska.hu
                 </Link>
               </div>
             ) : null}
             <div className="mt-4 space-y-4">
               {filteredPosts.slice(0, 5).map((post) => (
-                <article key={post.link} className="border-b border-white/10 pb-4">
+                <article
+                  key={post.link}
+                  className="border-b border-white/10 pb-4"
+                >
                   <p className="text-[11px] uppercase tracking-[0.3em] text-accent">
                     {(post.categories ?? ["Blog"])[0]}
                   </p>
-                  <h3 className="mt-1 text-base font-semibold text-foreground">{post.title}</h3>
-                  <p className="mt-1 text-sm text-muted line-clamp-3">{post.description}</p>
+                  <h3 className="mt-1 text-base font-semibold text-foreground">
+                    {post.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted line-clamp-3">
+                    {post.description}
+                  </p>
                   <div className="mt-2 flex items-center justify-between text-xs text-muted">
-                    <time dateTime={post.publishedAt}>{post.publishedRelative}</time>
+                    <time dateTime={post.publishedAt}>
+                      {post.publishedRelative}
+                    </time>
                     <Link
                       href={post.link}
                       target="_blank"
@@ -426,7 +535,8 @@ function Homepage() {
               ))}
               {filteredPosts.length === 0 && blogStatus.state === "ready" ? (
                 <p className="text-sm text-muted">
-                  Ebben a kategóriában még nincs publikált bejegyzés. Nézz körül később, vagy válassz másik címkét.
+                  Ebben a kategóriában még nincs publikált bejegyzés. Nézz körül
+                  később, vagy válassz másik címkét.
                 </p>
               ) : null}
             </div>
@@ -440,8 +550,9 @@ function Homepage() {
             <p className="section-kicker">Kapcsolat</p>
             <h2 className="section-title">Gyors egyeztetés, tiszta irány</h2>
             <p className="section-body">
-              Írj pár mondatot a problémáról vagy az ötletedről. Visszajelzek, hogy mi a reális irány, mennyi idő és milyen
-              lépések kellenek hozzá.
+              Írj pár mondatot a problémáról vagy az ötletedről. Visszajelzek,
+              hogy mi a reális irány, mennyi idő és milyen lépések kellenek
+              hozzá.
             </p>
             <div className="text-sm text-muted">
               <p>info@promnet.hu</p>
@@ -451,7 +562,9 @@ function Homepage() {
           </div>
           <div className="rounded-xl border border-white/10 bg-card/70 p-6">
             <p className="section-kicker">Működés</p>
-            <h3 className="mt-3 text-lg font-semibold text-foreground">Praktikus keretek</h3>
+            <h3 className="mt-3 text-lg font-semibold text-foreground">
+              Praktikus keretek
+            </h3>
             <ul className="mt-4 space-y-2 text-sm text-muted">
               <li>Átlátható scope és mérföldkövek</li>
               <li>Heti státusz és rövid, technikai összefoglaló</li>
@@ -468,7 +581,8 @@ function Homepage() {
             Van egy rendszerötleted vagy meglévő backend problémád?
           </h2>
           <p className="mt-3 text-sm text-muted">
-            Írj pár mondatot a helyzetről, és visszajelzek a lehetséges irányokról.
+            Írj pár mondatot a helyzetről, és visszajelzek a lehetséges
+            irányokról.
           </p>
           <Link
             href="mailto:info@promnet.hu"

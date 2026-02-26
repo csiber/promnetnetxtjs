@@ -241,6 +241,40 @@
     background: radial-gradient(circle, rgba(56, 189, 248, 0.45), transparent 70%);
     filter: blur(12px);
   }
+
+  .pixel-console {
+    @apply relative rounded-xl border border-white/15 bg-card/80;
+    padding: 16px;
+    box-shadow: 0 20px 60px -40px rgba(56, 189, 248, 0.45);
+  }
+
+  .pixel-titlebar {
+    @apply mb-4 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted;
+  }
+
+  .pixel-dot {
+    @apply h-2.5 w-2.5 rounded-full border border-white/20 bg-white/10;
+  }
+
+  .pixel-grid {
+    display: grid;
+    grid-template-columns: repeat(16, 8px);
+    grid-auto-rows: 8px;
+    gap: 2px;
+    justify-content: center;
+  }
+
+  .pixel {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: rgba(56, 189, 248, 0.15);
+  }
+
+  .pixel-on {
+    background: rgba(56, 189, 248, 0.9);
+    box-shadow: 0 0 6px rgba(56, 189, 248, 0.6);
+  }
 }
 
 .cyber-grid {
