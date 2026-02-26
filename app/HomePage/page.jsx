@@ -213,25 +213,7 @@ function Homepage() {
               className="hero-glow"
               style={{ bottom: "-10%", right: "10%" }}
             />
-            <div className="absolute inset-0 flex flex-col items-end justify-between p-6 text-sm text-muted">
-              <div className="pixel-console">
-                <div className="pixel-titlebar">
-                  <span className="pixel-dot" />
-                  <span className="pixel-dot" />
-                  <span className="pixel-dot" />
-                  <span>PROMNET console</span>
-                </div>
-                <div className="pixel-grid" aria-hidden="true">
-                  {pixelArt.flatMap((row, rowIndex) =>
-                    row.split("").map((cell, colIndex) => (
-                      <span
-                        key={`${rowIndex}-${colIndex}`}
-                        className={`pixel${cell === "1" ? " pixel-on" : ""}`}
-                      />
-                    ))
-                  )}
-                </div>
-              </div>
+            <div className="absolute inset-0 flex items-end p-6 text-sm text-muted">
               <span>infra / api / observability</span>
             </div>
           </div>
