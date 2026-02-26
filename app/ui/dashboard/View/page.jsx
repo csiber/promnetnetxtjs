@@ -1,10 +1,9 @@
 "use client";
-import React from "react";
 import { PiGithubLogoLight } from "react-icons/pi";
-import { SiCss3, SiFramer } from "react-icons/si";
+import { SiFramer } from "react-icons/si";
 
 import TestimonialTooltip from "@/app/TestimonialTooltip/page";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { SiLinux } from "react-icons/si";
 
@@ -22,7 +21,7 @@ function page() {
           stiffness: 200,
         },
       }}
-      className="lg:block w-ful lg:w-fit hidden  max-xl:hidden "
+      className="lg:block w-full lg:w-fit hidden  max-xl:hidden "
     >
       <div className=" md:w-60 w-full rounded-2xl h-fit sticky top-5 ">
         <div>

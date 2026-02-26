@@ -56,7 +56,7 @@ function TestimonialTooltip() {
 
   return (
     <div className="flex flex-row items-center gap-x-9 cursor-pointer">
-      {people.map((testimonial, idx) => (
+      {people.map((testimonial) => (
         <div
           className="-mr-4  relative group"
           key={testimonial.name}
