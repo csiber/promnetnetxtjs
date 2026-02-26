@@ -18,8 +18,8 @@ import InfoCard from "@/components/ui/InfoCard";
 const heroText = {
   title: (
     <>
-      Üdvözöllek a <span className="text-sm font-RubikMedium text-neutral-200">PromNET</span>{" "}
-      <span className="text-sm font-Rubik text-neutral-200">stúdióban!</span>
+      Üdvözöllek a <span className="text-sm font-RubikMedium text-accent">PromNET</span>{" "}
+      <span className="text-sm font-Rubik text-accent">stúdióban!</span>
     </>
   ),
   description: (
@@ -84,19 +84,19 @@ const collaborationSteps = [
     title: "Felmérés és irány",
     description:
       "Közösen meghatározzuk a briefet, a kreatív irányt, a terjedelmet és az ütemezést a játék, animáció vagy 3D projektben.",
-    icon: <PiMegaphoneThin aria-hidden="true" className="h-6 w-6 text-sky-200" />,
+    icon: <PiMegaphoneThin aria-hidden="true" className="h-6 w-6 text-cyan-200" />,
   },
   {
     title: "Gyártás és iteráció",
     description:
       "Modellezés, textúrázás, animáció és interaktív prototípusok, átlátható review körökkel és frissítésekkel.",
-    icon: <PiCodeThin aria-hidden="true" className="h-6 w-6 text-emerald-200" />,
+    icon: <PiCodeThin aria-hidden="true" className="h-6 w-6 text-blue-200" />,
   },
   {
     title: "Átadás és támogatás",
     description:
       "Végső render, assetek vagy nyomtatásra kész fájlok dokumentált átadással és opcionális támogatással.",
-    icon: <PiCloudThin aria-hidden="true" className="h-6 w-6 text-amber-200" />,
+    icon: <PiCloudThin aria-hidden="true" className="h-6 w-6 text-sky-200" />,
   },
 ];
 
@@ -170,13 +170,6 @@ function Homepage() {
       }
     : {};
 
-  const pulseMotion = enableMotion
-    ? {
-        animate: { scale: [1, 1.08, 1], opacity: [0.5, 0.9, 0.5] },
-        transition: { duration: 8, ease: "easeInOut", repeat: Infinity },
-      }
-    : {};
-
   const highlightedProjects = useMemo(() => {
     return portfolioProjects
       .filter((project) => project.status === "live")
@@ -203,31 +196,27 @@ function Homepage() {
   return (
     <motion.section
       {...heroSectionMotion}
-      className="relative w-full overflow-hidden rounded-[3rem]"
+      className="neo-shell"
     >
-      <div className="absolute inset-0 -z-20 bg-gradient-to-b from-[#10051c] via-neutral-950 to-black" />
-      <motion.div
-        className="absolute -left-24 top-1/3 -z-10 h-64 w-64 rounded-full bg-violet-700/40 blur-3xl"
-        {...pulseMotion}
-      />
-      <motion.div
-        className="absolute -right-16 top-10 -z-10 h-72 w-72 rounded-full bg-fuchsia-700/40 blur-3xl"
-        {...pulseMotion}
-      />
-      <motion.div
-        className="absolute bottom-10 left-1/2 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-600/40 blur-3xl"
-        {...pulseMotion}
-      />
-      <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-14 rounded-[2.75rem] border border-white/5 bg-white/5 p-6 shadow-[0_0_100px_-20px_rgba(168,85,247,0.45)] backdrop-blur-2xl lg:p-12">
+      <div className="neo-titlebar">
+        <div className="neo-dots">
+          <span className="neo-dot" />
+          <span className="neo-dot" />
+          <span className="neo-dot" />
+        </div>
+        <span>PromNET Desktop</span>
+        <span className="text-[10px] text-muted">auto day/night</span>
+      </div>
+      <div className="relative flex w-full flex-col gap-12 p-6 lg:p-12">
         <div className="grid gap-10 lg:grid-cols-[auto,1fr] lg:items-center">
           <motion.div
-            className="relative flex h-24 w-24 items-center justify-center rounded-3xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-xl shadow-violet-500/40 lg:h-32 lg:w-32"
+            className="relative flex h-24 w-24 items-center justify-center rounded-3xl bg-gradient-to-br from-cyan-400/90 to-blue-600 text-white shadow-xl shadow-cyan-500/30 lg:h-32 lg:w-32"
             whileHover={enableMotion ? { rotate: 8, scale: 1.05 } : undefined}
             {...floatingBadgeMotion}
           >
             <PiCodeThin className="text-6xl" />
             <motion.span
-              className="absolute -bottom-4 right-0 rounded-full bg-fuchsia-400/30 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-neutral-100"
+              className="absolute -bottom-4 right-0 rounded-full border border-cyan-200/40 bg-cyan-400/20 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-white"
               initial={enableMotion ? { opacity: 0, y: 10 } : false}
               animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
               transition={enableMotion ? { delay: 0.6, duration: 0.6 } : undefined}
@@ -235,11 +224,11 @@ function Homepage() {
               kreativitás
             </motion.span>
           </motion.div>
-          <div className="space-y-6 text-neutral-100">
+          <div className="space-y-6 text-foreground">
             <h1 className="text-lg font-Rubik tracking-tight lg:text-2xl">{heroText.title}</h1>
-            <p className="text-sm leading-relaxed text-neutral-300 lg:text-base">{heroText.description}</p>
+            <p className="text-sm leading-relaxed text-muted lg:text-base">{heroText.description}</p>
             <motion.div
-              className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.4em] text-neutral-400"
+              className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.4em] text-muted"
               initial={enableMotion ? "hidden" : false}
               animate={enableMotion ? "visible" : undefined}
               variants={
@@ -258,7 +247,7 @@ function Homepage() {
               {["full stack", "design", "hosting"].map((badge) => (
                 <motion.span
                   key={badge}
-                  className="rounded-full border border-white/10 px-4 py-2 backdrop-blur-lg"
+                  className="neo-tag"
                   variants={
                     enableMotion
                       ? { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } }
@@ -273,22 +262,22 @@ function Homepage() {
         </div>
 
         <motion.div
-          className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-neutral-950/80 shadow-[0_60px_120px_-50px_rgba(99,102,241,0.55)]"
+          className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-card/70 shadow-[0_60px_120px_-55px_rgba(14,165,233,0.45)]"
           whileHover={enableMotion ? { scale: 1.01 } : undefined}
         >
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(250,204,21,0.35),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.3),transparent_60%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.35),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(37,99,235,0.35),transparent_60%)]"
           />
           <motion.div
-            className="relative flex flex-col gap-8 rounded-[2.5rem] bg-gradient-to-br from-black/70 via-black/40 to-black/60 p-8 text-neutral-100 md:flex-row md:items-center md:justify-between"
+            className="relative flex flex-col gap-8 rounded-[2.5rem] bg-gradient-to-br from-black/40 via-black/20 to-black/40 p-8 text-foreground md:flex-row md:items-center md:justify-between"
             initial={enableMotion ? { opacity: 0, y: 24 } : false}
             animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
             transition={enableMotion ? { delay: 0.2, duration: 0.6 } : undefined}
           >
             <div className="max-w-3xl space-y-4">
-              <span className="inline-flex items-center gap-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-amber-200">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-200/10 text-amber-200">
+              <span className="inline-flex items-center gap-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-accent">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -306,15 +295,15 @@ function Homepage() {
                 </span>
                 Kérdésed van? Hívj bizalommal!
               </span>
-              <p className="text-base leading-relaxed text-neutral-100 md:text-lg">
+              <p className="text-base leading-relaxed text-foreground md:text-lg">
                 Ha bármilyen kérdésed lenne, hívj vagy írj, és megbeszéljük a részleteket. Mondd el, mit szeretnél elérni, és biztosan találunk rá megoldást!
               </p>
             </div>
-            <div className="flex flex-col gap-3 text-sm text-neutral-200 md:w-auto md:min-w-[240px] md:text-base">
+            <div className="flex flex-col gap-3 text-sm text-foreground md:w-auto md:min-w-[240px] md:text-base">
               <a
                 href="tel:+36205494107"
                 onClick={() => trackCtaClick("telefon", { location: "hero" })}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-amber-300 px-6 py-3 font-semibold text-black shadow-[0_20px_40px_-20px_rgba(250,204,21,0.75)] transition hover:-translate-y-0.5 hover:bg-amber-200"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 font-semibold text-accent-foreground shadow-[0_20px_40px_-20px_rgba(14,165,233,0.65)] transition hover:-translate-y-0.5 hover:bg-sky-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -335,7 +324,7 @@ function Homepage() {
               <a
                 href="mailto:info@promnet.hu"
                 onClick={() => trackCtaClick("email", { location: "hero" })}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 font-semibold text-neutral-100 transition hover:-translate-y-0.5 hover:border-white/40 hover:text-white"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-accent/40 px-6 py-3 font-semibold text-foreground transition hover:-translate-y-0.5 hover:border-accent hover:text-accent"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -357,29 +346,29 @@ function Homepage() {
           </motion.div>
         </motion.div>
 
-        <section className="grid gap-6 rounded-[2.5rem] border border-white/10 bg-neutral-950/70 p-6 shadow-[0_40px_100px_-60px_rgba(59,130,246,0.6)] lg:grid-cols-[1fr,1fr] lg:p-12">
+        <section className="neo-panel grid gap-6 lg:grid-cols-[1fr,1fr]">
           <div className="flex flex-col justify-between gap-4">
             <div className="space-y-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-fuchsia-500/40 bg-fuchsia-500/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-fuchsia-200">
+              <span className="neo-chip">
                 üzleti eredmények
               </span>
-              <h2 className="text-xl font-RubikMedium text-neutral-50 lg:text-2xl">Valós példák, mérhető hatás</h2>
-              <p className="text-sm leading-relaxed text-neutral-300 lg:text-base">
+              <h2 className="text-xl font-RubikMedium text-foreground lg:text-2xl">Valós példák, mérhető hatás</h2>
+              <p className="text-sm leading-relaxed text-muted lg:text-base">
                 A PromNET projekteknél a modern technológiát stratégiai megközelítéssel kombinálom. A cél minden esetben az, hogy a megjelenés mellett a konverzió, az ügyfélelégedettség és az üzemeltetés is javuljon.
               </p>
             </div>
-            <div className="grid grid-cols-3 gap-3 text-center text-xs font-RubikMedium uppercase tracking-[0.2em] text-neutral-300">
+            <div className="grid grid-cols-3 gap-3 text-center text-xs font-RubikMedium uppercase tracking-[0.2em] text-muted">
               {caseStudies[0].metrics.map((metric) => (
                 <div
                   key={metric.label}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-3 py-4 text-neutral-100 shadow-inner"
+                  className="rounded-2xl border border-white/10 bg-card/60 px-3 py-4 text-foreground shadow-inner"
                 >
-                  <span className="block text-lg font-RubikExtraBold text-amber-200">{metric.value}</span>
-                  <span className="text-[10px] text-neutral-400">{metric.label}</span>
+                  <span className="block text-lg font-RubikExtraBold text-accent">{metric.value}</span>
+                  <span className="text-[10px] text-muted">{metric.label}</span>
                 </div>
               ))}
             </div>
-            <p className="text-xs text-neutral-500">
+            <p className="text-xs text-muted">
               *A teljesítménymutatókat minden projekt elején rögzítjük, és átadáskor riportban dokumentáljuk.
             </p>
           </div>
@@ -390,23 +379,23 @@ function Homepage() {
                 initial={enableMotion ? { opacity: 0, y: 16 } : false}
                 animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
                 transition={enableMotion ? { delay: 0.1 * index, duration: 0.5 } : undefined}
-                className="group flex flex-col gap-4 rounded-[2rem] border border-white/10 bg-gradient-to-br from-neutral-900/80 via-neutral-900/40 to-neutral-800/80 p-6 shadow-[0_30px_90px_-40px_rgba(168,85,247,0.4)]"
+                className="group flex flex-col gap-4 rounded-[2rem] border border-white/10 bg-gradient-to-br from-card/80 via-card/60 to-card/80 p-6 shadow-[0_30px_90px_-50px_rgba(14,165,233,0.4)]"
               >
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <h3 className="text-lg font-RubikMedium text-neutral-50">{caseStudy.client}</h3>
-                    <span className="text-xs uppercase tracking-[0.25em] text-neutral-400">{caseStudy.industry}</span>
+                    <h3 className="text-lg font-RubikMedium text-foreground">{caseStudy.client}</h3>
+                    <span className="text-xs uppercase tracking-[0.25em] text-muted">{caseStudy.industry}</span>
                   </div>
-                  <span className="inline-flex items-center justify-center rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-emerald-200">
+                  <span className="inline-flex items-center justify-center rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-accent">
                     siker
                   </span>
                 </div>
-                <p className="text-sm text-neutral-300">{caseStudy.summary}</p>
-                <div className="flex flex-wrap gap-2 text-[11px] text-neutral-400">
+                <p className="text-sm text-muted">{caseStudy.summary}</p>
+                <div className="flex flex-wrap gap-2 text-[11px] text-muted">
                   {caseStudy.metrics.map((metric) => (
                     <span
                       key={`${caseStudy.client}-${metric.label}`}
-                      className="rounded-full border border-white/10 bg-neutral-950/40 px-3 py-1 text-neutral-200"
+                      className="rounded-full border border-white/10 bg-card/60 px-3 py-1 text-foreground"
                     >
                       {metric.label}: {metric.value}
                     </span>
@@ -414,7 +403,7 @@ function Homepage() {
                 </div>
                 <Link
                   href={`/dashboard/case-studies/${caseStudy.slug}`}
-                  className="inline-flex w-fit items-center gap-2 rounded-full border border-fuchsia-400/30 px-4 py-2 text-xs font-RubikMedium text-fuchsia-200 transition hover:-translate-y-0.5 hover:border-fuchsia-200 hover:text-fuchsia-100"
+                  className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/40 px-4 py-2 text-xs font-RubikMedium text-accent transition hover:-translate-y-0.5 hover:border-accent hover:text-accent"
                 >
                   Esettanulmány részletei
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -426,38 +415,38 @@ function Homepage() {
           </div>
         </section>
 
-        <section className="grid gap-6 rounded-[2.5rem] border border-white/10 bg-neutral-950/70 p-6 lg:grid-cols-[320px,1fr] lg:p-12">
+        <section className="neo-panel grid gap-6 lg:grid-cols-[320px,1fr]">
           <div className="flex flex-col gap-4">
-            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-amber-200">
+            <span className="neo-chip">
               portfólió frissítés
             </span>
-            <h2 className="text-xl font-RubikMedium text-neutral-50 lg:text-2xl">
+            <h2 className="text-xl font-RubikMedium text-foreground lg:text-2xl">
               Legfrissebb, élő webes projektek
             </h2>
-            <p className="text-sm leading-relaxed text-neutral-300 lg:text-base">
+            <p className="text-sm leading-relaxed text-muted lg:text-base">
               Összegyűjtöttem a jelenleg is elérhető munkáimat egy modern, gyorsan áttekinthető listába. Nézd meg, milyen megoldásokkal segítem a partnereket a digitális térben.
             </p>
-            <div className="grid grid-cols-2 gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-neutral-200">
+            <div className="grid grid-cols-2 gap-3 rounded-2xl border border-white/10 bg-card/60 p-4 text-xs text-muted">
               <div>
-                <span className="block text-[11px] uppercase tracking-[0.3em] text-neutral-500">Összes projekt</span>
-                <span className="text-2xl font-RubikExtraBold text-neutral-50">{projectSummary.total}+</span>
+                <span className="block text-[11px] uppercase tracking-[0.3em] text-muted">Összes projekt</span>
+                <span className="text-2xl font-RubikExtraBold text-foreground">{projectSummary.total}+</span>
               </div>
               <div>
-                <span className="block text-[11px] uppercase tracking-[0.3em] text-neutral-500">Aktív</span>
-                <span className="text-2xl font-RubikExtraBold text-emerald-200">{projectSummary.live}</span>
+                <span className="block text-[11px] uppercase tracking-[0.3em] text-muted">Aktív</span>
+                <span className="text-2xl font-RubikExtraBold text-accent">{projectSummary.live}</span>
               </div>
               <div>
-                <span className="block text-[11px] uppercase tracking-[0.3em] text-neutral-500">Archív</span>
-                <span className="text-2xl font-RubikExtraBold text-rose-200">{projectSummary.archived}</span>
+                <span className="block text-[11px] uppercase tracking-[0.3em] text-muted">Archív</span>
+                <span className="text-2xl font-RubikExtraBold text-foreground">{projectSummary.archived}</span>
               </div>
               <div>
-                <span className="block text-[11px] uppercase tracking-[0.3em] text-neutral-500">Kategóriák</span>
-                <span className="text-2xl font-RubikExtraBold text-amber-200">{projectSummary.tags}</span>
+                <span className="block text-[11px] uppercase tracking-[0.3em] text-muted">Kategóriák</span>
+                <span className="text-2xl font-RubikExtraBold text-accent">{projectSummary.tags}</span>
               </div>
             </div>
             <Link
               href="/dashboard/portfolio"
-              className="inline-flex w-fit items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-5 py-2 text-xs font-RubikMedium uppercase tracking-[0.25em] text-amber-100 transition hover:-translate-y-0.5 hover:border-amber-200 hover:text-amber-50"
+              className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/50 bg-accent/10 px-5 py-2 text-xs font-RubikMedium uppercase tracking-[0.25em] text-accent transition hover:-translate-y-0.5 hover:border-accent hover:text-accent"
             >
               Teljes portfólió megnyitása
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -472,45 +461,45 @@ function Homepage() {
               return (
                 <motion.article
                   key={project.name}
-                  className="flex h-full flex-col gap-4 rounded-2xl border border-white/10 bg-neutral-900/70 p-5 shadow-[0_30px_80px_-50px_rgba(245,158,11,0.45)] transition hover:-translate-y-1 hover:border-white/30"
+                  className="flex h-full flex-col gap-4 rounded-2xl border border-white/10 bg-card/70 p-5 shadow-[0_30px_80px_-60px_rgba(14,165,233,0.4)] transition hover:-translate-y-1 hover:border-white/30"
                   initial={enableMotion ? { opacity: 0, y: 16 } : false}
                   animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
                   transition={enableMotion ? { delay: 0.05 * index, duration: 0.5 } : undefined}
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex flex-col gap-1">
-                      <span className="text-[11px] uppercase tracking-[0.3em] text-neutral-500">{project.launch}</span>
-                      <h3 className="text-base font-RubikMedium text-neutral-50">{project.name}</h3>
+                      <span className="text-[11px] uppercase tracking-[0.3em] text-muted">{project.launch}</span>
+                      <h3 className="text-base font-RubikMedium text-foreground">{project.name}</h3>
                     </div>
                     <span
                       className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-RubikMedium uppercase tracking-wide ${
                         isLive
-                          ? "border border-emerald-300/60 bg-emerald-500/10 text-emerald-100"
-                          : "border border-rose-300/40 bg-rose-500/10 text-rose-100"
+                          ? "border border-accent/60 bg-accent/10 text-accent"
+                          : "border border-white/20 bg-white/5 text-muted"
                       }`}
                     >
-                      <span className={`h-2 w-2 rounded-full ${isLive ? "bg-emerald-300" : "bg-rose-300"}`} />
+                      <span className={`h-2 w-2 rounded-full ${isLive ? "bg-accent" : "bg-white/50"}`} />
                       {isLive ? "Élő" : "Archív"}
                     </span>
                   </div>
-                  <p className="text-sm leading-relaxed text-neutral-300">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 text-[11px] text-neutral-400">
+                  <p className="text-sm leading-relaxed text-muted">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 text-[11px] text-muted">
                     {project.tags.map((tag) => (
-                      <span key={`${project.name}-${tag}`} className="rounded-full border border-white/10 bg-neutral-950/60 px-2 py-1">
+                      <span key={`${project.name}-${tag}`} className="rounded-full border border-white/10 bg-card/60 px-2 py-1">
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <div className="mt-auto flex items-center justify-between gap-3 text-xs text-neutral-300">
-                    {project.statusNote ? <span className="text-rose-300">{project.statusNote}</span> : <span />}
+                  <div className="mt-auto flex items-center justify-between gap-3 text-xs text-muted">
+                    {project.statusNote ? <span className="text-accent">{project.statusNote}</span> : <span />}
                     <Link
                       href={project.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-RubikMedium transition ${
                         isLive
-                          ? "border border-amber-300/60 text-amber-200 hover:border-amber-200 hover:text-amber-100"
-                          : "border border-white/10 text-neutral-400 hover:border-rose-300/40 hover:text-rose-200"
+                          ? "border border-accent/60 text-accent hover:border-accent hover:text-accent"
+                          : "border border-white/10 text-muted hover:border-accent/40 hover:text-accent"
                       }`}
                     >
                       {isLive ? "Megnyitás" : "Részletek"}
@@ -525,13 +514,13 @@ function Homepage() {
           </div>
         </section>
 
-        <section className="grid gap-6 rounded-[2.5rem] border border-white/10 bg-neutral-900/70 p-6 lg:p-10">
+        <section className="neo-panel-soft grid gap-6">
           <div className="flex flex-col gap-3">
-            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-emerald-200">
+            <span className="neo-chip">
               együttműködés
             </span>
-            <h2 className="text-xl font-RubikMedium text-neutral-50 lg:text-2xl">Így lesz az ötletből kézzelfogható digitális megoldás</h2>
-            <p className="text-sm text-neutral-300 lg:text-base">
+            <h2 className="text-xl font-RubikMedium text-foreground lg:text-2xl">Így lesz az ötletből kézzelfogható digitális megoldás</h2>
+            <p className="text-sm text-muted lg:text-base">
               A folyamat minden lépésénél fókuszban tartjuk az üzleti céljaidat: közösen térképezzük fel a kihívásokat, majd transzparens mérföldkövekkel haladunk a bevezetésig.
             </p>
           </div>
@@ -539,28 +528,28 @@ function Homepage() {
             {collaborationSteps.map((step, index) => (
               <motion.article
                 key={step.title}
-                className="flex h-full flex-col gap-4 rounded-2xl border border-white/10 bg-neutral-950/60 p-6"
+                className="flex h-full flex-col gap-4 rounded-2xl border border-white/10 bg-card/60 p-6"
                 initial={enableMotion ? { opacity: 0, y: 20 } : {}}
                 animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
                 transition={enableMotion ? { delay: 0.1 * index, duration: 0.5 } : undefined}
               >
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-neutral-900/70">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-card/70">
                   {step.icon}
                 </span>
                 <div className="space-y-2">
-                  <h3 className="text-base font-RubikMedium text-neutral-100">{step.title}</h3>
-                  <p className="text-sm text-neutral-300">{step.description}</p>
+                  <h3 className="text-base font-RubikMedium text-foreground">{step.title}</h3>
+                  <p className="text-sm text-muted">{step.description}</p>
                 </div>
               </motion.article>
             ))}
           </div>
-          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-950/60 p-6 text-sm text-neutral-300">
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-card/60 p-6 text-sm text-muted">
             <p className="max-w-2xl">
               Ha szeretnél személyre szabott ajánlatot vagy részletesebb tervet kapni, írj egy rövid bemutatkozást a projektedről, és 24 órán belül válaszolok.
             </p>
             <Link
               href="mailto:info@promnet.hu"
-              className="inline-flex items-center gap-2 rounded-full border border-emerald-300/60 bg-emerald-500/10 px-4 py-2 text-sm font-RubikMedium text-emerald-100 transition hover:border-emerald-200 hover:text-emerald-50"
+              className="inline-flex items-center gap-2 rounded-full border border-accent/60 bg-accent/10 px-4 py-2 text-sm font-RubikMedium text-accent transition hover:border-accent hover:text-accent"
               onClick={() => trackCtaClick("kapcsolat-email", { location: "homepage-collaboration" })}
             >
               Kapcsolatfelvétel
@@ -571,7 +560,7 @@ function Homepage() {
           </div>
         </section>
 
-        <section className="space-y-6 rounded-[2.5rem] border border-border/70 bg-card/40 p-6 shadow-soft lg:p-10">
+        <section className="neo-panel-soft space-y-6 shadow-soft">
           <div className="space-y-3">
             <span className="promnet-badge">kiemelt tartalom</span>
             <h2 className="text-xl font-semibold text-foreground lg:text-2xl">
@@ -596,21 +585,21 @@ function Homepage() {
           </div>
         </section>
 
-        <section className="grid gap-6 rounded-[2.5rem] border border-white/10 bg-neutral-900/70 p-6 lg:p-10">
+        <section className="neo-panel-soft grid gap-6">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
-              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-sky-200">
+              <span className="neo-chip">
                 friss cikkek
               </span>
-              <h2 className="mt-3 text-xl font-RubikMedium text-neutral-50 lg:text-2xl">Legújabb bejegyzések a blogról</h2>
+              <h2 className="mt-3 text-xl font-RubikMedium text-foreground lg:text-2xl">Legújabb bejegyzések a blogról</h2>
             </div>
-            <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-300">
-              <label htmlFor="blog-category" className="text-[11px] uppercase tracking-[0.2em] text-neutral-500">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
+              <label htmlFor="blog-category" className="text-[11px] uppercase tracking-[0.2em] text-muted">
                 Szűrés
               </label>
               <select
                 id="blog-category"
-                className="rounded-full border border-white/10 bg-neutral-950/70 px-3 py-2 text-xs text-neutral-100"
+                className="rounded-full border border-white/10 bg-card/70 px-3 py-2 text-xs text-foreground"
                 value={selectedCategory}
                 onChange={(event) => setSelectedCategory(event.target.value)}
               >
@@ -623,10 +612,10 @@ function Homepage() {
             </div>
           </div>
           {blogStatus.state === "loading" ? (
-            <p className="text-sm text-neutral-400">{blogStatus.message}</p>
+            <p className="text-sm text-muted">{blogStatus.message}</p>
           ) : null}
           {blogStatus.state === "error" ? (
-            <div className="rounded-2xl border border-rose-500/40 bg-rose-500/10 p-4 text-sm text-rose-200">
+            <div className="rounded-2xl border border-accent/40 bg-accent/10 p-4 text-sm text-accent">
               {blogStatus.message}{" "}
               <Link href="https://blogocska.hu" className="underline" target="_blank" rel="noopener noreferrer">
                 blogocska.hu
@@ -637,20 +626,20 @@ function Homepage() {
             {filteredPosts.slice(0, 3).map((post) => (
               <article
                 key={post.link}
-                className="flex h-full flex-col gap-3 rounded-2xl border border-white/10 bg-neutral-950/60 p-5 text-neutral-100"
+                className="flex h-full flex-col gap-3 rounded-2xl border border-white/10 bg-card/60 p-5 text-foreground"
               >
-                <span className="text-[11px] uppercase tracking-[0.3em] text-sky-200">
+                <span className="text-[11px] uppercase tracking-[0.3em] text-accent">
                   {(post.categories ?? ["Blog"])[0]}
                 </span>
-                <h3 className="text-base font-RubikMedium text-neutral-50">{post.title}</h3>
-                <p className="text-sm text-neutral-400 line-clamp-4">{post.description}</p>
-                <div className="mt-auto flex items-center justify-between text-xs text-neutral-500">
+                <h3 className="text-base font-RubikMedium text-foreground">{post.title}</h3>
+                <p className="text-sm text-muted line-clamp-4">{post.description}</p>
+                <div className="mt-auto flex items-center justify-between text-xs text-muted">
                   <time dateTime={post.publishedAt}>{post.publishedRelative}</time>
                   <Link
                     href={post.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-sky-200 transition hover:text-sky-100"
+                    className="inline-flex items-center gap-1 text-accent transition hover:text-accent"
                   >
                     Elolvasom
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -661,14 +650,14 @@ function Homepage() {
               </article>
             ))}
             {filteredPosts.length === 0 && blogStatus.state === "ready" ? (
-              <p className="text-sm text-neutral-400">
+              <p className="text-sm text-muted">
                 Ebben a kategóriában még nincs publikált bejegyzés. Nézz körül később, vagy válassz másik címkét.
               </p>
             ) : null}
           </div>
         </section>
 
-        <section className="space-y-6 rounded-[2.5rem] border border-border/70 bg-card/50 p-6 shadow-soft lg:p-10">
+        <section className="neo-panel-soft space-y-6 shadow-soft">
           <div className="space-y-3">
             <span className="promnet-badge">szolgáltatások</span>
             <h2 className="text-xl font-semibold text-foreground lg:text-2xl">

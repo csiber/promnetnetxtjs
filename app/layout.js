@@ -5,7 +5,6 @@ import { ConsentProvider } from "@/components/providers/ConsentProvider";
 import AnalyticsGate from "@/components/providers/AnalyticsGate";
 import ConsentBanner from "@/components/consent/ConsentBanner";
 import SiteFooter from "@/components/layout/SiteFooter";
-import Snowfall from "@/components/ui/Snowfall";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { baseUrl, siteMetadata } from "@/lib/seo";
@@ -117,11 +116,10 @@ export default function RootLayout({ children }) {
         <Theming>
           <ConsentProvider>
             <div className="relative flex min-h-screen flex-col overflow-hidden">
-              <div aria-hidden className="winter-backdrop" />
-              <div aria-hidden className="winter-glow winter-glow-top" />
-              <div aria-hidden className="winter-glow winter-glow-bottom" />
-              <div aria-hidden className="winter-noise" />
-              <Snowfall />
+              <div aria-hidden className="cyber-grid" />
+              <div aria-hidden className="cyber-glow cyber-glow-left" />
+              <div aria-hidden className="cyber-glow cyber-glow-right" />
+              <div aria-hidden className="cyber-noise" />
               <div className="relative z-10 flex min-h-screen flex-col">
                 <main className="flex-1">{children}</main>
                 <SiteFooter />

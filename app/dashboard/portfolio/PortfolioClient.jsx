@@ -87,7 +87,7 @@ function PortfolioClient() {
 
   return (
     <motion.div
-      className="text-neutral-50"
+      className="text-foreground"
       initial={{ y: 100, opacity: 0 }}
       animate={{
         y: 0,
@@ -103,16 +103,16 @@ function PortfolioClient() {
       <div className="sticky top-5">
         <div>
           <div className="-mt-6">
-            <div className="bg-neutral-700/25 backdrop-blur-md h-10 w-full rounded-xl flex items-center gap-x-7">
+            <div className="bg-card/60 backdrop-blur-md h-10 w-full rounded-xl flex items-center gap-x-7">
               <Link href={"/dashboard"}>
-                <div className="bg-neutral-700/50 h-8 w-8 rounded-full flex items-center justify-center ml-3">
-                  <div className="bg-neutral-300 rounded-full h-5 w-5 flex items-center justify-center">
+                <div className="bg-card/70 h-8 w-8 rounded-full flex items-center justify-center ml-3">
+                  <div className="bg-accent/30 rounded-full h-5 w-5 flex items-center justify-center">
                     <PiArrowLeftThin className="text-black text-lg" />
                   </div>
                 </div>
               </Link>
               <Link href={"/dashboard"}>
-                <button className="text-xs bg-neutral-700/25 p-1 w-16 h-6 rounded-md">
+                <button className="text-xs bg-card/60 p-1 w-16 h-6 rounded-md">
                   Kezdőlap
                 </button>
               </Link>
@@ -120,7 +120,7 @@ function PortfolioClient() {
           </div>
         </div>
       </div>
-      <div className="mt-9 w-full p-5 border border-neutral-700 rounded-2xl h-full bg-[#1C1C1C]">
+      <div className="mt-9 w-full p-5 border border-white/10 rounded-2xl h-full bg-card/80">
         <motion.h1
           initial={{ x: 100, opacity: 0, filter: "blur(4px)" }}
           animate={{
@@ -140,17 +140,17 @@ function PortfolioClient() {
           Eddigi projekteim
         </motion.h1>
         <div className="flex items-center gap-x-2 justify-center my-4 font-RubikRegular">
-          <p className="bg-[#282828] w-fit text-neutral-300 rounded-md px-2 h-5 flex items-center justify-center text-[10px]">
+          <p className="bg-card/60 w-fit text-muted rounded-md px-2 h-5 flex items-center justify-center text-[10px]">
             Portfolio Weboldalak
           </p>
-          <div className="w-1 h-1 rounded-full bg-neutral-400" />
+          <div className="w-1 h-1 rounded-full bg-accent/50" />
           <span className="text-xs">Frissítve: 2024.11.19.</span>
         </div>
-        <div className="mb-6 grid gap-4 rounded-2xl border border-white/5 bg-neutral-900/60 p-5 md:grid-cols-[1fr_auto]">
-          <div className="grid grid-cols-2 gap-4 text-sm text-neutral-300 md:grid-cols-4">
-            <div className="rounded-xl border border-white/10 bg-neutral-950/60 p-4">
-              <span className="text-xs uppercase tracking-[0.3em] text-neutral-500">Összes projekt</span>
-              <p className="mt-2 text-2xl font-RubikExtraBold text-neutral-50">{projectStats.total}+</p>
+        <div className="mb-6 grid gap-4 rounded-2xl border border-white/5 bg-card/70 p-5 md:grid-cols-[1fr_auto]">
+          <div className="grid grid-cols-2 gap-4 text-sm text-muted md:grid-cols-4">
+            <div className="rounded-xl border border-white/10 bg-card/60 p-4">
+              <span className="text-xs uppercase tracking-[0.3em] text-foreground0">Összes projekt</span>
+              <p className="mt-2 text-2xl font-RubikExtraBold text-foreground">{projectStats.total}+</p>
             </div>
             <div className="rounded-xl border border-white/10 bg-emerald-500/10 p-4">
               <span className="text-xs uppercase tracking-[0.3em] text-emerald-200">Aktív</span>
@@ -165,11 +165,11 @@ function PortfolioClient() {
               <p className="mt-2 text-2xl font-RubikExtraBold text-amber-200">{projectStats.newest}</p>
             </div>
           </div>
-          <div className="flex flex-col items-start gap-3 text-xs text-neutral-400 md:items-end md:text-right">
-            <p className="max-w-xs text-neutral-300">
+          <div className="flex flex-col items-start gap-3 text-xs text-muted md:items-end md:text-right">
+            <p className="max-w-xs text-muted">
               Válaszd ki, milyen projektek érdekelnek: szűrhetsz státusz és kategória szerint, hogy gyorsan megtaláld a releváns referenciát.
             </p>
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-RubikMedium uppercase tracking-[0.3em] text-neutral-200">
+            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 font-RubikMedium uppercase tracking-[0.3em] text-muted">
               Dinamikus szűrés
             </span>
           </div>
@@ -184,7 +184,7 @@ function PortfolioClient() {
                 className={`rounded-full border px-4 py-2 text-xs font-RubikMedium transition ${
                   selectedStatus === filter.value
                     ? "border-emerald-300/60 bg-emerald-500/10 text-emerald-100"
-                    : "border-white/10 bg-transparent text-neutral-300 hover:border-white/30 hover:text-neutral-100"
+                    : "border-white/10 bg-transparent text-muted hover:border-white/30 hover:text-foreground"
                 }`}
               >
                 {filter.label}
@@ -200,7 +200,7 @@ function PortfolioClient() {
                 className={`rounded-full border px-3 py-1.5 text-[11px] font-RubikMedium transition ${
                   selectedTag === tag
                     ? "border-fuchsia-300/60 bg-fuchsia-500/10 text-fuchsia-100"
-                    : "border-white/10 text-neutral-300 hover:border-white/30 hover:text-neutral-100"
+                    : "border-white/10 text-muted hover:border-white/30 hover:text-foreground"
                 }`}
               >
                 {tag}
@@ -222,18 +222,18 @@ function PortfolioClient() {
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.05 * index, duration: 0.5 }}
-                    className="group flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-neutral-900/80 p-6 text-neutral-100 shadow-[0_20px_60px_-30px_rgba(59,130,246,0.35)] transition hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_40px_100px_-50px_rgba(236,72,153,0.45)]"
+                    className="group flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-card/80 p-6 text-foreground shadow-[0_20px_60px_-30px_rgba(59,130,246,0.35)] transition hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_40px_100px_-50px_rgba(236,72,153,0.45)]"
                   >
                     <div className="space-y-4">
                       <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br ${gradient} p-5`}> 
                         <div className="absolute -right-10 top-4 h-32 w-32 rounded-full bg-white/10 blur-3xl transition duration-500 group-hover:scale-110" />
                         <div className="flex items-center justify-between">
-                          <span className="text-xs uppercase tracking-[0.3em] text-neutral-200">{project.launch ?? ""}</span>
-                          <span className="rounded-full border border-white/15 bg-white/10 px-2 py-1 text-[10px] uppercase tracking-[0.25em] text-neutral-100">
+                          <span className="text-xs uppercase tracking-[0.3em] text-muted">{project.launch ?? ""}</span>
+                          <span className="rounded-full border border-white/15 bg-white/10 px-2 py-1 text-[10px] uppercase tracking-[0.25em] text-foreground">
                             {primaryTag}
                           </span>
                         </div>
-                        <p className="mt-4 text-sm font-RubikMedium text-neutral-100">
+                        <p className="mt-4 text-sm font-RubikMedium text-foreground">
                           {project.description}
                         </p>
                       </div>
@@ -241,8 +241,8 @@ function PortfolioClient() {
                         <h3
                           className={`text-lg font-RubikMedium ${
                             project.status === "archived"
-                              ? "text-neutral-300"
-                              : "text-neutral-50"
+                              ? "text-muted"
+                              : "text-foreground"
                           }`}
                         >
                           {project.name}
@@ -254,17 +254,17 @@ function PortfolioClient() {
                           {status.label}
                         </span>
                       </div>
-                      <p className="text-sm text-neutral-300">{project.description}</p>
+                      <p className="text-sm text-muted">{project.description}</p>
                       {project.statusNote ? (
                         <p className="text-xs text-rose-300">{project.statusNote}</p>
                       ) : null}
                     </div>
                     <div className="mt-4 flex items-end justify-between">
-                      <div className="flex flex-wrap gap-2 text-[11px] text-neutral-400">
+                      <div className="flex flex-wrap gap-2 text-[11px] text-muted">
                         {project.tags.map((tag) => (
                           <span
                             key={`${project.name}-${tag}`}
-                            className="rounded-full border border-white/10 bg-neutral-950/40 px-2 py-1"
+                            className="rounded-full border border-white/10 bg-card/50 px-2 py-1"
                           >
                             {tag}
                           </span>
@@ -276,7 +276,7 @@ function PortfolioClient() {
                         rel="noopener noreferrer"
                         className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-RubikMedium transition ${
                           project.status === "archived"
-                            ? "border-white/10 text-neutral-400 hover:border-rose-300/40 hover:text-rose-200"
+                            ? "border-white/10 text-muted hover:border-rose-300/40 hover:text-rose-200"
                             : "border-amber-300/50 text-amber-200 hover:border-amber-200 hover:text-amber-100"
                         }`}
                       >
@@ -297,7 +297,7 @@ function PortfolioClient() {
                 );
               })}
             </div>
-            <p className="mt-6 text-center text-xs text-neutral-500">
+            <p className="mt-6 text-center text-xs text-foreground0">
               *A lista nem teljes. Írj, ha szeretnél további iparági példákat látni!
             </p>
           </div>

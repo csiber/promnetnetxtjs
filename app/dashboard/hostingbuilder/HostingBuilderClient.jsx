@@ -156,7 +156,7 @@ function HostingBuilderClient() {
 
   return (
     <motion.div
-      className="text-neutral-50"
+      className="text-foreground"
       initial={{ y: 100, opacity: 0 }}
       animate={{
         y: 0,
@@ -172,16 +172,16 @@ function HostingBuilderClient() {
       <div className="sticky top-5">
         <div>
           <div className="-mt-6">
-            <div className="bg-neutral-700/25 backdrop-blur-md h-10 w-full rounded-xl flex items-center gap-x-7">
+            <div className="bg-card/60 backdrop-blur-md h-10 w-full rounded-xl flex items-center gap-x-7">
               <Link href={"/dashboard"}>
-                <div className="bg-neutral-700/50 h-8 w-8 rounded-full flex items-center justify-center ml-3">
-                  <div className="bg-neutral-300 rounded-full h-5 w-5 flex items-center justify-center">
+                <div className="bg-card/70 h-8 w-8 rounded-full flex items-center justify-center ml-3">
+                  <div className="bg-accent/30 rounded-full h-5 w-5 flex items-center justify-center">
                     <PiArrowLeftThin className="text-black text-lg" />
                   </div>
                 </div>
               </Link>
               <Link href={"/dashboard"}>
-                <button className="text-xs bg-neutral-700/25 p-1 w-16 h-6 rounded-md">
+                <button className="text-xs bg-card/60 p-1 w-16 h-6 rounded-md">
                   Kezdőlap
                 </button>
               </Link>
@@ -189,7 +189,7 @@ function HostingBuilderClient() {
           </div>
         </div>
       </div>
-      <div className="mt-9 w-full p-5 border border-neutral-700 rounded-2xl h-full bg-[#1C1C1C]">
+      <div className="mt-9 w-full p-5 border border-white/10 rounded-2xl h-full bg-card/80">
         <motion.h1
           initial={{ x: 100, opacity: 0, filter: "blur(4px)" }}
           animate={{
@@ -209,10 +209,10 @@ function HostingBuilderClient() {
           Hoszting épités szolgáltatás
         </motion.h1>
         <div className="flex items-center gap-x-2 justify-center my-4 font-RubikRegular">
-          <p className="bg-[#282828] w-fit text-neutral-300 rounded-md px-2 h-5 flex items-center justify-center text-[10px]">
+          <p className="bg-card/60 w-fit text-muted rounded-md px-2 h-5 flex items-center justify-center text-[10px]">
             Web, Játék, Email, Rádiószerver, VPS, Szerver
           </p>
-          <div className="w-1 h-1 rounded-full bg-neutral-400" />
+          <div className="w-1 h-1 rounded-full bg-accent/50" />
           <span className="text-xs">Frissítve: 2024.07.09.</span>
         </div>
         <section className="relative py-8 md:py-12">
@@ -228,7 +228,7 @@ function HostingBuilderClient() {
                       key={solution.id}
                       type="button"
                       onClick={() => setActiveSolution(solution)}
-                      className={`group flex h-full flex-col gap-4 rounded-2xl border border-white/10 bg-neutral-900/70 p-4 text-left transition ${
+                      className={`group flex h-full flex-col gap-4 rounded-2xl border border-white/10 bg-card/70 p-4 text-left transition ${
                         isActive
                           ? "border-emerald-300/60 shadow-[0_30px_90px_-40px_rgba(52,211,153,0.45)]"
                           : "hover:border-white/30 hover:-translate-y-1"
@@ -242,19 +242,19 @@ function HostingBuilderClient() {
                             <Icon className="h-6 w-6 text-white" />
                           </div>
                           <div>
-                            <h3 className="text-base font-RubikMedium text-neutral-50">{solution.title}</h3>
-                            <p className="text-[11px] uppercase tracking-[0.25em] text-neutral-200">
+                            <h3 className="text-base font-RubikMedium text-foreground">{solution.title}</h3>
+                            <p className="text-[11px] uppercase tracking-[0.25em] text-muted">
                               Specializált infrastruktúra
                             </p>
                           </div>
                         </div>
                       </div>
-                      <p className="text-sm text-neutral-300">{solution.description}</p>
-                      <div className="flex flex-wrap gap-2 text-[11px] text-neutral-400">
+                      <p className="text-sm text-muted">{solution.description}</p>
+                      <div className="flex flex-wrap gap-2 text-[11px] text-muted">
                         {solution.bundles.slice(0, 2).map((bundle) => (
                           <span
                             key={`${solution.id}-${bundle}`}
-                            className="rounded-full border border-white/10 bg-neutral-950/40 px-2 py-1"
+                            className="rounded-full border border-white/10 bg-card/50 px-2 py-1"
                           >
                             {bundle}
                           </span>
@@ -279,38 +279,38 @@ function HostingBuilderClient() {
                   );
                 })}
               </div>
-              <div className="rounded-2xl border border-white/10 bg-neutral-900/70 p-6">
-                <h3 className="text-lg font-RubikMedium text-neutral-50">
+              <div className="rounded-2xl border border-white/10 bg-card/70 p-6">
+                <h3 className="text-lg font-RubikMedium text-foreground">
                   Miért érdemes rám bízni az üzemeltetést?
                 </h3>
                 <div className="mt-4 grid gap-4 md:grid-cols-3">
                   {highlightMetrics.map((metric) => (
                     <div
                       key={metric.label}
-                      className="rounded-xl border border-white/10 bg-neutral-950/60 p-4 text-center"
+                      className="rounded-xl border border-white/10 bg-card/60 p-4 text-center"
                     >
                       <p className="text-2xl font-RubikExtraBold text-emerald-200">{metric.value}</p>
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.25em] text-neutral-400">
+                      <p className="mt-1 text-[11px] uppercase tracking-[0.25em] text-muted">
                         {metric.label}
                       </p>
                     </div>
                   ))}
                 </div>
-                <p className="mt-4 text-xs text-neutral-400">
+                <p className="mt-4 text-xs text-muted">
                   Minden projektet monitorozok, és proaktív riasztásokat állítok be, így még a felhasználók előtt
                   kiderül, ha beavatkozásra van szükség.
                 </p>
               </div>
             </div>
-            <aside className="flex flex-col gap-4 rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-6 text-neutral-50">
+            <aside className="flex flex-col gap-4 rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-6 text-foreground">
               <div>
                 <span className="text-[11px] uppercase tracking-[0.3em] text-emerald-200">Aktív fókusz</span>
-                <h3 className="mt-2 text-xl font-RubikMedium text-neutral-50">{activeSolution.title}</h3>
-                <p className="mt-2 text-sm text-neutral-100">{activeSolution.description}</p>
+                <h3 className="mt-2 text-xl font-RubikMedium text-foreground">{activeSolution.title}</h3>
+                <p className="mt-2 text-sm text-foreground">{activeSolution.description}</p>
               </div>
-              <div className="rounded-xl border border-white/10 bg-neutral-950/40 p-4 text-neutral-100">
+              <div className="rounded-xl border border-white/10 bg-card/50 p-4 text-foreground">
                 <h4 className="text-sm font-RubikMedium">Kulcs jellemzők</h4>
-                <ul className="mt-3 space-y-2 text-sm text-neutral-200">
+                <ul className="mt-3 space-y-2 text-sm text-muted">
                   {activeSolution.specs.map((spec) => (
                     <li key={`${activeSolution.id}-${spec}`} className="flex items-start gap-2">
                       <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-300" />
@@ -319,7 +319,7 @@ function HostingBuilderClient() {
                   ))}
                 </ul>
               </div>
-              <div className="rounded-xl border border-white/10 bg-neutral-950/40 p-4 text-sm text-neutral-200">
+              <div className="rounded-xl border border-white/10 bg-card/50 p-4 text-sm text-muted">
                 <p>
                   <strong>SLA:</strong> {activeSolution.sla}
                 </p>
@@ -332,7 +332,7 @@ function HostingBuilderClient() {
               </div>
               <Link
                 href={activeSolution.href}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-RubikMedium text-neutral-50 transition hover:-translate-y-0.5 hover:border-white/40"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-RubikMedium text-foreground transition hover:-translate-y-0.5 hover:border-white/40"
               >
                 Ajánlat a(z) {activeSolution.title} csomagra
                 <svg
@@ -347,10 +347,10 @@ function HostingBuilderClient() {
               </Link>
             </aside>
           </div>
-          <div className="mt-10 grid gap-6 rounded-2xl border border-white/10 bg-neutral-900/60 p-6 text-neutral-100 lg:grid-cols-[1fr,1fr]">
+          <div className="mt-10 grid gap-6 rounded-2xl border border-white/10 bg-card/70 p-6 text-foreground lg:grid-cols-[1fr,1fr]">
             <div>
-              <h3 className="text-lg font-RubikMedium text-neutral-50">Weboldal + hosting, egy kézből</h3>
-              <p className="mt-2 text-sm text-neutral-300">
+              <h3 className="text-lg font-RubikMedium text-foreground">Weboldal + hosting, egy kézből</h3>
+              <p className="mt-2 text-sm text-muted">
                 Ha a webfejlesztési szolgáltatásomat választod, az infrastruktúra-tervezéstől az üzemeltetésig
                 végigkísérem a projektet. Így nincs kommunikációs szakadék a fejlesztők és az üzemeltetők között.
               </p>
@@ -370,13 +370,13 @@ function HostingBuilderClient() {
                 </svg>
               </Link>
             </div>
-            <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-4 text-sm text-neutral-100">
-              <h4 className="text-base font-RubikMedium text-neutral-50">Audit & migráció</h4>
+            <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-4 text-sm text-foreground">
+              <h4 className="text-base font-RubikMedium text-foreground">Audit & migráció</h4>
               <p className="mt-2">
                 Meglévő rendszeredet is átvizsgálom: terhelési tesztet végzek, feltárom a szűk keresztmetszeteket, és
                 ütemezetten migrálom az új környezetbe downtime nélkül.
               </p>
-              <p className="mt-3 text-xs text-neutral-200">
+              <p className="mt-3 text-xs text-muted">
                 Ajánlatkéréskor kérj auditot, így pontos képet kapsz a jelenlegi infrastruktúrádról és a szükséges
                 fejlesztésekről.
               </p>

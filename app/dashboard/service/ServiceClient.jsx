@@ -155,7 +155,7 @@ function ServiceClient() {
 
   return (
     <motion.div
-      className="text-neutral-50"
+      className="text-foreground"
       initial={{ y: 100, opacity: 0 }}
       animate={{
         y: 0,
@@ -171,16 +171,16 @@ function ServiceClient() {
       <div className="sticky top-5">
         <div>
           <div className="-mt-6">
-            <div className="bg-neutral-700/25 backdrop-blur-md h-10 w-full rounded-xl flex items-center gap-x-7">
+            <div className="bg-card/60 backdrop-blur-md h-10 w-full rounded-xl flex items-center gap-x-7">
               <Link href={"/dashboard"}>
-                <div className="bg-neutral-700/50 h-8 w-8 rounded-full flex items-center justify-center ml-3">
-                  <div className="bg-neutral-300 rounded-full h-5 w-5 flex items-center justify-center">
+                <div className="bg-card/70 h-8 w-8 rounded-full flex items-center justify-center ml-3">
+                  <div className="bg-accent/30 rounded-full h-5 w-5 flex items-center justify-center">
                     <PiArrowLeftThin className="text-black text-lg" />
                   </div>
                 </div>
               </Link>
               <Link href={"/dashboard"}>
-                <button className="text-xs bg-neutral-700/25 p-1 w-16 h-6 rounded-md">
+                <button className="text-xs bg-card/60 p-1 w-16 h-6 rounded-md">
                   Kezdőlap
                 </button>
               </Link>
@@ -188,7 +188,7 @@ function ServiceClient() {
           </div>
         </div>
       </div>
-      <div className="mt-9 w-full p-5 border border-neutral-700 rounded-2xl h-full bg-[#1C1C1C]">
+      <div className="mt-9 w-full p-5 border border-white/10 rounded-2xl h-full bg-card/80">
         <motion.h1
           initial={{ x: 100, opacity: 0, filter: "blur(4px)" }}
           animate={{
@@ -208,18 +208,18 @@ function ServiceClient() {
           Informatikai szerviz szolgáltatás
         </motion.h1>
         <div className="flex items-center gap-x-2 justify-center my-4 font-RubikRegular">
-          <p className="bg-[#282828] w-fit text-neutral-300 rounded-md px-2 h-5 flex items-center justify-center text-[10px]">
+          <p className="bg-card/60 w-fit text-muted rounded-md px-2 h-5 flex items-center justify-center text-[10px]">
             Elektronikai szerviz, Kállósemjén
           </p>
-          <div className="w-1 h-1 rounded-full bg-neutral-400" />
+          <div className="w-1 h-1 rounded-full bg-accent/50" />
           <span className="text-xs">Frissítve: 2024.07.09.</span>
         </div>
         <section className="relative md:py-12 py-8">
-          <div className="mt-6 bg-[#1C1C1C] rounded-lg text-neutral-400 p-4">
-            <h2 className="text-xl font-RubikMedium text-neutral-100">
+          <div className="mt-6 bg-card/80 rounded-lg text-muted p-4">
+            <h2 className="text-xl font-RubikMedium text-foreground">
               Tevékenységek :
             </h2>
-            <p className="mt-2 text-neutral-300">
+            <p className="mt-2 text-muted">
               Elektronikai szervizünk az alábbi tevékenységekben tud segítséget
               nyújtani:
             </p>
@@ -269,19 +269,19 @@ function ServiceClient() {
             </ul>
           </div>
 
-          <div className="mt-6 rounded-2xl border border-white/10 bg-neutral-900/60 p-5">
-            <h3 className="text-lg font-RubikMedium text-neutral-50">Feladatonkénti javaslatok</h3>
-            <p className="mt-2 text-sm text-neutral-300">
+          <div className="mt-6 rounded-2xl border border-white/10 bg-card/70 p-5">
+            <h3 className="text-lg font-RubikMedium text-foreground">Feladatonkénti javaslatok</h3>
+            <p className="mt-2 text-sm text-muted">
               Gyakori helyzetekhez összegyűjtöttem a legfontosabb teendőket, hogy már az első vizsgálat előtt tudd, mire érdemes figyelni.
             </p>
             <div className="mt-4 grid gap-4 md:grid-cols-2">
               {taskSuggestions.map((item) => (
                 <div
                   key={item.task}
-                  className="rounded-xl border border-white/10 bg-neutral-950/60 p-4"
+                  className="rounded-xl border border-white/10 bg-card/60 p-4"
                 >
-                  <h4 className="text-sm font-RubikMedium text-neutral-100">{item.task}</h4>
-                  <ul className="mt-3 space-y-2 text-xs text-neutral-300">
+                  <h4 className="text-sm font-RubikMedium text-foreground">{item.task}</h4>
+                  <ul className="mt-3 space-y-2 text-xs text-muted">
                     {item.suggestions.map((suggestion) => (
                       <li key={suggestion} className="flex items-start gap-2">
                         <FaCheckCircle className="mt-0.5 text-emerald-300" />
@@ -294,7 +294,7 @@ function ServiceClient() {
             </div>
           </div>
 
-          <div className="mt-6 grid gap-4 rounded-2xl border border-white/10 bg-neutral-900/60 p-5 md:grid-cols-3">
+          <div className="mt-6 grid gap-4 rounded-2xl border border-white/10 bg-card/70 p-5 md:grid-cols-3">
             {supportPackages.map((pkg) => {
               const active = pkg.name === selectedPackage;
               return (
@@ -304,7 +304,7 @@ function ServiceClient() {
                   className={`flex h-full flex-col gap-3 rounded-xl border p-4 text-left transition ${
                     active
                       ? "border-emerald-300/60 bg-emerald-500/10 text-emerald-50 shadow-[0_20px_60px_-40px_rgba(16,185,129,0.7)]"
-                      : "border-white/10 bg-neutral-950/40 text-neutral-200 hover:border-white/30"
+                      : "border-white/10 bg-card/50 text-muted hover:border-white/30"
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -327,10 +327,10 @@ function ServiceClient() {
             })}
           </div>
 
-          <div className="mt-6 grid gap-6 rounded-2xl border border-white/10 bg-neutral-900/60 p-5 md:grid-cols-[1.1fr,0.9fr]">
+          <div className="mt-6 grid gap-6 rounded-2xl border border-white/10 bg-card/70 p-5 md:grid-cols-[1.1fr,0.9fr]">
             <div className="space-y-4">
-              <h3 className="text-lg font-RubikMedium text-neutral-50">Gyors árbecslés</h3>
-              <div className="grid gap-3 text-sm text-neutral-300">
+              <h3 className="text-lg font-RubikMedium text-foreground">Gyors árbecslés</h3>
+              <div className="grid gap-3 text-sm text-muted">
                 <label className="flex flex-col gap-2">
                   <span>Hány eszközt kell javítani?</span>
                   <input
@@ -341,7 +341,7 @@ function ServiceClient() {
                     onChange={(event) => setDeviceCount(Number(event.target.value))}
                     className="accent-emerald-400"
                   />
-                  <span className="text-xs text-neutral-400">{deviceCount} db</span>
+                  <span className="text-xs text-muted">{deviceCount} db</span>
                 </label>
                 <div className="flex flex-wrap gap-2">
                   {urgencyOptions.map((option) => (
@@ -352,7 +352,7 @@ function ServiceClient() {
                       className={`rounded-full border px-3 py-1.5 text-xs transition ${
                         option.value === selectedUrgency.value
                           ? "border-emerald-300/60 bg-emerald-500/10 text-emerald-100"
-                          : "border-white/10 text-neutral-300 hover:border-white/30"
+                          : "border-white/10 text-muted hover:border-white/30"
                       }`}
                     >
                       {option.label}
@@ -370,29 +370,29 @@ function ServiceClient() {
                         className={`rounded-xl border p-3 text-left text-xs transition ${
                           option.label === selectedLogistics.label
                             ? "border-emerald-300/60 bg-emerald-500/10 text-emerald-100"
-                            : "border-white/10 bg-neutral-950/40 text-neutral-300 hover:border-white/30"
+                            : "border-white/10 bg-card/50 text-muted hover:border-white/30"
                         }`}
                       >
                         <div className="flex items-center gap-2">
                           <FaTruck className="text-emerald-300" />
                           <span className="font-RubikMedium">{option.label}</span>
                         </div>
-                        <p className="mt-2 text-[11px] text-neutral-400">{option.description}</p>
+                        <p className="mt-2 text-[11px] text-muted">{option.description}</p>
                       </button>
                     ))}
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-between rounded-2xl border border-emerald-400/40 bg-emerald-500/10 p-5 text-neutral-100">
+            <div className="flex flex-col justify-between rounded-2xl border border-emerald-400/40 bg-emerald-500/10 p-5 text-foreground">
               <div className="space-y-2">
                 <span className="text-[11px] uppercase tracking-[0.3em] text-emerald-200">Becsült költség</span>
                 <p className="text-3xl font-RubikExtraBold">{priceEstimate}</p>
-                <p className="text-xs text-neutral-200">
+                <p className="text-xs text-muted">
                   A pontos árat diagnosztika után küldöm el. A becslés tartalmazza a(z) {selectedPackageDetails.name.toLowerCase()} csomag szolgáltatásait.
                 </p>
               </div>
-              <div className="space-y-2 text-xs text-neutral-100">
+              <div className="space-y-2 text-xs text-foreground">
                 <div className="flex items-center gap-2">
                   <FaClock className="text-emerald-200" />
                   <span>{selectedPackageDetails.response}</span>
@@ -405,9 +405,9 @@ function ServiceClient() {
             </div>
           </div>
 
-          <div className="mt-6 bg-gradient-to-r from-lime-400 to-teal-400 rounded-lg text-neutral-900 p-6 shadow-lg">
+          <div className="mt-6 bg-gradient-to-r from-lime-400 to-teal-400 rounded-lg text-foreground p-6 shadow-lg">
             <div className="flex items-center gap-x-3">
-              <FaTools className="text-2xl text-neutral-900" />
+              <FaTools className="text-2xl text-foreground" />
               <h2 className="text-xl font-RubikMedium">
                 Segítségnyújtás akár aznap!
               </h2>
@@ -421,30 +421,30 @@ function ServiceClient() {
           </div>
 
           <div className="mt-6 grid gap-4 md:grid-cols-[1.4fr,1fr]">
-            <div className="rounded-2xl border border-white/10 bg-neutral-900/60 p-5 text-neutral-100">
-              <h3 className="text-lg font-RubikMedium text-neutral-50">Gyakori kérdések</h3>
+            <div className="rounded-2xl border border-white/10 bg-card/70 p-5 text-foreground">
+              <h3 className="text-lg font-RubikMedium text-foreground">Gyakori kérdések</h3>
               <div className="mt-4 space-y-2">
                 {faqs.map((faq, index) => {
                   const isOpen = openFaq === index;
                   return (
                     <button
                       key={faq.question}
-                      className="w-full rounded-xl border border-white/10 bg-neutral-950/60 p-4 text-left transition hover:border-white/30"
+                      className="w-full rounded-xl border border-white/10 bg-card/60 p-4 text-left transition hover:border-white/30"
                       onClick={() => setOpenFaq(isOpen ? -1 : index)}
                     >
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-sm font-RubikMedium text-neutral-100">{faq.question}</span>
-                        <span className="text-xs text-neutral-400">{isOpen ? "-" : "+"}</span>
+                        <span className="text-sm font-RubikMedium text-foreground">{faq.question}</span>
+                        <span className="text-xs text-muted">{isOpen ? "-" : "+"}</span>
                       </div>
                       {isOpen ? (
-                        <p className="mt-2 text-xs text-neutral-400">{faq.answer}</p>
+                        <p className="mt-2 text-xs text-muted">{faq.answer}</p>
                       ) : null}
                     </button>
                   );
                 })}
               </div>
             </div>
-            <div className="rounded-2xl border border-emerald-400/40 bg-emerald-500/10 p-5 text-neutral-900">
+            <div className="rounded-2xl border border-emerald-400/40 bg-emerald-500/10 p-5 text-foreground">
               <h3 className="text-lg font-RubikMedium">Kérj visszahívást</h3>
               <p className="mt-2 text-sm">
                 Add le az üzeneted a bal oldali űrlapon, vagy foglalj azonnal időpontot egy 15 perces telefonos egyeztetésre.
@@ -454,20 +454,20 @@ function ServiceClient() {
                   href="https://cal.com/promnet/15-perces-gyors-egyeztetes"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-5 py-2 font-RubikMedium text-emerald-100 transition hover:-translate-y-0.5 hover:bg-neutral-800"
+                  className="inline-flex items-center justify-center rounded-full bg-card/80 px-5 py-2 font-RubikMedium text-emerald-100 transition hover:-translate-y-0.5 hover:bg-card/70"
                   onClick={() => trackCtaClick("service-cal", { service: "it-service" })}
                 >
                   Gyors hívás foglalása
                 </Link>
                 <Link
                   href="#lead-form"
-                  className="inline-flex items-center justify-center rounded-full border border-neutral-900 px-5 py-2 font-RubikMedium text-neutral-900 transition hover:-translate-y-0.5 hover:border-neutral-700"
+                  className="inline-flex items-center justify-center rounded-full border border-accent/40 px-5 py-2 font-RubikMedium text-foreground transition hover:-translate-y-0.5 hover:border-white/10"
                   onClick={() => trackCtaClick("service-lead", { service: "it-service" })}
                 >
                   Üzenet küldése
                 </Link>
               </div>
-              <p className="mt-4 text-xs text-neutral-900">
+              <p className="mt-4 text-xs text-foreground">
                 Átlagos válaszidő hétköznapokon <strong>2 óra</strong>.
               </p>
             </div>

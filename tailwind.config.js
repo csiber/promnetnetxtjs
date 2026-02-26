@@ -32,6 +32,19 @@ module.exports = {
         muted: withOpacity("--color-muted"),
         border: withOpacity("--color-border", "--color-border-opacity"),
         card: withOpacity("--color-card", "--color-card-opacity"),
+        neutral: {
+          50: withOpacity("--neo-neutral-50"),
+          100: withOpacity("--neo-neutral-100"),
+          200: withOpacity("--neo-neutral-200"),
+          300: withOpacity("--neo-neutral-300"),
+          400: withOpacity("--neo-neutral-400"),
+          500: withOpacity("--neo-neutral-500"),
+          600: withOpacity("--neo-neutral-600"),
+          700: withOpacity("--neo-neutral-700"),
+          800: withOpacity("--neo-neutral-800"),
+          900: withOpacity("--neo-neutral-900"),
+          950: withOpacity("--neo-neutral-950"),
+        },
         accent: {
           DEFAULT: withOpacity("--color-accent"),
           foreground: withOpacity("--color-accent-foreground"),
@@ -43,8 +56,8 @@ module.exports = {
         xl: "1.5rem",
       },
       boxShadow: {
-        soft: "0 20px 60px -30px rgba(124, 58, 237, 0.4)",
-        accent: "0 25px 80px -40px rgba(236, 72, 153, 0.55)",
+        soft: "0 20px 60px -30px rgba(14, 165, 233, 0.45)",
+        accent: "0 25px 80px -40px rgba(56, 189, 248, 0.55)",
       },
       fontFamily: {
         sans: ["var(--font-rubik)", "system-ui", "sans-serif"],

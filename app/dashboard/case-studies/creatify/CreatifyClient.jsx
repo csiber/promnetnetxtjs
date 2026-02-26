@@ -58,7 +58,7 @@ const phases = [
 export default function CreatifyCaseStudyPage() {
   return (
     <motion.div
-      className="text-neutral-50"
+      className="text-foreground"
       initial={{ y: 100, opacity: 0 }}
       animate={{
         y: 0,
@@ -73,22 +73,22 @@ export default function CreatifyCaseStudyPage() {
     >
       <div className="sticky top-5">
         <div className="-mt-6">
-          <div className="flex h-10 w-full items-center gap-x-7 rounded-xl bg-neutral-700/25 backdrop-blur-md">
+          <div className="flex h-10 w-full items-center gap-x-7 rounded-xl bg-card/60 backdrop-blur-md">
             <Link href={"/dashboard/case-studies"}>
-              <div className="ml-3 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-700/50">
-                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-neutral-300">
+              <div className="ml-3 flex h-8 w-8 items-center justify-center rounded-full bg-card/70">
+                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-accent/30">
                   <PiArrowLeftThin className="text-lg text-black" />
                 </div>
               </div>
             </Link>
             <Link href={"/dashboard/case-studies"}>
-              <button className="h-6 w-28 rounded-md bg-neutral-700/25 text-xs">Esettanulmányok</button>
+              <button className="h-6 w-28 rounded-md bg-card/60 text-xs">Esettanulmányok</button>
             </Link>
           </div>
         </div>
       </div>
 
-      <div className="mt-9 flex flex-col gap-6 rounded-2xl border border-neutral-700 bg-[#1C1C1C] p-5">
+      <div className="mt-9 flex flex-col gap-6 rounded-2xl border border-white/10 bg-card/80 p-5">
         <motion.header
           initial={{ x: 60, opacity: 0, filter: "blur(6px)" }}
           animate={{
@@ -107,30 +107,30 @@ export default function CreatifyCaseStudyPage() {
           <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-emerald-200">
             digitális termékfejlesztés
           </span>
-          <h1 className="text-3xl font-RubikExtraBold text-neutral-50">Creatify – digitális tartalom platform megújulása</h1>
-          <p className="text-sm text-neutral-300">
+          <h1 className="text-3xl font-RubikExtraBold text-foreground">Creatify – digitális tartalom platform megújulása</h1>
+          <p className="text-sm text-muted">
             A Creatify csapata digitális sablonokat és marketing eszközöket értékesít európai kisvállalkozásoknak. A célunk egy olyan új márka- és felhasználói élmény volt, amely gyorsabbá, érthetőbbé és mérhetőbbé teszi az értékesítést.
           </p>
         </motion.header>
 
-        <section className="grid gap-4 rounded-2xl border border-white/10 bg-neutral-900/60 p-5 md:grid-cols-3">
+        <section className="grid gap-4 rounded-2xl border border-white/10 bg-card/70 p-5 md:grid-cols-3">
           {projectHighlights.map((item) => (
-            <div key={item.title} className="rounded-xl border border-white/10 bg-neutral-950/60 p-4">
+            <div key={item.title} className="rounded-xl border border-white/10 bg-card/60 p-4">
               <span className="text-[11px] uppercase tracking-[0.3em] text-emerald-200">{item.title}</span>
               <p className="mt-2 text-2xl font-RubikExtraBold text-emerald-100">{item.value}</p>
-              <p className="mt-2 text-xs text-neutral-400">{item.description}</p>
+              <p className="mt-2 text-xs text-muted">{item.description}</p>
             </div>
           ))}
         </section>
 
         <section className="grid gap-4 md:grid-cols-[2fr,1fr]">
-          <article className="rounded-2xl border border-white/10 bg-neutral-900/60 p-5 text-neutral-200">
-            <h2 className="text-lg font-RubikMedium text-neutral-50">Kihívás</h2>
-            <p className="mt-2 text-sm text-neutral-300">
+          <article className="rounded-2xl border border-white/10 bg-card/70 p-5 text-muted">
+            <h2 className="text-lg font-RubikMedium text-foreground">Kihívás</h2>
+            <p className="mt-2 text-sm text-muted">
               A régi webshop sablonos volt, hosszú volt a vásárlási folyamat, és hiányzott az egységes mérés. A support csapat manuálisan kezelte a visszatérő kérdéseket, ami rengeteg időt vitt el.
             </p>
-            <h2 className="mt-6 text-lg font-RubikMedium text-neutral-50">Megoldás</h2>
-            <ul className="mt-2 space-y-2 text-sm text-neutral-300">
+            <h2 className="mt-6 text-lg font-RubikMedium text-foreground">Megoldás</h2>
+            <ul className="mt-2 space-y-2 text-sm text-muted">
               <li className="flex items-start gap-2">
                 <FaFigma className="mt-1 text-emerald-300" />
                 <span>Mobil-first Figma design rendszer 28 új komponenssel.</span>
@@ -153,18 +153,18 @@ export default function CreatifyCaseStudyPage() {
               </li>
             </ul>
           </article>
-          <aside className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-neutral-900/60 p-5 text-sm text-neutral-300">
+          <aside className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-card/70 p-5 text-sm text-muted">
             <div>
-              <h3 className="text-base font-RubikMedium text-neutral-100">Projekt tények</h3>
-              <ul className="mt-2 space-y-1 text-neutral-300">
+              <h3 className="text-base font-RubikMedium text-foreground">Projekt tények</h3>
+              <ul className="mt-2 space-y-1 text-muted">
                 <li>Időtartam: 6 hét (2 sprint)</li>
                 <li>Csapat: 1 UX, 1 fejlesztő, 1 marketing tanácsadó</li>
                 <li>Technológiák: {stack.slice(0, 2).join(", ")}</li>
               </ul>
             </div>
             <div>
-              <h3 className="text-base font-RubikMedium text-neutral-100">Felhasznált stack</h3>
-              <ul className="mt-2 space-y-1 text-neutral-300">
+              <h3 className="text-base font-RubikMedium text-foreground">Felhasznált stack</h3>
+              <ul className="mt-2 space-y-1 text-muted">
                 {stack.map((item) => (
                   <li key={item}>• {item}</li>
                 ))}
@@ -173,19 +173,19 @@ export default function CreatifyCaseStudyPage() {
           </aside>
         </section>
 
-        <section className="grid gap-3 rounded-2xl border border-white/10 bg-neutral-900/60 p-5">
-          <h2 className="text-lg font-RubikMedium text-neutral-50">Projekt menete</h2>
+        <section className="grid gap-3 rounded-2xl border border-white/10 bg-card/70 p-5">
+          <h2 className="text-lg font-RubikMedium text-foreground">Projekt menete</h2>
           <div className="grid gap-3 md:grid-cols-2">
             {phases.map((phase) => (
-              <div key={phase.label} className="rounded-xl border border-white/10 bg-neutral-950/60 p-4">
-                <h3 className="text-sm font-RubikMedium text-neutral-200">{phase.label}</h3>
-                <p className="mt-2 text-sm text-neutral-400">{phase.details}</p>
+              <div key={phase.label} className="rounded-xl border border-white/10 bg-card/60 p-4">
+                <h3 className="text-sm font-RubikMedium text-muted">{phase.label}</h3>
+                <p className="mt-2 text-sm text-muted">{phase.details}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="flex flex-col gap-4 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 p-5 text-neutral-900">
+        <section className="flex flex-col gap-4 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 p-5 text-foreground">
           <h2 className="text-lg font-RubikMedium">Hasonló eredményeket szeretnél?</h2>
           <p className="text-sm">
             Foglalj 30 perces konzultációt, ahol átbeszéljük a céljaidat, és vázolok egy akciótervet. A hívás után írásban is megkapod az ajánlást.
@@ -195,14 +195,14 @@ export default function CreatifyCaseStudyPage() {
               href="https://cal.com/promnet/30-perces-konzultacio"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2 text-sm font-RubikMedium text-emerald-100 transition hover:-translate-y-0.5 hover:bg-neutral-800"
+              className="inline-flex items-center gap-2 rounded-full bg-card/80 px-5 py-2 text-sm font-RubikMedium text-emerald-100 transition hover:-translate-y-0.5 hover:bg-card/70"
               onClick={() => trackCtaClick("case-study-cal", { case: "creatify" })}
             >
               Konzultáció foglalása
             </Link>
             <Link
               href="#lead-form"
-              className="inline-flex items-center gap-2 rounded-full border border-neutral-900 px-5 py-2 text-sm font-RubikMedium text-neutral-900 transition hover:-translate-y-0.5 hover:border-neutral-700"
+              className="inline-flex items-center gap-2 rounded-full border border-accent/40 px-5 py-2 text-sm font-RubikMedium text-foreground transition hover:-translate-y-0.5 hover:border-white/10"
               onClick={() => trackCtaClick("case-study-lead", { case: "creatify" })}
             >
               Projekt megbeszélése

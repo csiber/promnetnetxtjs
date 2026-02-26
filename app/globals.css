@@ -4,40 +4,70 @@
 
 :root {
   color-scheme: light;
-  --color-background: 228 241 255;
-  --color-foreground: 12 28 53;
-  --color-muted: 56 82 119;
-  --color-border: 12 28 53;
+  --color-background: 226 239 255;
+  --color-foreground: 7 20 40;
+  --color-muted: 42 68 104;
+  --color-border: 12 32 72;
   --color-border-opacity: 0.08;
   --color-card: 255 255 255;
-  --color-card-opacity: 0.78;
-  --color-accent: 56 189 248;
-  --color-accent-foreground: 6 12 26;
-  --color-success: 59 130 246;
-  --color-warning: 250 204 21;
-  --winter-gradient: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8), transparent 55%),
-    radial-gradient(circle at 80% 10%, rgba(147, 197, 253, 0.6), transparent 60%),
-    radial-gradient(circle at 50% 100%, rgba(59, 130, 246, 0.45), transparent 65%),
-    linear-gradient(180deg, rgba(15, 118, 205, 0.35) 0%, rgba(15, 118, 205, 0) 65%);
+  --color-card-opacity: 0.82;
+  --color-accent: 14 165 233;
+  --color-accent-foreground: 5 12 24;
+  --color-success: 37 99 235;
+  --color-warning: 56 189 248;
+  --neo-glow: 14 165 233;
+  --neo-glow-strong: 56 189 248;
+  --neo-panel: 255 255 255;
+  --neo-panel-opacity: 0.76;
+  --neo-neutral-50: 247 250 255;
+  --neo-neutral-100: 235 243 255;
+  --neo-neutral-200: 216 228 245;
+  --neo-neutral-300: 187 206 232;
+  --neo-neutral-400: 140 164 200;
+  --neo-neutral-500: 96 122 160;
+  --neo-neutral-600: 64 90 130;
+  --neo-neutral-700: 40 62 98;
+  --neo-neutral-800: 23 40 70;
+  --neo-neutral-900: 12 24 46;
+  --neo-neutral-950: 7 15 30;
+  --neo-gradient: radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.75), transparent 55%),
+    radial-gradient(circle at 70% 15%, rgba(56, 189, 248, 0.35), transparent 60%),
+    radial-gradient(circle at 40% 85%, rgba(37, 99, 235, 0.25), transparent 70%),
+    linear-gradient(160deg, rgba(14, 165, 233, 0.18) 0%, rgba(14, 165, 233, 0.04) 65%);
 }
 
 .dark {
   color-scheme: dark;
-  --color-background: 9 16 28;
+  --color-background: 6 12 24;
   --color-foreground: 226 232 240;
-  --color-muted: 148 163 184;
+  --color-muted: 140 163 190;
   --color-border: 148 163 184;
-  --color-border-opacity: 0.16;
-  --color-card: 15 23 42;
-  --color-card-opacity: 0.68;
-  --color-accent: 125 211 252;
-  --color-accent-foreground: 8 15 27;
+  --color-border-opacity: 0.18;
+  --color-card: 12 20 34;
+  --color-card-opacity: 0.72;
+  --color-accent: 56 189 248;
+  --color-accent-foreground: 6 12 26;
   --color-success: 59 130 246;
-  --color-warning: 253 224 71;
-  --winter-gradient: radial-gradient(circle at 15% 20%, rgba(148, 163, 184, 0.32), transparent 60%),
-    radial-gradient(circle at 75% 15%, rgba(125, 211, 252, 0.45), transparent 55%),
-    radial-gradient(circle at 45% 95%, rgba(37, 99, 235, 0.4), transparent 70%),
-    linear-gradient(180deg, rgba(30, 64, 175, 0.35) 0%, rgba(15, 23, 42, 0.4) 100%);
+  --color-warning: 56 189 248;
+  --neo-glow: 56 189 248;
+  --neo-glow-strong: 59 130 246;
+  --neo-panel: 10 18 32;
+  --neo-panel-opacity: 0.72;
+  --neo-neutral-50: 232 244 255;
+  --neo-neutral-100: 200 222 246;
+  --neo-neutral-200: 160 190 224;
+  --neo-neutral-300: 121 150 194;
+  --neo-neutral-400: 90 120 164;
+  --neo-neutral-500: 70 95 132;
+  --neo-neutral-600: 52 74 108;
+  --neo-neutral-700: 34 52 84;
+  --neo-neutral-800: 18 30 54;
+  --neo-neutral-900: 10 18 32;
+  --neo-neutral-950: 6 10 20;
+  --neo-gradient: radial-gradient(circle at 12% 20%, rgba(14, 165, 233, 0.25), transparent 60%),
+    radial-gradient(circle at 75% 10%, rgba(56, 189, 248, 0.28), transparent 60%),
+    radial-gradient(circle at 40% 95%, rgba(37, 99, 235, 0.35), transparent 70%),
+    linear-gradient(160deg, rgba(15, 23, 42, 0.7) 0%, rgba(2, 6, 23, 0.92) 100%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,7 +86,7 @@
     font-feature-settings: "ss03" on, "liga" on;
     min-height: 100vh;
     background-color: rgb(var(--color-background));
-    background-image: var(--winter-gradient);
+    background-image: var(--neo-gradient);
     background-attachment: fixed;
     background-size: cover;
   }
@@ -94,14 +124,16 @@
 
 @layer components {
   .promnet-surface {
-    @apply relative overflow-hidden border border-white/10 bg-card/90 backdrop-blur-xl transition-transform duration-200 ease-out;
-    border-radius: 2.75rem;
-    box-shadow: 0 32px 80px -44px rgba(15, 23, 42, 0.55), 0 -26px 70px -54px rgba(15, 23, 42, 0.35);
+    @apply relative overflow-hidden border border-white/10 bg-card/90 backdrop-blur-2xl transition-transform duration-200 ease-out;
+    border-radius: 2.4rem;
+    box-shadow: 0 30px 90px -56px rgba(2, 6, 23, 0.6),
+      0 0 0 1px rgba(56, 189, 248, 0.05);
   }
 
   .promnet-surface:hover {
     transform: translateY(-6px);
-    box-shadow: 0 40px 110px -52px rgba(15, 23, 42, 0.6), 0 -32px 90px -60px rgba(15, 23, 42, 0.4);
+    box-shadow: 0 40px 110px -60px rgba(2, 6, 23, 0.65),
+      0 0 0 1px rgba(56, 189, 248, 0.12);
   }
 
   .promnet-grid {
@@ -115,106 +147,101 @@
   }
 
   .promnet-badge {
-    @apply inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-accent;
+    @apply inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-accent;
+  }
+
+  .neo-shell {
+    @apply relative mx-auto w-full max-w-6xl overflow-hidden rounded-[2.75rem] border border-white/10 bg-card/80 shadow-[0_40px_120px_-60px_rgba(14,165,233,0.55)] backdrop-blur-2xl;
+  }
+
+  .neo-titlebar {
+    @apply flex items-center justify-between gap-4 border-b border-white/10 bg-gradient-to-r from-cyan-500/20 via-sky-500/10 to-blue-500/20 px-6 py-4 text-xs uppercase tracking-[0.35em] text-accent;
+  }
+
+  .neo-dots {
+    @apply flex items-center gap-2;
+  }
+
+  .neo-dot {
+    @apply h-2.5 w-2.5 rounded-full border border-white/30 bg-white/40 shadow-[0_0_12px_rgba(56,189,248,0.5)];
+  }
+
+  .neo-panel {
+    @apply rounded-[2.4rem] border border-white/10 bg-card/80 p-6 shadow-[0_30px_90px_-60px_rgba(14,165,233,0.55)] backdrop-blur-xl lg:p-12;
+  }
+
+  .neo-panel-soft {
+    @apply rounded-[2.4rem] border border-white/10 bg-card/60 p-6 backdrop-blur-xl lg:p-10;
+  }
+
+  .neo-chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-accent;
+  }
+
+  .neo-tag {
+    @apply rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.25em] text-muted;
+  }
+
+  .neo-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-accent/50 bg-accent/15 px-6 py-3 text-sm font-semibold text-accent transition hover:-translate-y-0.5 hover:border-accent hover:bg-accent/25;
   }
 }
 
-.winter-backdrop {
+.cyber-grid {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.35), transparent 65%),
-    linear-gradient(140deg, rgba(59, 130, 246, 0.15), rgba(14, 116, 144, 0.1));
-  mix-blend-mode: screen;
-  opacity: 0.65;
-  filter: blur(0.5px);
-  z-index: 0;
-}
-
-.winter-glow {
-  position: fixed;
-  width: 420px;
-  height: 420px;
-  border-radius: 9999px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
-  filter: blur(8px);
-  opacity: 0.45;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.winter-glow-top {
-  top: -160px;
-  left: 8%;
-}
-
-.winter-glow-bottom {
-  bottom: -220px;
-  right: 4%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.58), rgba(56, 189, 248, 0));
-}
-
-.winter-noise {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image: repeating-radial-gradient(
-      rgba(255, 255, 255, 0.08) 0px,
-      rgba(255, 255, 255, 0.08) 1px,
-      transparent 1px,
-      transparent 2px
+  background-image: linear-gradient(
+      rgba(56, 189, 248, 0.12) 1px,
+      transparent 1px
     ),
-    repeating-linear-gradient(
+    linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+  background-size: 120px 120px;
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.cyber-glow {
+  position: fixed;
+  width: 520px;
+  height: 520px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(var(--neo-glow-strong), 0.35), transparent 70%);
+  filter: blur(12px);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cyber-glow-left {
+  top: -220px;
+  left: 6%;
+}
+
+.cyber-glow-right {
+  bottom: -260px;
+  right: 4%;
+}
+
+.cyber-noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.04) 0px,
-      rgba(255, 255, 255, 0.04) 2px,
-      transparent 2px,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02) 0px,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
       transparent 4px
     );
   mix-blend-mode: soft-light;
-  opacity: 0.3;
+  opacity: 0.25;
   z-index: 0;
-}
-
-.snowfall {
-  position: fixed;
-  inset: -10% 0 0 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
-}
-
-.snowflake {
-  position: absolute;
-  top: -10vh;
-  width: var(--flake-size, 6px);
-  height: var(--flake-size, 6px);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  opacity: var(--flake-opacity, 0.85);
-  transform: translate3d(0, 0, 0);
-  animation: snowfall var(--flake-duration, 18s) linear var(--flake-delay, 0s) infinite;
-  left: var(--flake-left, 50%);
-}
-
-.snowflake::after {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  border-radius: inherit;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
-  opacity: 0.8;
-}
-
-@keyframes snowfall {
-  0% {
-    transform: translate3d(0, -10vh, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(calc(var(--flake-sway, 30px) * 0.5), 50vh, 0) rotate(180deg);
-  }
-  100% {
-    transform: translate3d(calc(var(--flake-sway, 30px)), 110vh, 0) rotate(360deg);
-  }
 }

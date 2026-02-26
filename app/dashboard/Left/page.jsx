@@ -370,7 +370,7 @@ function Leftpage() {
     success: "text-emerald-300",
     error: "text-rose-300",
     loading: "text-amber-300",
-    idle: "text-neutral-400",
+    idle: "text-muted",
   };
 
   const LeadFormFields = () => (
@@ -380,7 +380,7 @@ function Leftpage() {
           name="name"
           value={formData.name}
           onChange={handleInputChange}
-          className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+          className="h-10 rounded-xl border border-white/10 bg-card/70 px-3 text-xs font-RubikMedium text-foreground placeholder:text-foreground0 focus:border-amber-400/60 focus:outline-none"
           placeholder="Név"
           type="text"
           aria-label="Név"
@@ -389,7 +389,7 @@ function Leftpage() {
           name="email"
           value={formData.email}
           onChange={handleInputChange}
-          className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+          className="h-10 rounded-xl border border-white/10 bg-card/70 px-3 text-xs font-RubikMedium text-foreground placeholder:text-foreground0 focus:border-amber-400/60 focus:outline-none"
           placeholder="E-mail cím"
           type="email"
           aria-label="E-mail cím"
@@ -398,7 +398,7 @@ function Leftpage() {
           name="company"
           value={formData.company}
           onChange={handleInputChange}
-          className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+          className="h-10 rounded-xl border border-white/10 bg-card/70 px-3 text-xs font-RubikMedium text-foreground placeholder:text-foreground0 focus:border-amber-400/60 focus:outline-none"
           placeholder="Cég / márkanév (opcionális)"
           type="text"
           aria-label="Cég vagy márkanév"
@@ -407,7 +407,7 @@ function Leftpage() {
           name="industry"
           value={formData.industry}
           onChange={handleInputChange}
-          className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+          className="h-10 rounded-xl border border-white/10 bg-card/70 px-3 text-xs font-RubikMedium text-foreground placeholder:text-foreground0 focus:border-amber-400/60 focus:outline-none"
           placeholder="Iparág (pl. vendéglátás, e-kereskedelem)"
           type="text"
           aria-label="Iparág"
@@ -416,7 +416,7 @@ function Leftpage() {
           name="budget"
           value={formData.budget}
           onChange={handleInputChange}
-          className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+          className="h-10 rounded-xl border border-white/10 bg-card/70 px-3 text-xs font-RubikMedium text-foreground placeholder:text-foreground0 focus:border-amber-400/60 focus:outline-none"
           placeholder="Becsült költségkeret (pl. 600 000 Ft)"
           type="text"
           aria-label="Becsült költségkeret"
@@ -425,7 +425,7 @@ function Leftpage() {
           name="timeline"
           value={formData.timeline}
           onChange={handleInputChange}
-          className="h-10 rounded-xl border border-white/10 bg-neutral-900/60 px-3 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+          className="h-10 rounded-xl border border-white/10 bg-card/70 px-3 text-xs font-RubikMedium text-foreground placeholder:text-foreground0 focus:border-amber-400/60 focus:outline-none"
           placeholder="Mikorra szeretnéd élesíteni?"
           type="text"
           aria-label="Tervezett indulás"
@@ -442,7 +442,7 @@ function Leftpage() {
               className={`rounded-full border px-3 py-1.5 text-[11px] font-RubikMedium transition ${
                 active
                   ? "border-emerald-300/60 bg-emerald-500/10 text-emerald-100"
-                  : "border-white/10 text-neutral-300 hover:border-white/30 hover:text-neutral-100"
+                  : "border-white/10 text-muted hover:border-white/30 hover:text-foreground"
               }`}
             >
               {feature}
@@ -454,13 +454,13 @@ function Leftpage() {
         name="message"
         value={formData.message}
         onChange={handleInputChange}
-        className="min-h-[80px] rounded-xl border border-white/10 bg-neutral-900/60 px-3 py-2 text-xs font-RubikMedium text-neutral-100 placeholder:text-neutral-500 focus:border-amber-400/60 focus:outline-none"
+        className="min-h-[80px] rounded-xl border border-white/10 bg-card/70 px-3 py-2 text-xs font-RubikMedium text-foreground placeholder:text-foreground0 focus:border-amber-400/60 focus:outline-none"
         placeholder="Mesélj az ötletedről, célokról, eddigi tapasztalatokról..."
         aria-label="Projekt leírás"
       />
       <motion.button
         animate={controls}
-        className="h-10 rounded-xl bg-amber-400 text-xs font-RubikMedium text-neutral-900 transition hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-60"
+        className="h-10 rounded-xl bg-amber-400 text-xs font-RubikMedium text-foreground transition hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-60"
         type="submit"
         disabled={formStatus.type === "loading"}
       >
@@ -478,9 +478,9 @@ function Leftpage() {
           opacity: 1,
           transition: { duration: 0.3, type: "spring", stiffness: 200 },
         }}
-        className="h-fit w-full overflow-hidden rounded-2xl bg-[#1C1C1C] shadow-[0_20px_60px_-40px_rgba(0,0,0,0.5)] md:sticky md:top-5 md:block md:w-80 md:rounded-[2.75rem]"
+        className="h-fit w-full overflow-hidden rounded-2xl bg-card/80 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.5)] md:sticky md:top-5 md:block md:w-80 md:rounded-[2.75rem]"
       >
-        <div className="h-full w-full rounded-2xl border border-neutral-800 bg-[#1C1C1C] p-4 md:w-80 md:p-3">
+        <div className="h-full w-full rounded-2xl border border-white/10 bg-card/80 p-4 md:w-80 md:p-3">
           <div className="flex">
             <div className="relative w-full">
               <Image
@@ -498,24 +498,24 @@ function Leftpage() {
                       : "bg-rose-400 shadow-[0_0_12px_rgba(251,113,133,0.8)]"
                   } animate-pulse`}
                 />
-                <span className="rounded-full border border-white/10 bg-neutral-900/60 px-2 py-1 text-[9px] font-RubikMedium uppercase tracking-wide text-neutral-200">
+                <span className="rounded-full border border-white/10 bg-card/70 px-2 py-1 text-[9px] font-RubikMedium uppercase tracking-wide text-muted">
                   {availability.available ? "Most elérhető" : "Épp nem elérhető"}
                 </span>
               </div>
-              <p className="mt-3 text-[11px] font-RubikRegular text-neutral-400">
+              <p className="mt-3 text-[11px] font-RubikRegular text-muted">
                 {availabilityText}
               </p>
-              <h1 className="mt-2 font-RubikExtraBold text-xl text-neutral-100">
+              <h1 className="mt-2 font-RubikExtraBold text-xl text-foreground">
                 Polyák Csaba E.V.
               </h1>
-              <p className="mt-2 text-xs font-RubikMedium text-neutral-300">
-                <Link href={"mailto:info@promnet.hu"} target="blank" className="transition hover:text-neutral-100">
+              <p className="mt-2 text-xs font-RubikMedium text-muted">
+                <Link href={"mailto:info@promnet.hu"} target="blank" className="transition hover:text-foreground">
                   info@promnet.hu 📧
                 </Link>
               </p>
 
-              <p className="mt-1 text-xs font-RubikMedium text-neutral-300">
-                <Link href={"/"} target="blank" className="transition hover:text-neutral-100">
+              <p className="mt-1 text-xs font-RubikMedium text-muted">
+                <Link href={"/"} target="blank" className="transition hover:text-foreground">
                   promnet.hu 🌍
                 </Link>
               </p>
@@ -525,7 +525,7 @@ function Leftpage() {
                   {["WordPress", "Git", "NodeJS", "Laravel"].map((skill) => (
                     <p
                       key={skill}
-                      className="flex h-5 items-center justify-center rounded-md bg-[#282828] px-2 text-[11px] font-RubikBold text-neutral-300"
+                      className="flex h-5 items-center justify-center rounded-md bg-card/60 px-2 text-[11px] font-RubikBold text-muted"
                     >
                       {skill}
                     </p>
@@ -536,19 +536,19 @@ function Leftpage() {
 
             <div className="flex h-fit w-full gap-x-1">
               <Link href={"/"}>
-                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-neutral-700/50">
-                  <PiHouseLight className="text-neutral-100" />
+                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-card/70">
+                  <PiHouseLight className="text-foreground" />
                 </div>
               </Link>
 
-              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-neutral-700/50">
-                <PiBookOpenTextLight className="text-neutral-100" />
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-card/70">
+                <PiBookOpenTextLight className="text-foreground" />
               </div>
             </div>
           </div>
 
           <motion.div
-            className="mt-4 space-y-3 rounded-2xl border border-white/5 bg-gradient-to-br from-neutral-900/60 to-neutral-950/70 p-4 text-neutral-200"
+            className="mt-4 space-y-3 rounded-2xl border border-white/5 bg-gradient-to-br from-neutral-900/60 to-neutral-950/70 p-4 text-muted"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -572,7 +572,7 @@ function Leftpage() {
                 };
 
                 const content = (
-                  <span className="flex items-center gap-2 font-RubikMedium text-neutral-200 group-hover:text-neutral-50">
+                  <span className="flex items-center gap-2 font-RubikMedium text-muted group-hover:text-foreground">
                     <Icon className="text-[14px] text-amber-200" />
                     {label}
                   </span>
@@ -584,12 +584,12 @@ function Leftpage() {
                     href={href}
                     target={external ? "_blank" : undefined}
                     onClick={handleClick}
-                    className="group flex items-center justify-between rounded-xl border border-white/5 bg-neutral-900/60 px-3 py-2 text-[12px] transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-neutral-900/80"
+                    className="group flex items-center justify-between rounded-xl border border-white/5 bg-card/70 px-3 py-2 text-[12px] transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-card/80"
                   >
                     {content}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-3.5 w-3.5 text-neutral-500 transition group-hover:text-amber-200"
+                      className="h-3.5 w-3.5 text-foreground0 transition group-hover:text-amber-200"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -603,12 +603,12 @@ function Leftpage() {
                     key={label}
                     type="button"
                     onClick={handleClick}
-                    className="group flex items-center justify-between rounded-xl border border-white/5 bg-neutral-900/60 px-3 py-2 text-[12px] transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-neutral-900/80"
+                    className="group flex items-center justify-between rounded-xl border border-white/5 bg-card/70 px-3 py-2 text-[12px] transition hover:-translate-y-0.5 hover:border-white/20 hover:bg-card/80"
                   >
                     {content}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-3.5 w-3.5 text-neutral-500 transition group-hover:text-amber-200"
+                      className="h-3.5 w-3.5 text-foreground0 transition group-hover:text-amber-200"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -637,7 +637,7 @@ function Leftpage() {
           <form
             onSubmit={handleSubmit}
             id="lead-form"
-            className="mt-6 hidden w-full flex-col gap-3 rounded-2xl border border-white/5 bg-[#282828] p-4 md:flex"
+            className="mt-6 hidden w-full flex-col gap-3 rounded-2xl border border-white/5 bg-card/60 p-4 md:flex"
             tabIndex={-1}
           >
             <LeadFormFields />
@@ -656,22 +656,22 @@ function Leftpage() {
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="mobile-lead-form-title"
-                className="relative w-full max-w-md rounded-3xl border border-white/10 bg-[#1f1f1f] p-6 shadow-[0_30px_80px_-40px_rgba(251,191,36,0.4)]"
+                className="relative w-full max-w-md rounded-3xl border border-white/10 bg-card/80 p-6 shadow-[0_30px_80px_-40px_rgba(251,191,36,0.4)]"
               >
                 <button
                   type="button"
                   onClick={closeMobileForm}
-                  className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/30 text-neutral-200 transition hover:border-white/30 hover:text-white"
+                  className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/30 text-muted transition hover:border-white/30 hover:text-white"
                   aria-label="Űrlap bezárása"
                 >
                   <span aria-hidden="true" className="text-lg font-RubikMedium">
                     ×
                   </span>
                 </button>
-                <h2 id="mobile-lead-form-title" className="text-lg font-RubikMedium text-neutral-50">
+                <h2 id="mobile-lead-form-title" className="text-lg font-RubikMedium text-foreground">
                   Projekt összefoglaló küldése
                 </h2>
-                <p className="mt-1 text-sm text-neutral-400">
+                <p className="mt-1 text-sm text-muted">
                   Írd le röviden, mire van szükséged, és legkésőbb 1 munkanapon belül válaszolok a részletekkel.
                 </p>
                 <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-3">
@@ -687,25 +687,25 @@ function Leftpage() {
             </div>
           ) : null}
 
-          <div className="mt-5 w-full text-neutral-300">
+          <div className="mt-5 w-full text-muted">
             <h2 className="font-RubikBold my-4">Info</h2>
             <p className="text-[12px]  font-RubikRegular my-3">
               Játék- és animációkészítésre, 3D grafikára, 3D modellezésre és 3D nyomtatásra fókuszálok. Webfejlesztési
               projekteket már nem vállalok, viszont kreatív 3D munkák és gyártási támogatás elérhető.
             </p>
 
-            <div className="grid gap-2 rounded-xl border border-emerald-400/20 bg-neutral-900/60 p-3 text-[11px] text-neutral-200">
+            <div className="grid gap-2 rounded-xl border border-emerald-400/20 bg-card/70 p-3 text-[11px] text-muted">
               <span className="font-RubikMedium uppercase tracking-[0.2em] text-emerald-300">
                 Minősítések &amp; bizalom
               </span>
-              <ul className="space-y-1 text-neutral-300">
+              <ul className="space-y-1 text-muted">
                 <li>
                   ✔️ Google Analytics 4 &amp; Tag Manager beállítás 2024-es tanúsítvánnyal
                 </li>
                 <li>✔️ Cloudflare Solution Partner (performance &amp; security)</li>
                 <li>✔️ Resend Transactional Email szakértő</li>
               </ul>
-              <p className="text-[10px] text-neutral-400">
+              <p className="text-[10px] text-muted">
                 Kérésre részletes referencia PDF-et is küldök az elmúlt 12 hónap projektjeiről.
               </p>
             </div>
@@ -734,48 +734,48 @@ function Leftpage() {
               </div>
             </div>
 
-            <div className="border border-[#282828] text-neutral-300 my-6" />
+            <div className="border border-[#282828] text-muted my-6" />
 
             <div className="my-4">
               <h1 className="font-RubikRegular">Vállalkozás adatai</h1>
               <div className="mt-5 space-y-4 text-left">
-                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-neutral-900/40 p-3">
-                  <FaUser className="text-xl text-neutral-200" />
+                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-card/80/40 p-3">
+                  <FaUser className="text-xl text-muted" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">Cégnév</h3>
-                    <p className="text-[12px] text-neutral-300">Polyák Csaba E.V</p>
+                    <p className="text-[12px] text-muted">Polyák Csaba E.V</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-neutral-900/40 p-3">
-                  <FaMapMarkerAlt className="text-xl text-neutral-200" />
+                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-card/80/40 p-3">
+                  <FaMapMarkerAlt className="text-xl text-muted" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">Cím</h3>
-                    <p className="text-[12px] text-neutral-300">
+                    <p className="text-[12px] text-muted">
                       4324 Kállósemjén, Kölcsey Ferenc út 11
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-neutral-900/40 p-3">
-                  <FaPhone className="text-xl text-neutral-200" />
+                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-card/80/40 p-3">
+                  <FaPhone className="text-xl text-muted" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">Telefonszám</h3>
-                    <p className="text-[12px] text-neutral-300">+36 20 549 4107</p>
+                    <p className="text-[12px] text-muted">+36 20 549 4107</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-neutral-900/40 p-3">
-                  <FaIdCard className="text-xl text-neutral-200" />
+                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-card/80/40 p-3">
+                  <FaIdCard className="text-xl text-muted" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">
                       Nyilvántartási szám
                     </h3>
-                    <p className="text-[12px] text-neutral-300">52193909</p>
+                    <p className="text-[12px] text-muted">52193909</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-neutral-900/40 p-3">
-                  <FaMoneyCheck className="text-xl text-neutral-200" />
+                <div className="flex items-start gap-x-3 rounded-xl border border-white/5 bg-card/80/40 p-3">
+                  <FaMoneyCheck className="text-xl text-muted" />
                   <div className="-mt-1">
                     <h3 className="text-sm font-RubikMedium">Adószám</h3>
-                    <p className="text-[12px] text-neutral-300">68747961-1-35</p>
+                    <p className="text-[12px] text-muted">68747961-1-35</p>
                   </div>
                 </div>
               </div>

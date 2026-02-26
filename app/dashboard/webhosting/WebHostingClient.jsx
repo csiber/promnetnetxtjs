@@ -9,7 +9,7 @@ import Image from "next/image";
 function WebHostingClient() {
   return (
     <motion.div
-      className="text-neutral-50"
+      className="text-foreground"
       initial={{ y: 100, opacity: 0 }}
       animate={{
         y: 0,
@@ -25,21 +25,21 @@ function WebHostingClient() {
       <div className="sticky top-5">
         <div>
           <div className="-mt-6">
-            <div className="bg-neutral-700/25 backdrop-blur-md h-10 w-full rounded-xl flex items-center gap-x-7">
+            <div className="bg-card/60 backdrop-blur-md h-10 w-full rounded-xl flex items-center gap-x-7">
               <Link href={"/dashboard"}>
-                <div className="bg-neutral-700/50 h-8 w-8 rounded-full flex items-center justify-center ml-3">
-                  <div className="bg-neutral-300 rounded-full h-5 w-5 flex items-center justify-center">
+                <div className="bg-card/70 h-8 w-8 rounded-full flex items-center justify-center ml-3">
+                  <div className="bg-accent/30 rounded-full h-5 w-5 flex items-center justify-center">
                     <PiArrowLeftThin className="text-black text-lg" />
                   </div>
                 </div>
               </Link>
               <Link href={"/dashboard"}>
-                <button className="text-xs bg-neutral-700/25 p-1 w-16 h-6 rounded-md">
+                <button className="text-xs bg-card/60 p-1 w-16 h-6 rounded-md">
                   Kezdőlap
                 </button>
               </Link>
               <Link href={"/dashboard/hostingbuilder"}>
-                <button className="text-xs bg-neutral-700/25 p-1 w-16 h-6 rounded-md">
+                <button className="text-xs bg-card/60 p-1 w-16 h-6 rounded-md">
                   Hoszting
                 </button>
               </Link>
@@ -47,7 +47,7 @@ function WebHostingClient() {
           </div>
         </div>
       </div>
-      <div className="mt-9 w-full p-5 border border-neutral-700 rounded-2xl h-full bg-[#1C1C1C]">
+      <div className="mt-9 w-full p-5 border border-white/10 rounded-2xl h-full bg-card/80">
         <motion.h1
           initial={{ x: 100, opacity: 0, filter: "blur(4px)" }}
           animate={{
@@ -67,10 +67,10 @@ function WebHostingClient() {
           Webhoszting szolgáltatás kiépitése
         </motion.h1>
         <div className="flex items-center gap-x-2 justify-center my-4 font-RubikRegular">
-          <p className="bg-[#282828] w-fit text-neutral-300 rounded-md px-2 h-5 flex items-center justify-center text-[10px]">
+          <p className="bg-card/60 w-fit text-muted rounded-md px-2 h-5 flex items-center justify-center text-[10px]">
             Webtárhely, webhosting
           </p>
-          <div className="w-1 h-1 rounded-full bg-neutral-400" />
+          <div className="w-1 h-1 rounded-full bg-accent/50" />
           <span className="text-xs">Frissítve: 2024.07.09.</span>
         </div>
         <div className="my-11 font-RubikMedium">
