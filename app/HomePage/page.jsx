@@ -187,7 +187,7 @@ function Homepage() {
         <div className="space-y-8">
           <div>
             <p className="section-kicker">Szolgáltatások</p>
-            <h2 className="section-title">Fókuszált technológiai szolgáltatások</h2>
+            <h2 className="section-title mt-3">Fókuszált technológiai szolgáltatások</h2>
             <p className="section-body mt-3 max-w-2xl">
               Nincs túlmagyarázás: ha backend, integráció vagy DevOps kell, itt van három tiszta irány. A scope-ot közösen
               pontosítjuk, és az alapján dolgozom.
@@ -250,7 +250,7 @@ function Homepage() {
         <div className="grid gap-10 lg:grid-cols-[1fr,0.9fr]">
           <div className="space-y-6">
             <p className="section-kicker">Miért PromNET</p>
-            <h2 className="section-title">Senior backend/infra fókusz</h2>
+            <h2 className="section-title mt-3">Senior backend/infra fókusz</h2>
             <p className="section-body">
               A cél nem a látvány, hanem a működés. Produkciós rendszerekben gondolkodom, ahol a stabilitás, a
               átláthatóság és a terhelhetőség számít.
@@ -291,7 +291,7 @@ function Homepage() {
         <div className="space-y-8">
           <div>
             <p className="section-kicker">Referenciák</p>
-            <h2 className="section-title">Weboldal és rendszer referenciák</h2>
+            <h2 className="section-title mt-3">Weboldal és rendszer referenciák</h2>
             <p className="section-body mt-3 max-w-2xl">
               Az összes jelenlegi referencia itt van listázva. Ha valami archív, azt is jelzem, hogy tiszta legyen a kép.
             </p>
@@ -331,7 +331,7 @@ function Homepage() {
         <div className="space-y-6">
           <div>
             <p className="section-kicker">Folyamat</p>
-            <h2 className="section-title">Egyenes, mérhető lépések</h2>
+            <h2 className="section-title mt-3">Egyenes, mérhető lépések</h2>
             <p className="section-body mt-3 max-w-2xl">
               Rövid egyeztetés, tiszta architektúra, kontrollált fejlesztés, stabil üzemeltetés. Itt nincsenek meglepetések,
               csak átlátható lépések.

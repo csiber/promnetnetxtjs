@@ -1,215 +1,103 @@
-"use client";
-
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { PiArrowLeftThin } from "react-icons/pi";
-import { FaChartLine, FaFigma, FaMailBulk, FaServer, FaShoppingCart } from "react-icons/fa";
-import { trackCtaClick } from "@/lib/analytics";
 
-const projectHighlights = [
+const summary = [
   {
-    title: "Konverzió",
-    value: "+32%",
-    description: "Webshop funnel optimalizáció, A/B tesztelt checkout lépések és remarketing kampányok.",
+    label: "Átlagos növekedés",
+    value: "32%",
+    note: "konverzió",
   },
   {
-    title: "Átlagos kosárérték",
-    value: "+18%",
-    description: "Cross-sell blokkok, dinamikus ajánlók és személyre szabott kuponlogika.",
+    label: "Integrációk",
+    value: "5+",
+    note: "külső rendszer",
   },
   {
-    title: "Support terhelés",
-    value: "-27%",
-    description: "Automatikus onboarding e-mailek, self-service tudásbázis és chat triage.",
+    label: "Idő",
+    value: "8 hét",
+    note: "szállítás",
   },
 ];
 
-const stack = [
-  "Next.js 14 + React Server Components",
+const highlights = [
   "Stripe + Barion fizetési integráció",
-  "Sanity headless CMS",
-  "Cloudflare Pages + Workers edge cache",
-  "Plausible + GA4 analitika",
+  "Termék- és felhasználói szegmensek bevezetése",
+  "Automatizált onboarding és e-mail flow",
+  "Teljesítmény- és stabilitásmérések",
 ];
 
-const phases = [
-  {
-    label: "1. Discovery & benchmark",
-    details:
-      "Versenytársak auditja, Google Analytics + Hotjar adatgyűjtés, KPI-k rögzítése és workshop a vezetőséggel.",
-  },
-  {
-    label: "2. UX/UI és tartalom",
-    details:
-      "Figma prototípus, moduláris komponensek, landing sablonok. Copywriting támogatás konverzió fókuszú tartalommal.",
-  },
-  {
-    label: "3. Fejlesztés és automatizáció",
-    details:
-      "Next.js komponensek, Resend alapú e-mail automatizmus, CRM webhookok és CI/CD pipeline.",
-  },
-  {
-    label: "4. Mérés és támogatás",
-    details:
-      "Plausible dashboard, event tracking, konverziós riportok és havi optimalizációs sprint.",
-  },
-];
+export default function CreatifyClient() {
+  const shouldReduceMotion = useReducedMotion();
+  const enableMotion = !shouldReduceMotion;
 
-export default function CreatifyCaseStudyPage() {
   return (
-    <motion.div
-      className="text-foreground"
-      initial={{ y: 100, opacity: 0 }}
-      animate={{
-        y: 0,
-        opacity: 1,
-        transition: {
-          duration: 0.8,
-          delay: 0.4,
-          type: "spring",
-          stiffness: 200,
-        },
-      }}
+    <motion.section
+      initial={enableMotion ? { opacity: 0, y: 24 } : false}
+      animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+      transition={enableMotion ? { duration: 0.6, ease: "easeOut" } : undefined}
+      className="mx-auto w-full max-w-5xl px-6 pb-16 pt-8"
     >
-      <div className="sticky top-5">
-        <div className="-mt-6">
-          <div className="flex h-10 w-full items-center gap-x-7 rounded-xl bg-card/60 backdrop-blur-md">
-            <Link href={"/dashboard/case-studies"}>
-              <div className="ml-3 flex h-8 w-8 items-center justify-center rounded-full bg-card/70">
-                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-accent/30">
-                  <PiArrowLeftThin className="text-lg text-black" />
-                </div>
-              </div>
-            </Link>
-            <Link href={"/dashboard/case-studies"}>
-              <button className="h-6 w-28 rounded-md bg-card/60 text-xs">Esettanulmányok</button>
-            </Link>
+      <div className="flex items-center gap-3 text-sm text-muted">
+        <Link href="/dashboard/case-studies" className="inline-flex items-center gap-2 text-accent">
+          <PiArrowLeftThin />
+          Vissza az esettanulmányokhoz
+        </Link>
+      </div>
+
+      <header className="mt-6 space-y-4">
+        <p className="section-kicker">Creatify</p>
+        <h1 className="section-title mt-3">Digitális tartalom platform megújulása</h1>
+        <p className="section-body max-w-2xl">
+          A fókusz a stabil backend és a megbízható integrációk voltak. A cél az volt, hogy a mérési és onboarding folyamat
+          kiszámítható legyen, és ne legyenek rejtett technikai adósságok.
+        </p>
+      </header>
+
+      <section className="mt-10 grid gap-6 lg:grid-cols-3">
+        {summary.map((item) => (
+          <div key={item.label} className="rounded-xl border border-white/10 bg-card/70 p-5">
+            <p className="text-sm text-muted">{item.label}</p>
+            <p className="mt-3 text-3xl font-semibold text-foreground">{item.value}</p>
+            <p className="text-xs text-muted">{item.note}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="mt-10 grid gap-8 lg:grid-cols-[1.2fr,0.8fr]">
+        <div className="space-y-6">
+          <div className="rounded-xl border border-white/10 bg-card/70 p-6">
+            <h2 className="text-lg font-semibold text-foreground">Helyzet</h2>
+            <p className="mt-3 text-sm text-muted">
+              Több forrásból érkező adat, különálló automatizmusok és részben manuális folyamatok. A cél az volt, hogy a
+              backend réteg összefogja a rendszereket, és legyen stabil mérési alap.
+            </p>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-card/70 p-6">
+            <h2 className="text-lg font-semibold text-foreground">Megoldás</h2>
+            <ul className="mt-3 space-y-2 text-sm text-muted">
+              {highlights.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </div>
-
-      <div className="mt-9 flex flex-col gap-6 rounded-2xl border border-white/10 bg-card/80 p-5">
-        <motion.header
-          initial={{ x: 60, opacity: 0, filter: "blur(6px)" }}
-          animate={{
-            x: 0,
-            opacity: 1,
-            filter: "blur(0px)",
-            transition: {
-              duration: 0.8,
-              delay: 0.6,
-              type: "spring",
-              stiffness: 200,
-            },
-          }}
-          className="space-y-4"
-        >
-          <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-emerald-200">
-            digitális termékfejlesztés
-          </span>
-          <h1 className="text-3xl font-RubikExtraBold text-foreground">Creatify – digitális tartalom platform megújulása</h1>
-          <p className="text-sm text-muted">
-            A Creatify csapata digitális sablonokat és marketing eszközöket értékesít európai kisvállalkozásoknak. A célunk egy olyan új márka- és felhasználói élmény volt, amely gyorsabbá, érthetőbbé és mérhetőbbé teszi az értékesítést.
-          </p>
-        </motion.header>
-
-        <section className="grid gap-4 rounded-2xl border border-white/10 bg-card/70 p-5 md:grid-cols-3">
-          {projectHighlights.map((item) => (
-            <div key={item.title} className="rounded-xl border border-white/10 bg-card/60 p-4">
-              <span className="text-[11px] uppercase tracking-[0.3em] text-emerald-200">{item.title}</span>
-              <p className="mt-2 text-2xl font-RubikExtraBold text-emerald-100">{item.value}</p>
-              <p className="mt-2 text-xs text-muted">{item.description}</p>
-            </div>
-          ))}
-        </section>
-
-        <section className="grid gap-4 md:grid-cols-[2fr,1fr]">
-          <article className="rounded-2xl border border-white/10 bg-card/70 p-5 text-muted">
-            <h2 className="text-lg font-RubikMedium text-foreground">Kihívás</h2>
-            <p className="mt-2 text-sm text-muted">
-              A régi webshop sablonos volt, hosszú volt a vásárlási folyamat, és hiányzott az egységes mérés. A support csapat manuálisan kezelte a visszatérő kérdéseket, ami rengeteg időt vitt el.
-            </p>
-            <h2 className="mt-6 text-lg font-RubikMedium text-foreground">Megoldás</h2>
-            <ul className="mt-2 space-y-2 text-sm text-muted">
-              <li className="flex items-start gap-2">
-                <FaFigma className="mt-1 text-emerald-300" />
-                <span>Mobil-first Figma design rendszer 28 új komponenssel.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <FaShoppingCart className="mt-1 text-emerald-300" />
-                <span>Új vásárlási funnel, dinamikus kosár ajánlások és progress bar a checkoutban.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <FaMailBulk className="mt-1 text-emerald-300" />
-                <span>Automatizált onboarding e-mailek és upsell kampányok Resend + Customer.io integrációval.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <FaServer className="mt-1 text-emerald-300" />
-                <span>Cloudflare Pages deploy, edge cache szabályok és serverless API a licenckulcs kezeléshez.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <FaChartLine className="mt-1 text-emerald-300" />
-                <span>Plausible + GA4 eseménykövetés, real-time dashboard a marketing csapatnak.</span>
-              </li>
-            </ul>
-          </article>
-          <aside className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-card/70 p-5 text-sm text-muted">
-            <div>
-              <h3 className="text-base font-RubikMedium text-foreground">Projekt tények</h3>
-              <ul className="mt-2 space-y-1 text-muted">
-                <li>Időtartam: 6 hét (2 sprint)</li>
-                <li>Csapat: 1 UX, 1 fejlesztő, 1 marketing tanácsadó</li>
-                <li>Technológiák: {stack.slice(0, 2).join(", ")}</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-base font-RubikMedium text-foreground">Felhasznált stack</h3>
-              <ul className="mt-2 space-y-1 text-muted">
-                {stack.map((item) => (
-                  <li key={item}>• {item}</li>
-                ))}
-              </ul>
-            </div>
-          </aside>
-        </section>
-
-        <section className="grid gap-3 rounded-2xl border border-white/10 bg-card/70 p-5">
-          <h2 className="text-lg font-RubikMedium text-foreground">Projekt menete</h2>
-          <div className="grid gap-3 md:grid-cols-2">
-            {phases.map((phase) => (
-              <div key={phase.label} className="rounded-xl border border-white/10 bg-card/60 p-4">
-                <h3 className="text-sm font-RubikMedium text-muted">{phase.label}</h3>
-                <p className="mt-2 text-sm text-muted">{phase.details}</p>
-              </div>
-            ))}
+        <aside className="rounded-xl border border-white/10 bg-card/70 p-6">
+          <h3 className="text-lg font-semibold text-foreground">Projekt tények</h3>
+          <ul className="mt-4 space-y-2 text-sm text-muted">
+            <li>Stack: Next.js, Node.js, Stripe, Barion</li>
+            <li>Szerep: backend + integrációk</li>
+            <li>Időtáv: 8 hét</li>
+            <li>Átadás: dokumentált integrációk + monitoring</li>
+          </ul>
+          <div className="mt-6 rounded-lg border border-white/10 bg-card/60 p-4 text-sm text-muted">
+            Ha hasonló rendszerben gondolkodsz, írd meg a scope-ot és visszajelzek.
           </div>
-        </section>
-
-        <section className="flex flex-col gap-4 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 p-5 text-foreground">
-          <h2 className="text-lg font-RubikMedium">Hasonló eredményeket szeretnél?</h2>
-          <p className="text-sm">
-            Foglalj 30 perces konzultációt, ahol átbeszéljük a céljaidat, és vázolok egy akciótervet. A hívás után írásban is megkapod az ajánlást.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="https://cal.com/promnet/30-perces-konzultacio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-card/80 px-5 py-2 text-sm font-RubikMedium text-emerald-100 transition hover:-translate-y-0.5 hover:bg-card/70"
-              onClick={() => trackCtaClick("case-study-cal", { case: "creatify" })}
-            >
-              Konzultáció foglalása
-            </Link>
-            <Link
-              href="#lead-form"
-              className="inline-flex items-center gap-2 rounded-full border border-accent/40 px-5 py-2 text-sm font-RubikMedium text-foreground transition hover:-translate-y-0.5 hover:border-white/10"
-              onClick={() => trackCtaClick("case-study-lead", { case: "creatify" })}
-            >
-              Projekt megbeszélése
-            </Link>
-          </div>
-        </section>
-      </div>
-    </motion.div>
+        </aside>
+      </section>
+    </motion.section>
   );
 }
