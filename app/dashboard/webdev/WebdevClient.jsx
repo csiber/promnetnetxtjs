@@ -140,7 +140,7 @@ function WebdevClient() {
           transition={{ delay: 0.4 }}
           className="text-3xl font-RubikExtraBold text-center text-foreground"
         >
-          Játék, animáció & 3D
+          Játék, animáció & 3D (mellékág)
         </motion.h1>
         <div className="flex items-center gap-x-2 justify-center my-4 font-RubikRegular">
           <p className="bg-card/60 w-fit text-muted rounded-md px-2 h-5 flex items-center justify-center text-[10px]">
@@ -152,8 +152,8 @@ function WebdevClient() {
           </span>
         </div>
         <p className="text-center text-sm text-muted">
-          Webfejlesztési szolgáltatásokat már nem vállalok. Kérlek, csak játék, animáció, 3D grafika, 3D modellezés vagy 3D
-          nyomtatás kapcsán keress.
+          Ez a 3D/animációs mellékág. A fő profilom a backend és az infrastruktúra; webes munkát csak akkor vállalok,
+          ha közvetlenül a backendhez kapcsolódik.
         </p>
         <section className="relative md:py-12 py-8">
           <div className="mt-6 grid gap-6 lg:grid-cols-3">

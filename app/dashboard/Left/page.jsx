@@ -130,12 +130,12 @@ const quickActions = [
 ];
 
 const featureOptions = [
-  "Reszponzív dizájn",
-  "Webshop modul",
-  "Időpontfoglaló",
-  "Blog / tartalommarketing",
-  "Integrációk (CRM, számlázó)",
-  "Hosting és üzemeltetés",
+  "API tervezés",
+  "Adatintegrációk",
+  "CI/CD pipeline",
+  "Monitoring és logging",
+  "Auth / SSO",
+  "Üzemeltetés",
 ];
 
 function Leftpage() {
@@ -522,7 +522,7 @@ function Leftpage() {
 
               <div className="flex w-full">
                 <div className="my-4 flex gap-x-1 text-xs">
-                  {["WordPress", "Git", "NodeJS", "Laravel"].map((skill) => (
+                  {["Git", "Node.js", "Laravel", "PostgreSQL", "Docker"].map((skill) => (
                     <p
                       key={skill}
                       className="flex h-5 items-center justify-center rounded-md bg-card/60 px-2 text-[11px] font-RubikBold text-muted"
@@ -690,8 +690,8 @@ function Leftpage() {
           <div className="mt-5 w-full text-muted">
             <h2 className="font-RubikBold my-4">Info</h2>
             <p className="text-[12px]  font-RubikRegular my-3">
-              Játék- és animációkészítésre, 3D grafikára, 3D modellezésre és 3D nyomtatásra fókuszálok. Webfejlesztési
-              projekteket már nem vállalok, viszont kreatív 3D munkák és gyártási támogatás elérhető.
+              A fő fókuszom a backend fejlesztés és az infrastruktúra. A játék/animáció/3D és az elektronikai szerviz
+              mellékágként maradt meg. Webes munkát csak akkor vállalok, ha szorosan kapcsolódik a backendhez.
             </p>
 
             <div className="grid gap-2 rounded-xl border border-emerald-400/20 bg-card/70 p-3 text-[11px] text-muted">
@@ -721,9 +721,9 @@ function Leftpage() {
                     }
                     target="blank"
                   >
-                    korábbi full stack
+                    fejlesztő
                   </Link>{" "}
-                  webfejlesztő (webes projektekre már nem vállalok megkeresést)
+                  — fókusz backend, front csak ha közvetlenül szükséges
                 </span>
               </div>
               <div className="flex items-center gap-x-1">

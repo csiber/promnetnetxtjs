@@ -349,16 +349,16 @@ function HostingBuilderClient() {
           </div>
           <div className="mt-10 grid gap-6 rounded-2xl border border-white/10 bg-card/70 p-6 text-foreground lg:grid-cols-[1fr,1fr]">
             <div>
-              <h3 className="text-lg font-RubikMedium text-foreground">Weboldal + hosting, egy kézből</h3>
+              <h3 className="text-lg font-RubikMedium text-foreground">Backend + infra egy kézből</h3>
               <p className="mt-2 text-sm text-muted">
-                Ha a webfejlesztési szolgáltatásomat választod, az infrastruktúra-tervezéstől az üzemeltetésig
-                végigkísérem a projektet. Így nincs kommunikációs szakadék a fejlesztők és az üzemeltetők között.
+                Backend fejlesztésnél az infrastruktúra-tervezéstől az üzemeltetésig végigkövetem a projektet.
+                Így nincs törés a fejlesztés és az üzemeltetés között.
               </p>
               <Link
-                href="/dashboard/webdev"
+                href="/dashboard/case-studies"
                 className="mt-4 inline-flex items-center gap-2 text-xs font-RubikMedium text-emerald-200 transition hover:text-emerald-100"
               >
-                Nézd meg a webfejlesztési csomagokat
+                Nézd meg az esettanulmányokat
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4"

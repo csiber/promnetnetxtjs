@@ -24,9 +24,9 @@ const heroText = {
   ),
   description: (
     <>
-      Szia! Polyák Csaba vagyok, játék- és animációkészítéssel, 3D grafikával, 3D modellezéssel és 3D nyomtatással
-      foglalkozom. Webfejlesztési megkereséseket már nem vállalok, a fókusz a kreatív és technikai 3D munkákon van az
-      ötlettől a végső átadásig.
+      Szia! Polyák Csaba vagyok. A fő fókuszom a backend fejlesztés és az ehhez kapcsolódó infrastruktúra.
+      A játék/animáció/3D és az elektronikai szerviz mellékágként maradt meg.
+      Ha webes munkáról van szó, azt csak akkor vállalom, ha szorosan kapcsolódik a backendhez.
     </>
   ),
 };
@@ -37,7 +37,7 @@ const quickLinks = [
     title: "Creatify esettanulmány",
     domain: "promnet.hu",
     description:
-      "32%-os konverziónövekedés UX finomhangolással, célzott mérésekkel és működő csatornák optimalizálásával.",
+      "Backend és mérési háttér stabilizálása, folyamatok tisztázása, és az eredmények dokumentálása.",
     icon: <PiBrowsersThin aria-hidden="true" className="h-6 w-6" />,
     iconAlt: "Webes esettanulmány ikon",
   },
@@ -45,7 +45,7 @@ const quickLinks = [
     href: "https://blogocska.hu",
     title: "Technikai blog magyarul",
     domain: "blogocska.hu",
-    description: "Tananyagok és kulisszatitkok fejlesztőknek, marketingeseknek és üzleti döntéshozóknak.",
+    description: "Jegyzetek, technikai leírások és rövid összefoglalók fejlesztőknek.",
     icon: <PiMegaphoneThin aria-hidden="true" className="h-6 w-6" />,
     iconAlt: "Blog ikon",
     external: true,
@@ -54,24 +54,24 @@ const quickLinks = [
 
 const services = [
   {
+    href: "/dashboard/hostingbuilder",
+    title: "Backend & infrastruktúra",
+    domain: "promnet.hu",
+    description: "API-k, integrációk, CI/CD, monitorozás és üzemeltetés.",
+    icon: <PiCloudThin aria-hidden="true" className="h-6 w-6" />,
+    iconAlt: "Backend és infra ikon",
+  },
+  {
     href: "/dashboard/webdev",
-    title: "Játék, animáció & 3D",
+    title: "Játék, animáció & 3D (mellékág)",
     domain: "promnet.hu",
     description: "Játék- és animációkészítés, 3D grafika, 3D modellezés és 3D nyomtatás.",
     icon: <PiBrowsersThin aria-hidden="true" className="h-6 w-6" />,
     iconAlt: "Játék és 3D ikon",
   },
   {
-    href: "/dashboard/hostingbuilder",
-    title: "Hosting & DevOps",
-    domain: "promnet.hu",
-    description: "Felhős infrastruktúra, CI/CD, biztonsági mentések és monitorozás egy kézből.",
-    icon: <PiCloudThin aria-hidden="true" className="h-6 w-6" />,
-    iconAlt: "Felhő infrastruktúra ikon",
-  },
-  {
     href: "/dashboard/service",
-    title: "Elektronikai szerviz",
+    title: "Elektronikai szerviz (mellékág)",
     domain: "promnet.hu",
     description: "Notebook, PC és hálózati eszköz szerviz helyszíni kiszállással és gyors diagnosztikával.",
     icon: <PiStackThin aria-hidden="true" className="h-6 w-6" />,
@@ -83,19 +83,19 @@ const collaborationSteps = [
   {
     title: "Felmérés és irány",
     description:
-      "Közösen meghatározzuk a briefet, a kreatív irányt, a terjedelmet és az ütemezést a játék, animáció vagy 3D projektben.",
+      "Közösen tisztázzuk a scope-ot, a rendszereket, a függőségeket és az ütemezést.",
     icon: <PiMegaphoneThin aria-hidden="true" className="h-6 w-6 text-cyan-200" />,
   },
   {
     title: "Gyártás és iteráció",
     description:
-      "Modellezés, textúrázás, animáció és interaktív prototípusok, átlátható review körökkel és frissítésekkel.",
+      "Backend fejlesztés, integrációk és infrastruktúra építés, átlátható review körökkel.",
     icon: <PiCodeThin aria-hidden="true" className="h-6 w-6 text-blue-200" />,
   },
   {
     title: "Átadás és támogatás",
     description:
-      "Végső render, assetek vagy nyomtatásra kész fájlok dokumentált átadással és opcionális támogatással.",
+      "Átadás, dokumentáció és opcionális üzemeltetési támogatás.",
     icon: <PiCloudThin aria-hidden="true" className="h-6 w-6 text-sky-200" />,
   },
 ];
@@ -244,7 +244,7 @@ function Homepage() {
                   : undefined
               }
             >
-              {["full stack", "design", "hosting"].map((badge) => (
+              {["backend", "infra", "integrációk"].map((badge) => (
                 <motion.span
                   key={badge}
                   className="neo-tag"
@@ -421,10 +421,11 @@ function Homepage() {
               portfólió frissítés
             </span>
             <h2 className="text-xl font-RubikMedium text-foreground lg:text-2xl">
-              Legfrissebb, élő webes projektek
+              Legfrissebb, élő projektek (backend fókusz)
             </h2>
             <p className="text-sm leading-relaxed text-muted lg:text-base">
-              Összegyűjtöttem a jelenleg is elérhető munkáimat egy modern, gyorsan áttekinthető listába. Nézd meg, milyen megoldásokkal segítem a partnereket a digitális térben.
+              Összegyűjtöttem a jelenleg is elérhető munkáimat egy modern, gyorsan áttekinthető listába.
+              Többségük backend és infrastruktúra, de látszanak a mellékágak is.
             </p>
             <div className="grid grid-cols-2 gap-3 rounded-2xl border border-white/10 bg-card/60 p-4 text-xs text-muted">
               <div>
@@ -521,7 +522,8 @@ function Homepage() {
             </span>
             <h2 className="text-xl font-RubikMedium text-foreground lg:text-2xl">Így lesz az ötletből kézzelfogható digitális megoldás</h2>
             <p className="text-sm text-muted lg:text-base">
-              A folyamat minden lépésénél fókuszban tartjuk az üzleti céljaidat: közösen térképezzük fel a kihívásokat, majd transzparens mérföldkövekkel haladunk a bevezetésig.
+              A folyamat során először tisztázzuk az üzleti és technikai igényeket, utána jön a tervezés és a megvalósítás.
+              Végig mérföldkövekkel és tiszta kommunikációval haladunk.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
@@ -661,10 +663,11 @@ function Homepage() {
           <div className="space-y-3">
             <span className="promnet-badge">szolgáltatások</span>
             <h2 className="text-xl font-semibold text-foreground lg:text-2xl">
-              Megoldások a stratégia, fejlesztés és üzemeltetés metszetében
+              Megoldások backend, üzemeltetés és integrációk metszetében
             </h2>
             <p className="text-sm text-muted lg:text-base">
-              Három fókuszterület, ahol mérhető üzleti eredményeket szállítok – legyen szó új digitális termék építéséről vagy meglévő infrastruktúra stabilizálásáról.
+              Három fókuszterület, ahol rendszereket teszek stabilabbá, gyorsabbá és karbantarthatóbbá.
+              Ha kell, ebbe befér egy kisebb webes réteg is, de nem ez a fő irány.
             </p>
           </div>
           <div className="promnet-grid">
