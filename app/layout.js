@@ -8,6 +8,7 @@ import SiteFooter from "@/components/layout/SiteFooter";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { baseUrl, siteMetadata } from "@/lib/seo";
+import ConsoleArt from "@/components/ui/ConsoleArt";
 
 export const runtime = "edge";
 
@@ -136,6 +137,7 @@ export default function RootLayout({ children }) {
                 <SpeedInsights />
               </AnalyticsGate>
             ) : null}
+            <ConsoleArt />
           </ConsentProvider>
         </Theming>
       </body>
