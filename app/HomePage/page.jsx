@@ -94,8 +94,7 @@ const collaborationSteps = [
   },
   {
     title: "Átadás és támogatás",
-    description:
-      "Átadás, dokumentáció és opcionális üzemeltetési támogatás.",
+    description: "Átadás, dokumentáció és opcionális üzemeltetési támogatás.",
     icon: <PiCloudThin aria-hidden="true" className="h-6 w-6 text-sky-200" />,
   },
 ];
@@ -194,367 +193,202 @@ function Homepage() {
   }, []);
 
   return (
-    <motion.section
-      {...heroSectionMotion}
-      className="neo-shell"
-    >
-      <div className="neo-titlebar">
-        <div className="neo-dots">
-          <span className="neo-dot" />
-          <span className="neo-dot" />
-          <span className="neo-dot" />
-        </div>
-        <span>PromNET Desktop</span>
-        <span className="text-[10px] text-muted">auto day/night</span>
-      </div>
-      <div className="relative flex w-full flex-col gap-12 p-6 lg:p-12">
-        <div className="grid gap-10 lg:grid-cols-[auto,1fr] lg:items-center">
-          <motion.div
-            className="relative flex h-24 w-24 items-center justify-center rounded-3xl bg-gradient-to-br from-cyan-400/90 to-blue-600 text-white shadow-xl shadow-cyan-500/30 lg:h-32 lg:w-32"
-            whileHover={enableMotion ? { rotate: 8, scale: 1.05 } : undefined}
-            {...floatingBadgeMotion}
-          >
-            <PiCodeThin className="text-6xl" />
-            <motion.span
-              className="absolute -bottom-4 right-0 rounded-full border border-cyan-200/40 bg-cyan-400/20 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-white"
-              initial={enableMotion ? { opacity: 0, y: 10 } : false}
-              animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-              transition={enableMotion ? { delay: 0.6, duration: 0.6 } : undefined}
-            >
-              kreativitás
-            </motion.span>
-          </motion.div>
-          <div className="space-y-6 text-foreground">
-            <h1 className="text-lg font-Rubik tracking-tight lg:text-2xl">{heroText.title}</h1>
-            <p className="text-sm leading-relaxed text-muted lg:text-base">{heroText.description}</p>
-            <motion.div
-              className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.4em] text-muted"
-              initial={enableMotion ? "hidden" : false}
-              animate={enableMotion ? "visible" : undefined}
-              variants={
-                enableMotion
-                  ? {
-                      hidden: { opacity: 0, y: 10 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        transition: { staggerChildren: 0.15 },
-                      },
-                    }
-                  : undefined
-              }
-            >
-              {["backend", "infra", "integrációk"].map((badge) => (
-                <motion.span
-                  key={badge}
-                  className="neo-tag"
-                  variants={
-                    enableMotion
-                      ? { hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } }
-                      : undefined
-                  }
+    <motion.section {...heroSectionMotion} className="relative">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-10 lg:px-6">
+        <div className="grid gap-6 lg:grid-cols-[1.2fr,0.8fr]">
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-card/70 p-8 shadow-[0_40px_120px_-60px_rgba(14,165,233,0.45)] backdrop-blur-2xl">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.25),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(37,99,235,0.25),transparent_60%)]" />
+            <div className="relative space-y-6">
+              <div className="flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.35em] text-muted">
+                {["backend", "infra", "integrációk"].map((badge) => (
+                  <span key={badge} className="neo-tag">
+                    {badge}
+                  </span>
+                ))}
+              </div>
+              <div className="flex items-start gap-6">
+                <motion.div
+                  className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400/90 to-blue-600 text-white shadow-xl shadow-cyan-500/30"
+                  whileHover={enableMotion ? { rotate: 8, scale: 1.05 } : undefined}
+                  {...floatingBadgeMotion}
                 >
-                  {badge}
-                </motion.span>
-              ))}
-            </motion.div>
+                  <PiCodeThin className="text-4xl" />
+                </motion.div>
+                <div className="space-y-4 text-foreground">
+                  <h1 className="text-xl font-Rubik tracking-tight lg:text-3xl">{heroText.title}</h1>
+                  <p className="text-sm leading-relaxed text-muted lg:text-base">{heroText.description}</p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <motion.div
-          className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-card/70 shadow-[0_60px_120px_-55px_rgba(14,165,233,0.45)]"
-          whileHover={enableMotion ? { scale: 1.01 } : undefined}
-        >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.35),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(37,99,235,0.35),transparent_60%)]"
-          />
-          <motion.div
-            className="relative flex flex-col gap-8 rounded-[2.5rem] bg-gradient-to-br from-black/40 via-black/20 to-black/40 p-8 text-foreground md:flex-row md:items-center md:justify-between"
-            initial={enableMotion ? { opacity: 0, y: 24 } : false}
-            animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={enableMotion ? { delay: 0.2, duration: 0.6 } : undefined}
-          >
-            <div className="max-w-3xl space-y-4">
-              <span className="inline-flex items-center gap-4 text-[11px] font-semibold uppercase tracking-[0.35em] text-accent">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="h-5 w-5"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M2.25 5.25c0 8.284 6.716 15 15 15h2.25a1.5 1.5 0 001.5-1.5v-2.799a1.5 1.5 0 00-1.329-1.494l-3.558-.406a1.5 1.5 0 00-1.38.784l-.83 1.537a11.048 11.048 0 01-4.943-4.943l1.537-.83a1.5 1.5 0 00.784-1.38l-.406-3.558A1.5 1.5 0 009.048 3H6.75a1.5 1.5 0 00-1.5 1.5V5.25z"
-                    />
-                  </svg>
-                </span>
-                Kérdésed van? Hívj bizalommal!
-              </span>
-              <p className="text-base leading-relaxed text-foreground md:text-lg">
-                Ha bármilyen kérdésed lenne, hívj vagy írj, és megbeszéljük a részleteket. Mondd el, mit szeretnél elérni, és biztosan találunk rá megoldást!
+          <div className="flex flex-col gap-4">
+            <div className="rounded-[2rem] border border-white/10 bg-card/60 p-6 backdrop-blur-xl">
+              <p className="text-xs uppercase tracking-[0.3em] text-accent">Kapcsolat</p>
+              <p className="mt-3 text-sm text-muted">
+                Ha kérdésed van, írj vagy hívj. Röviden egyeztetünk, utána tisztán látni fogod a következő lépést.
               </p>
-            </div>
-            <div className="flex flex-col gap-3 text-sm text-foreground md:w-auto md:min-w-[240px] md:text-base">
-              <a
-                href="tel:+36205494107"
-                onClick={() => trackCtaClick("telefon", { location: "hero" })}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 font-semibold text-accent-foreground shadow-[0_20px_40px_-20px_rgba(14,165,233,0.65)] transition hover:-translate-y-0.5 hover:bg-sky-300"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="h-5 w-5"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
+              <div className="mt-4 flex flex-col gap-3">
+                <a
+                  href="tel:+36205494107"
+                  onClick={() => trackCtaClick("telefon", { location: "hero" })}
+                  className="neo-button"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M2.25 5.25c0 8.284 6.716 15 15 15h2.25a1.5 1.5 0 001.5-1.5v-2.799a1.5 1.5 0 00-1.329-1.494l-3.558-.406a1.5 1.5 0 00-1.38.784l-.83 1.537a11.048 11.048 0 01-4.943-4.943l1.537-.83a1.5 1.5 0 00.784-1.38l-.406-3.558A1.5 1.5 0 009.048 3H6.75a1.5 1.5 0 00-1.5 1.5V5.25z"
-                  />
-                </svg>
-                Telefonhívás indítása
-              </a>
-              <a
-                href="mailto:info@promnet.hu"
-                onClick={() => trackCtaClick("email", { location: "hero" })}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-accent/40 px-6 py-3 font-semibold text-foreground transition hover:-translate-y-0.5 hover:border-accent hover:text-accent"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="h-5 w-5"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
+                  Telefonhívás indítása
+                </a>
+                <a
+                  href="mailto:info@promnet.hu"
+                  onClick={() => trackCtaClick("email", { location: "hero" })}
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-accent/40 px-6 py-3 text-sm font-semibold text-foreground transition hover:-translate-y-0.5 hover:border-accent hover:text-accent"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-6.75 4.05a2.25 2.25 0 01-2.26 0l-6.75-4.05a2.25 2.25 0 01-1.07-1.916V6.75"
-                  />
-                </svg>
-                E-mail írása
-              </a>
+                  E-mail írása
+                </a>
+              </div>
             </div>
-          </motion.div>
-        </motion.div>
-
-        <section className="neo-panel grid gap-6 lg:grid-cols-[1fr,1fr]">
-          <div className="flex flex-col justify-between gap-4">
-            <div className="space-y-3">
-              <span className="neo-chip">
-                üzleti eredmények
-              </span>
-              <h2 className="text-xl font-RubikMedium text-foreground lg:text-2xl">Valós példák, mérhető hatás</h2>
-              <p className="text-sm leading-relaxed text-muted lg:text-base">
-                A PromNET projekteknél a modern technológiát stratégiai megközelítéssel kombinálom. A cél minden esetben az, hogy a megjelenés mellett a konverzió, az ügyfélelégedettség és az üzemeltetés is javuljon.
-              </p>
-            </div>
-            <div className="grid grid-cols-3 gap-3 text-center text-xs font-RubikMedium uppercase tracking-[0.2em] text-muted">
+            <div className="grid grid-cols-3 gap-3 rounded-[2rem] border border-white/10 bg-card/60 p-5 text-center text-xs text-muted">
               {caseStudies[0].metrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="rounded-2xl border border-white/10 bg-card/60 px-3 py-4 text-foreground shadow-inner"
-                >
+                <div key={metric.label} className="rounded-2xl border border-white/10 bg-card/70 p-3">
                   <span className="block text-lg font-RubikExtraBold text-accent">{metric.value}</span>
                   <span className="text-[10px] text-muted">{metric.label}</span>
                 </div>
               ))}
             </div>
-            <p className="text-xs text-muted">
-              *A teljesítménymutatókat minden projekt elején rögzítjük, és átadáskor riportban dokumentáljuk.
-            </p>
           </div>
-          <div className="space-y-4">
-            {caseStudies.map((caseStudy, index) => (
-              <motion.article
-                key={caseStudy.client}
-                initial={enableMotion ? { opacity: 0, y: 16 } : false}
-                animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-                transition={enableMotion ? { delay: 0.1 * index, duration: 0.5 } : undefined}
-                className="group flex flex-col gap-4 rounded-[2rem] border border-white/10 bg-gradient-to-br from-card/80 via-card/60 to-card/80 p-6 shadow-[0_30px_90px_-50px_rgba(14,165,233,0.4)]"
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <h3 className="text-lg font-RubikMedium text-foreground">{caseStudy.client}</h3>
-                    <span className="text-xs uppercase tracking-[0.25em] text-muted">{caseStudy.industry}</span>
-                  </div>
-                  <span className="inline-flex items-center justify-center rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-accent">
-                    siker
-                  </span>
-                </div>
-                <p className="text-sm text-muted">{caseStudy.summary}</p>
-                <div className="flex flex-wrap gap-2 text-[11px] text-muted">
-                  {caseStudy.metrics.map((metric) => (
-                    <span
-                      key={`${caseStudy.client}-${metric.label}`}
-                      className="rounded-full border border-white/10 bg-card/60 px-3 py-1 text-foreground"
-                    >
-                      {metric.label}: {metric.value}
-                    </span>
-                  ))}
-                </div>
-                <Link
-                  href={`/dashboard/case-studies/${caseStudy.slug}`}
-                  className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/40 px-4 py-2 text-xs font-RubikMedium text-accent transition hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+        </div>
+
+        <section className="grid gap-6 lg:grid-cols-[0.9fr,1.1fr]">
+          <div className="rounded-[2.5rem] border border-white/10 bg-card/70 p-6 shadow-[0_30px_90px_-60px_rgba(14,165,233,0.4)]">
+            <span className="neo-chip">fókusz</span>
+            <h2 className="mt-3 text-xl font-RubikMedium text-foreground">Megoldások backend, üzemeltetés és integrációk metszetében</h2>
+            <p className="mt-3 text-sm text-muted">
+              Három fókuszterület, ahol rendszereket teszek stabilabbá, gyorsabbá és karbantarthatóbbá.
+              Ha kell, ebbe befér egy kisebb webes réteg is, de nem ez a fő irány.
+            </p>
+            <div className="mt-6 grid gap-3">
+              {services.map((service) => (
+                <InfoCard key={service.href} {...service} />
+              ))}
+            </div>
+          </div>
+          <div className="rounded-[2.5rem] border border-white/10 bg-card/60 p-6">
+            <span className="neo-chip">esettanulmányok</span>
+            <div className="mt-4 space-y-4">
+              {caseStudies.map((caseStudy, index) => (
+                <motion.article
+                  key={caseStudy.client}
+                  initial={enableMotion ? { opacity: 0, y: 16 } : false}
+                  animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+                  transition={enableMotion ? { delay: 0.08 * index, duration: 0.5 } : undefined}
+                  className="rounded-2xl border border-white/10 bg-card/70 p-5"
                 >
-                  Esettanulmány részletei
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </motion.article>
-            ))}
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <h3 className="text-base font-RubikMedium text-foreground">{caseStudy.client}</h3>
+                      <span className="text-xs uppercase tracking-[0.25em] text-muted">{caseStudy.industry}</span>
+                    </div>
+                    <span className="rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-accent">
+                      {caseStudy.metrics[0]?.value ?? "eredmény"}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm text-muted">{caseStudy.summary}</p>
+                  <Link
+                    href={`/dashboard/case-studies/${caseStudy.slug}`}
+                    className="mt-4 inline-flex w-fit items-center gap-2 text-xs font-RubikMedium text-accent"
+                  >
+                    Esettanulmány részletei
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </motion.article>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="neo-panel grid gap-6 lg:grid-cols-[320px,1fr]">
-          <div className="flex flex-col gap-4">
-            <span className="neo-chip">
-              portfólió frissítés
-            </span>
-            <h2 className="text-xl font-RubikMedium text-foreground lg:text-2xl">
-              Legfrissebb, élő projektek (backend fókusz)
-            </h2>
-            <p className="text-sm leading-relaxed text-muted lg:text-base">
+        <section className="grid gap-6 lg:grid-cols-[0.7fr,1.3fr]">
+          <div className="rounded-[2.5rem] border border-white/10 bg-card/60 p-6">
+            <span className="neo-chip">folyamat</span>
+            <h2 className="mt-3 text-xl font-RubikMedium text-foreground">Így dolgozunk együtt</h2>
+            <p className="mt-2 text-sm text-muted">
+              A folyamat során először tisztázzuk az üzleti és technikai igényeket, utána jön a tervezés és a megvalósítás.
+              Végig mérföldkövekkel és tiszta kommunikációval haladunk.
+            </p>
+            <div className="mt-6 space-y-4">
+              {collaborationSteps.map((step, index) => (
+                <div key={step.title} className="rounded-2xl border border-white/10 bg-card/70 p-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-RubikMedium text-foreground">{step.title}</span>
+                    <span className="text-xs uppercase tracking-[0.3em] text-muted">0{index + 1}</span>
+                  </div>
+                  <p className="mt-2 text-sm text-muted">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-[2.5rem] border border-white/10 bg-card/70 p-6">
+            <span className="neo-chip">portfólió</span>
+            <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-muted">
+              <span className="rounded-full border border-white/10 bg-card/60 px-3 py-1">Összes: {projectSummary.total}+</span>
+              <span className="rounded-full border border-white/10 bg-card/60 px-3 py-1">Aktív: {projectSummary.live}</span>
+              <span className="rounded-full border border-white/10 bg-card/60 px-3 py-1">Archív: {projectSummary.archived}</span>
+            </div>
+            <p className="mt-3 text-sm text-muted">
               Összegyűjtöttem a jelenleg is elérhető munkáimat egy modern, gyorsan áttekinthető listába.
               Többségük backend és infrastruktúra, de látszanak a mellékágak is.
             </p>
-            <div className="grid grid-cols-2 gap-3 rounded-2xl border border-white/10 bg-card/60 p-4 text-xs text-muted">
-              <div>
-                <span className="block text-[11px] uppercase tracking-[0.3em] text-muted">Összes projekt</span>
-                <span className="text-2xl font-RubikExtraBold text-foreground">{projectSummary.total}+</span>
-              </div>
-              <div>
-                <span className="block text-[11px] uppercase tracking-[0.3em] text-muted">Aktív</span>
-                <span className="text-2xl font-RubikExtraBold text-accent">{projectSummary.live}</span>
-              </div>
-              <div>
-                <span className="block text-[11px] uppercase tracking-[0.3em] text-muted">Archív</span>
-                <span className="text-2xl font-RubikExtraBold text-foreground">{projectSummary.archived}</span>
-              </div>
-              <div>
-                <span className="block text-[11px] uppercase tracking-[0.3em] text-muted">Kategóriák</span>
-                <span className="text-2xl font-RubikExtraBold text-accent">{projectSummary.tags}</span>
-              </div>
-            </div>
-            <Link
-              href="/dashboard/portfolio"
-              className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/50 bg-accent/10 px-5 py-2 text-xs font-RubikMedium uppercase tracking-[0.25em] text-accent transition hover:-translate-y-0.5 hover:border-accent hover:text-accent"
-            >
-              Teljes portfólió megnyitása
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            {highlightedProjects.map((project, index) => {
-              const isLive = project.status === "live";
-
-              return (
-                <motion.article
-                  key={project.name}
-                  className="flex h-full flex-col gap-4 rounded-2xl border border-white/10 bg-card/70 p-5 shadow-[0_30px_80px_-60px_rgba(14,165,233,0.4)] transition hover:-translate-y-1 hover:border-white/30"
-                  initial={enableMotion ? { opacity: 0, y: 16 } : false}
-                  animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-                  transition={enableMotion ? { delay: 0.05 * index, duration: 0.5 } : undefined}
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex flex-col gap-1">
-                      <span className="text-[11px] uppercase tracking-[0.3em] text-muted">{project.launch}</span>
-                      <h3 className="text-base font-RubikMedium text-foreground">{project.name}</h3>
-                    </div>
-                    <span
-                      className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-RubikMedium uppercase tracking-wide ${
-                        isLive
-                          ? "border border-accent/60 bg-accent/10 text-accent"
-                          : "border border-white/20 bg-white/5 text-muted"
-                      }`}
-                    >
-                      <span className={`h-2 w-2 rounded-full ${isLive ? "bg-accent" : "bg-white/50"}`} />
-                      {isLive ? "Élő" : "Archív"}
-                    </span>
-                  </div>
-                  <p className="text-sm leading-relaxed text-muted">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 text-[11px] text-muted">
-                    {project.tags.map((tag) => (
-                      <span key={`${project.name}-${tag}`} className="rounded-full border border-white/10 bg-card/60 px-2 py-1">
-                        {tag}
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {highlightedProjects.map((project, index) => {
+                const isLive = project.status === "live";
+                return (
+                  <motion.article
+                    key={project.name}
+                    className="flex h-full flex-col gap-3 rounded-2xl border border-white/10 bg-card/80 p-4"
+                    initial={enableMotion ? { opacity: 0, y: 16 } : false}
+                    animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+                    transition={enableMotion ? { delay: 0.05 * index, duration: 0.5 } : undefined}
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <span className="text-[11px] uppercase tracking-[0.3em] text-muted">{project.launch}</span>
+                        <h3 className="text-base font-RubikMedium text-foreground">{project.name}</h3>
+                      </div>
+                      <span
+                        className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-RubikMedium uppercase tracking-wide ${
+                          isLive ? "border border-accent/60 bg-accent/10 text-accent" : "border border-white/20 bg-white/5 text-muted"
+                        }`}
+                      >
+                        <span className={`h-2 w-2 rounded-full ${isLive ? "bg-accent" : "bg-white/50"}`} />
+                        {isLive ? "Élő" : "Archív"}
                       </span>
-                    ))}
-                  </div>
-                  <div className="mt-auto flex items-center justify-between gap-3 text-xs text-muted">
-                    {project.statusNote ? <span className="text-accent">{project.statusNote}</span> : <span />}
+                    </div>
+                    <p className="text-sm text-muted">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 text-[11px] text-muted">
+                      {project.tags.map((tag) => (
+                        <span key={`${project.name}-${tag}`} className="rounded-full border border-white/10 bg-card/60 px-2 py-1">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                     <Link
                       href={project.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-RubikMedium transition ${
-                        isLive
-                          ? "border border-accent/60 text-accent hover:border-accent hover:text-accent"
-                          : "border border-white/10 text-muted hover:border-accent/40 hover:text-accent"
-                      }`}
+                      className="mt-auto inline-flex items-center gap-2 text-xs font-RubikMedium text-accent"
                     >
                       {isLive ? "Megnyitás" : "Részletek"}
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
                     </Link>
-                  </div>
-                </motion.article>
-              );
-            })}
-          </div>
-        </section>
-
-        <section className="neo-panel-soft grid gap-6">
-          <div className="flex flex-col gap-3">
-            <span className="neo-chip">
-              együttműködés
-            </span>
-            <h2 className="text-xl font-RubikMedium text-foreground lg:text-2xl">Így lesz az ötletből kézzelfogható digitális megoldás</h2>
-            <p className="text-sm text-muted lg:text-base">
-              A folyamat során először tisztázzuk az üzleti és technikai igényeket, utána jön a tervezés és a megvalósítás.
-              Végig mérföldkövekkel és tiszta kommunikációval haladunk.
-            </p>
-          </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {collaborationSteps.map((step, index) => (
-              <motion.article
-                key={step.title}
-                className="flex h-full flex-col gap-4 rounded-2xl border border-white/10 bg-card/60 p-6"
-                initial={enableMotion ? { opacity: 0, y: 20 } : {}}
-                animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-                transition={enableMotion ? { delay: 0.1 * index, duration: 0.5 } : undefined}
-              >
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-card/70">
-                  {step.icon}
-                </span>
-                <div className="space-y-2">
-                  <h3 className="text-base font-RubikMedium text-foreground">{step.title}</h3>
-                  <p className="text-sm text-muted">{step.description}</p>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-          <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-card/60 p-6 text-sm text-muted">
-            <p className="max-w-2xl">
-              Ha szeretnél személyre szabott ajánlatot vagy részletesebb tervet kapni, írj egy rövid bemutatkozást a projektedről, és 24 órán belül válaszolok.
-            </p>
+                  </motion.article>
+                );
+              })}
+            </div>
             <Link
-              href="mailto:info@promnet.hu"
-              className="inline-flex items-center gap-2 rounded-full border border-accent/60 bg-accent/10 px-4 py-2 text-sm font-RubikMedium text-accent transition hover:border-accent hover:text-accent"
-              onClick={() => trackCtaClick("kapcsolat-email", { location: "homepage-collaboration" })}
+              href="/dashboard/portfolio"
+              className="mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-accent/50 bg-accent/10 px-4 py-2 text-xs font-RubikMedium uppercase tracking-[0.25em] text-accent transition hover:-translate-y-0.5 hover:border-accent"
             >
-              Kapcsolatfelvétel
+              Teljes portfólió
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
@@ -562,126 +396,95 @@ function Homepage() {
           </div>
         </section>
 
-        <section className="neo-panel-soft space-y-6 shadow-soft">
-          <div className="space-y-3">
-            <span className="promnet-badge">kiemelt tartalom</span>
-            <h2 className="text-xl font-semibold text-foreground lg:text-2xl">
+        <section className="grid gap-6 lg:grid-cols-[1fr,1fr]">
+          <div className="rounded-[2.5rem] border border-white/10 bg-card/60 p-6">
+            <span className="neo-chip">kiemelt tartalom</span>
+            <h2 className="mt-3 text-xl font-semibold text-foreground lg:text-2xl">
               Gyorsan elérhető anyagok és inspirációk
             </h2>
-            <p className="text-sm text-muted lg:text-base">
+            <p className="mt-2 text-sm text-muted lg:text-base">
               Valós projektekből származó tapasztalatok, dokumentált esettanulmányok és a kulisszák mögött készülő tartalmak.
             </p>
-          </div>
-          <div className="promnet-grid">
-            {quickLinks.map((card, index) => (
-              <motion.div
-                key={card.href}
-                className="h-full"
-                initial={enableMotion ? { opacity: 0, y: 16 } : false}
-                animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-                transition={enableMotion ? { delay: 0.1 * index, duration: 0.5 } : undefined}
-              >
-                <InfoCard {...card} />
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        <section className="neo-panel-soft grid gap-6">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <span className="neo-chip">
-                friss cikkek
-              </span>
-              <h2 className="mt-3 text-xl font-RubikMedium text-foreground lg:text-2xl">Legújabb bejegyzések a blogról</h2>
-            </div>
-            <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
-              <label htmlFor="blog-category" className="text-[11px] uppercase tracking-[0.2em] text-muted">
-                Szűrés
-              </label>
-              <select
-                id="blog-category"
-                className="rounded-full border border-white/10 bg-card/70 px-3 py-2 text-xs text-foreground"
-                value={selectedCategory}
-                onChange={(event) => setSelectedCategory(event.target.value)}
-              >
-                {categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
+            <div className="mt-5 grid gap-4">
+              {quickLinks.map((card, index) => (
+                <motion.div
+                  key={card.href}
+                  className="h-full"
+                  initial={enableMotion ? { opacity: 0, y: 16 } : false}
+                  animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+                  transition={enableMotion ? { delay: 0.1 * index, duration: 0.5 } : undefined}
+                >
+                  <InfoCard {...card} />
+                </motion.div>
+              ))}
             </div>
           </div>
-          {blogStatus.state === "loading" ? (
-            <p className="text-sm text-muted">{blogStatus.message}</p>
-          ) : null}
-          {blogStatus.state === "error" ? (
-            <div className="rounded-2xl border border-accent/40 bg-accent/10 p-4 text-sm text-accent">
-              {blogStatus.message}{" "}
-              <Link href="https://blogocska.hu" className="underline" target="_blank" rel="noopener noreferrer">
-                blogocska.hu
-              </Link>
+          <div className="rounded-[2.5rem] border border-white/10 bg-card/70 p-6">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <span className="neo-chip">friss cikkek</span>
+                <h2 className="mt-3 text-xl font-RubikMedium text-foreground lg:text-2xl">Legújabb bejegyzések a blogról</h2>
+              </div>
+              <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
+                <label htmlFor="blog-category" className="text-[11px] uppercase tracking-[0.2em] text-muted">
+                  Szűrés
+                </label>
+                <select
+                  id="blog-category"
+                  className="rounded-full border border-white/10 bg-card/70 px-3 py-2 text-xs text-foreground"
+                  value={selectedCategory}
+                  onChange={(event) => setSelectedCategory(event.target.value)}
+                >
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
-          ) : null}
-          <div className="grid gap-4 md:grid-cols-3">
-            {filteredPosts.slice(0, 3).map((post) => (
-              <article
-                key={post.link}
-                className="flex h-full flex-col gap-3 rounded-2xl border border-white/10 bg-card/60 p-5 text-foreground"
-              >
-                <span className="text-[11px] uppercase tracking-[0.3em] text-accent">
-                  {(post.categories ?? ["Blog"])[0]}
-                </span>
-                <h3 className="text-base font-RubikMedium text-foreground">{post.title}</h3>
-                <p className="text-sm text-muted line-clamp-4">{post.description}</p>
-                <div className="mt-auto flex items-center justify-between text-xs text-muted">
-                  <time dateTime={post.publishedAt}>{post.publishedRelative}</time>
-                  <Link
-                    href={post.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-accent transition hover:text-accent"
-                  >
-                    Elolvasom
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </div>
-              </article>
-            ))}
-            {filteredPosts.length === 0 && blogStatus.state === "ready" ? (
-              <p className="text-sm text-muted">
-                Ebben a kategóriában még nincs publikált bejegyzés. Nézz körül később, vagy válassz másik címkét.
-              </p>
+            {blogStatus.state === "loading" ? <p className="mt-4 text-sm text-muted">{blogStatus.message}</p> : null}
+            {blogStatus.state === "error" ? (
+              <div className="mt-4 rounded-2xl border border-accent/40 bg-accent/10 p-4 text-sm text-accent">
+                {blogStatus.message}{" "}
+                <Link href="https://blogocska.hu" className="underline" target="_blank" rel="noopener noreferrer">
+                  blogocska.hu
+                </Link>
+              </div>
             ) : null}
-          </div>
-        </section>
-
-        <section className="neo-panel-soft space-y-6 shadow-soft">
-          <div className="space-y-3">
-            <span className="promnet-badge">szolgáltatások</span>
-            <h2 className="text-xl font-semibold text-foreground lg:text-2xl">
-              Megoldások backend, üzemeltetés és integrációk metszetében
-            </h2>
-            <p className="text-sm text-muted lg:text-base">
-              Három fókuszterület, ahol rendszereket teszek stabilabbá, gyorsabbá és karbantarthatóbbá.
-              Ha kell, ebbe befér egy kisebb webes réteg is, de nem ez a fő irány.
-            </p>
-          </div>
-          <div className="promnet-grid">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.href}
-                className="h-full"
-                initial={enableMotion ? { opacity: 0, y: 18 } : false}
-                animate={enableMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-                transition={enableMotion ? { delay: 0.12 * index, duration: 0.5 } : undefined}
-              >
-                <InfoCard {...service} />
-              </motion.div>
-            ))}
+            <div className="mt-4 grid gap-4">
+              {filteredPosts.slice(0, 3).map((post) => (
+                <article
+                  key={post.link}
+                  className="flex flex-col gap-2 rounded-2xl border border-white/10 bg-card/60 p-4 text-foreground"
+                >
+                  <span className="text-[11px] uppercase tracking-[0.3em] text-accent">
+                    {(post.categories ?? ["Blog"])[0]}
+                  </span>
+                  <h3 className="text-base font-RubikMedium text-foreground">{post.title}</h3>
+                  <p className="text-sm text-muted line-clamp-3">{post.description}</p>
+                  <div className="flex items-center justify-between text-xs text-muted">
+                    <time dateTime={post.publishedAt}>{post.publishedRelative}</time>
+                    <Link
+                      href={post.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-accent"
+                    >
+                      Elolvasom
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </article>
+              ))}
+              {filteredPosts.length === 0 && blogStatus.state === "ready" ? (
+                <p className="text-sm text-muted">
+                  Ebben a kategóriában még nincs publikált bejegyzés. Nézz körül később, vagy válassz másik címkét.
+                </p>
+              ) : null}
+            </div>
           </div>
         </section>
       </div>
