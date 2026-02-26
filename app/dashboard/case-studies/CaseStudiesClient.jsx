@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { caseStudies } from "@/data/case-studies";

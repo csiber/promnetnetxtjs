@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { PiArrowLeftThin } from "react-icons/pi";

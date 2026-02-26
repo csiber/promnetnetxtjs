@@ -1,0 +1,3 @@
+ÔÇëERR_PNPM_NO_SCRIPTÔÇë Missing script: opennext:build
+
+Command "opennext:build" not found. Did you mean "pnpm run vercel-build"?
