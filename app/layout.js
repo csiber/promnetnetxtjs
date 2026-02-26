@@ -104,6 +104,10 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const isVercel =
+    process.env.NEXT_PUBLIC_VERCEL_ENV === "production" ||
+    process.env.NEXT_PUBLIC_VERCEL_ENV === "preview";
+
   return (
     <html lang="hu" suppressHydrationWarning>
       <head>
@@ -126,10 +130,12 @@ export default function RootLayout({ children }) {
               </div>
             </div>
             <ConsentBanner />
-            <AnalyticsGate>
-              <Analytics />
-              <SpeedInsights />
-            </AnalyticsGate>
+            {isVercel ? (
+              <AnalyticsGate>
+                <Analytics />
+                <SpeedInsights />
+              </AnalyticsGate>
+            ) : null}
           </ConsentProvider>
         </Theming>
       </body>

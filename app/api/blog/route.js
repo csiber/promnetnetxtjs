@@ -13,6 +13,6 @@ export async function GET(request) {
     return NextResponse.json({ items });
   } catch (error) {
     console.error("Blog feed feldolgozási hiba", error);
-    return NextResponse.json({ items: [] }, { status: 500 });
+    return NextResponse.json({ items: [], fallback: true });
   }
 }
