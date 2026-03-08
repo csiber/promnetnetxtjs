@@ -5,7 +5,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import {
   PiBrowsersThin,
   PiCloudThin,
-  PiMegaphoneThin,
   PiStackThin,
   PiArrowRightThin,
   PiArrowUpRightThin,
@@ -225,6 +224,7 @@ function Homepage() {
       stack: project.tags?.slice(0, 4) ?? [],
       href: project.href,
       status: project.status,
+      launch: project.launch,
     }));
   }, []);
 
@@ -295,11 +295,6 @@ function Homepage() {
                 {heroText.description}
               </motion.p>
 
-              <motion.p variants={fadeUp} className="section-body max-w-xl">
-                A cél egyszerű: stabil backend, tiszta üzemeltetés, és olyan integrációk,
-                amik nem borulnak meg egy növekedési hullámtól.
-              </motion.p>
-
               <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
                 <Link
                   href="mailto:info@promnet.hu"
@@ -330,28 +325,29 @@ function Homepage() {
               <div className="hero-grid" />
               <div className="hero-glow" style={{ top: "15%", left: "10%" }} />
               <div className="hero-glow" style={{ bottom: "-20%", right: "5%", animationDelay: "3s" }} />
-              {/* Floating terminal-style card */}
-              <div className="absolute left-6 right-6 top-8 rounded-xl border border-white/10 bg-card/80 p-4 backdrop-blur-xl">
-                <div className="mb-3 flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
-                  <span className="ml-2 text-[11px] uppercase tracking-[0.2em] text-muted">
-                    infra / api / observability
-                  </span>
+              <div className="absolute inset-6 flex flex-col justify-between">
+                <div className="space-y-3">
+                  {[
+                    { label: "Backend / API", items: ["REST", "GraphQL", "WebSocket", "gRPC"] },
+                    { label: "Infrastruktúra", items: ["Docker", "Kubernetes", "Terraform", "CI/CD"] },
+                    { label: "Adatbázis / Cache", items: ["PostgreSQL", "Redis", "S3"] },
+                    { label: "Platform", items: ["Cloudflare", "Hetzner", "AWS"] },
+                  ].map((row) => (
+                    <div key={row.label} className="flex items-center gap-3">
+                      <span className="w-32 shrink-0 text-[10px] uppercase tracking-[0.2em] text-muted">
+                        {row.label}
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {row.items.map((item) => (
+                          <span key={item} className="tag-chip">{item}</span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div className="space-y-2 font-mono text-xs text-muted">
-                  <p><span className="text-accent">✓</span> API gateway: healthy</p>
-                  <p><span className="text-accent">✓</span> Database: 12ms avg latency</p>
-                  <p><span className="text-accent">✓</span> CI/CD pipeline: passing</p>
-                  <p><span className="text-green-400">●</span> Deploy: <span className="text-foreground">production</span></p>
-                </div>
-              </div>
-              <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between text-[11px] text-muted">
-                <span className="uppercase tracking-[0.2em]">uptime 99.9%</span>
-                <span className="flex items-center gap-1.5">
-                  <span className="status-live">Rendszer aktív</span>
-                </span>
+                <p className="text-[11px] uppercase tracking-[0.2em] text-muted">
+                  Nem vendor lista — hanem amit ténylegesen használok
+                </p>
               </div>
             </motion.div>
           </motion.div>
@@ -479,9 +475,6 @@ function Homepage() {
                   <div>
                     <h3 className="text-lg font-semibold text-foreground">Polyák Csaba</h3>
                     <p className="text-sm text-muted">Backend / infra mérnök</p>
-                    <div className="mt-1 flex gap-2">
-                      <span className="status-live">Elérhető</span>
-                    </div>
                   </div>
                 </div>
                 <p className="mt-5 text-sm text-muted leading-relaxed">
@@ -564,6 +557,9 @@ function Homepage() {
                             {tag}
                           </span>
                         ))}
+                        {project.launch && (
+                          <span className="tag-chip opacity-50">{project.launch}</span>
+                        )}
                       </div>
                       <Link
                         href={project.href}
