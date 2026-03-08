@@ -674,7 +674,7 @@ function Homepage() {
                 <p className="mt-4 text-sm text-muted">{blogStatus.message}</p>
               )}
               {blogStatus.state === "error" && (
-                <div className="mt-4 rounded-xl border border-accent/30 bg-accent/8 p-4 text-sm text-accent">
+                <div className="mt-4 rounded-xl border border-accent/30 bg-accent/10 p-4 text-sm text-accent">
                   {blogStatus.message}{" "}
                   <Link href="https://blogocska.hu" className="underline" target="_blank" rel="noopener noreferrer">
                     blogocska.hu

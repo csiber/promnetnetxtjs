@@ -170,7 +170,7 @@
 
   /* ── SaaS card ── */
   .saas-card {
-    @apply relative overflow-hidden rounded-2xl border border-white/8 bg-card/80 backdrop-blur-xl transition-all duration-300 ease-out;
+    @apply relative overflow-hidden rounded-2xl border border-white/10 bg-card/80 backdrop-blur-xl transition-all duration-300 ease-out;
     box-shadow: 0 1px 0 0 rgba(255,255,255,0.05) inset,
                 0 20px 60px -30px rgba(0,0,0,0.4);
   }
@@ -256,7 +256,7 @@
 
   /* ── Sticky nav ── */
   .saas-nav {
-    @apply fixed top-0 left-0 right-0 z-50 flex items-center justify-between border-b border-white/8 backdrop-blur-xl transition-all duration-300;
+    @apply fixed top-0 left-0 right-0 z-50 flex items-center justify-between border-b border-white/10 backdrop-blur-xl transition-all duration-300;
     background: rgba(var(--color-background), 0.8);
     padding: 0 max(1.5rem, calc((100vw - 72rem) / 2));
     height: 64px;
@@ -264,7 +264,7 @@
 
   /* ── Stat card ── */
   .stat-card {
-    @apply flex flex-col gap-1 rounded-2xl border border-white/8 bg-card/60 px-6 py-5 backdrop-blur-sm;
+    @apply flex flex-col gap-1 rounded-2xl border border-white/10 bg-card/60 px-6 py-5 backdrop-blur-sm;
   }
 
   .stat-value {
@@ -277,7 +277,7 @@
 
   /* ── Process step ── */
   .process-step {
-    @apply relative flex flex-col gap-3 p-6 rounded-2xl border border-white/8 bg-card/50 backdrop-blur-sm;
+    @apply relative flex flex-col gap-3 p-6 rounded-2xl border border-white/10 bg-card/50 backdrop-blur-sm;
   }
 
   .process-step-number {
