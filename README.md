@@ -1,44 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PromNET — Next.js Export
 
-## Getting Started
+Ez a mappa tartalmazza az újratervezett PromNET oldal Next.js fájljait.
 
-> **Node version**
->
-> Ensure that Node.js 18.17.0 or later is used. Cloudflare Pages reads the version from the `.nvmrc` file during builds; using an older runtime can cause a 500 Internal Server Error at runtime.
+## Fájlok és célhelyek
 
-> **Cloudflare Pages build**
->
-> The `build` script runs `@cloudflare/next-on-pages` and `wrangler.toml` configures `nodejs_compat` so the app works on the Workers runtime.
+| Fájl | Másolás ide |
+|------|-------------|
+| `app/globals.css` | `app/globals.css` |
+| `app/layout.js` | `app/layout.js` |
+| `app/HomePage/page.jsx` | `app/HomePage/page.jsx` |
+| `components/SiteFooter.jsx` | `components/layout/SiteFooter.jsx` |
 
-First, run the development server:
+## Telepítés
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 1. Másold a fájlokat a Next.js projektbe
+cp app/globals.css    /path/to/promnetnetxtjs/app/globals.css
+cp app/layout.js      /path/to/promnetnetxtjs/app/layout.js
+cp app/HomePage/page.jsx /path/to/promnetnetxtjs/app/HomePage/page.jsx
+cp components/SiteFooter.jsx /path/to/promnetnetxtjs/components/layout/SiteFooter.jsx
+
+# 2. Törölt dependencia: Rubik font (nem kell többé)
+# Hozzáadott fontok: Space Grotesk + JetBrains Mono (next/font/google — nincs extra install)
+
+# 3. Push
+git add .
+git commit -m "redesign: industrial editorial dark theme"
+git push
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Mi változott?
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Betűtípus:** Rubik → Space Grotesk + JetBrains Mono
+- **Design:** Glassmorphism/glow → flat industrial editorial
+- **Szín:** Sky blue → Amber (#E8A838) akcentszín
+- **Layout:** Cyber grid eltávolítva, tiszta border-alapú rács
+- **CSS:** Tailwind megtartva + egyedi `pn-*` prefix osztályok
+- **Theme.jsx:** Eltávolítva a layoutból (dark-only dizájn)

@@ -1,6 +1,5 @@
 import "./globals.css";
-import { Rubik } from "next/font/google";
-import Theming from "@/components/providers/Theme";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { ConsentProvider } from "@/components/providers/ConsentProvider";
 import AnalyticsGate from "@/components/providers/AnalyticsGate";
 import ConsentBanner from "@/components/consent/ConsentBanner";
@@ -12,11 +11,18 @@ import ConsoleArt from "@/components/ui/ConsoleArt";
 
 export const runtime = "edge";
 
-const rubik = Rubik({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin", "latin-ext"],
   display: "swap",
-  variable: "--font-rubik",
-  weight: ["300", "400", "500", "700"],
+  variable: "--font-sg",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jb",
+  weight: ["400", "500"],
 });
 
 const structuredData = {
@@ -41,26 +47,13 @@ const structuredData = {
     "https://github.com/promnet",
     "https://www.linkedin.com/in/csaba-polyak-3497b0133/",
   ],
-  areaServed: {
-    "@type": "AdministrativeArea",
-    name: "Magyarország",
-  },
-  serviceType: [
-    "Backend fejlesztés",
-    "Infrastruktúra",
-    "Integrációk",
-    "DevOps",
-    "Játék és 3D (mellékág)",
-    "Elektronikai szerviz (mellékág)",
-  ],
+  areaServed: { "@type": "AdministrativeArea", name: "Magyarország" },
+  serviceType: ["Backend fejlesztés", "Infrastruktúra", "Integrációk", "DevOps"],
 };
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
-  title: {
-    default: siteMetadata.title,
-    template: "%s | PromNET",
-  },
+  title: { default: siteMetadata.title, template: "%s | PromNET" },
   description: siteMetadata.description,
   keywords: siteMetadata.keywords,
   openGraph: {
@@ -70,14 +63,7 @@ export const metadata = {
     siteName: "PromNET",
     locale: "hu_HU",
     type: "website",
-    images: [
-      {
-        url: `${baseUrl}/logo-white.png`,
-        width: 1200,
-        height: 630,
-        alt: "PromNET logó",
-      },
-    ],
+    images: [{ url: `${baseUrl}/logo-white.png`, width: 1200, height: 630, alt: "PromNET logó" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -85,23 +71,9 @@ export const metadata = {
     description: siteMetadata.description,
     images: [`${baseUrl}/logo-white.png`],
   },
-  alternates: {
-    canonical: baseUrl,
-  },
-  icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
-    apple: "/favicon.svg",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
-  },
+  alternates: { canonical: baseUrl },
+  icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }], apple: "/favicon.svg" },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
 };
 
 export default function RootLayout({ children }) {
@@ -117,29 +89,19 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className={`${rubik.variable} min-h-screen bg-background text-foreground font-sans`}>
-        <Theming>
-          <ConsentProvider>
-            <div className="relative flex min-h-screen flex-col overflow-hidden">
-              <div aria-hidden className="cyber-grid" />
-              <div aria-hidden className="cyber-glow cyber-glow-left" />
-              <div aria-hidden className="cyber-glow cyber-glow-right" />
-              <div aria-hidden className="cyber-noise" />
-              <div className="relative z-10 flex min-h-screen flex-col">
-                <main className="flex-1">{children}</main>
-                <SiteFooter />
-              </div>
-            </div>
-            <ConsentBanner />
-            {isVercel ? (
-              <AnalyticsGate>
-                <Analytics />
-                <SpeedInsights />
-              </AnalyticsGate>
-            ) : null}
-            <ConsoleArt />
-          </ConsentProvider>
-        </Theming>
+      <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} min-h-screen`}>
+        <ConsentProvider>
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+          <ConsentBanner />
+          {isVercel ? (
+            <AnalyticsGate>
+              <Analytics />
+              <SpeedInsights />
+            </AnalyticsGate>
+          ) : null}
+          <ConsoleArt />
+        </ConsentProvider>
       </body>
     </html>
   );
