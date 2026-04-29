@@ -7,11 +7,18 @@ const contactLinks = [
   { href: "https://www.linkedin.com/in/csaba-polyak-3497b0133/", label: "LinkedIn", external: true },
 ];
 
+const businessDetails = [
+  { label: "Cégnév", value: "Polyák Csaba E.V." },
+  { label: "Cím", value: "4324 Kállósemjén, Kölcsey Ferenc út 11." },
+  { label: "Adószám", value: "68747961-1-35" },
+  { label: "Nyilvántartási szám", value: "52193909" },
+];
+
 export default function SiteFooter() {
   return (
     <footer className="mt-16 border-t border-border/70 bg-card/60 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-12 md:flex-row md:justify-between">
-        <section aria-label="Legfrissebb kiadás" className="max-w-xl space-y-4">
+      <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 py-12 md:grid-cols-3">
+        <section aria-label="Legfrissebb kiadás" className="space-y-4">
           <div className="promnet-badge w-fit">Verzió napló</div>
           <h2 className="text-lg font-semibold text-foreground">
             PromNET v{currentRelease.version} – {currentRelease.date}
@@ -40,10 +47,23 @@ export default function SiteFooter() {
               </li>
             ))}
           </ul>
-          <p className="text-xs text-muted">
-            © {new Date().getFullYear()} PromNET – Polyák Csaba e.v. Minden jog fenntartva.
-          </p>
         </section>
+        <section aria-label="Vállalkozás adatai" className="space-y-3 text-sm text-muted">
+          <h2 className="text-lg font-semibold text-foreground">Vállalkozás adatai</h2>
+          <dl className="space-y-2">
+            {businessDetails.map((item) => (
+              <div key={item.label} className="flex flex-col">
+                <dt className="text-xs uppercase tracking-wide text-muted/80">{item.label}</dt>
+                <dd className="font-medium text-foreground">{item.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      </div>
+      <div className="mx-auto w-full max-w-6xl px-6 pb-8">
+        <p className="text-xs text-muted">
+          © {new Date().getFullYear()} PromNET – Polyák Csaba e.v. Minden jog fenntartva.
+        </p>
       </div>
     </footer>
   );
