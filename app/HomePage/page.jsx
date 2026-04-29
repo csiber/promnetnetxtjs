@@ -242,6 +242,16 @@ export default function Homepage() {
               <div className="flex flex-wrap gap-2">
                 {STACK.map((s) => <span key={s} className="pn-tag">{s}</span>)}
               </div>
+              <div style={{ marginTop: "1.25rem", paddingTop: "1.25rem", borderTop: "1px solid var(--border)" }}>
+                <span className="pn-lbl" style={{ display: "block", marginBottom: ".75rem" }}>
+                  Minősítések
+                </span>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: ".5rem", fontSize: ".8125rem", color: "var(--muted)" }}>
+                  <li>Google Analytics 4 &amp; Tag Manager — 2024-es tanúsítvány</li>
+                  <li>Cloudflare Solution Partner (performance &amp; security)</li>
+                  <li>Resend Transactional Email szakértő</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
