@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:promnet.hu)",
+      "Bash(npx @cloudflare/next-on-pages)",
+      "Bash(bash \"C:\\\\Users\\\\Polyák Csaba\\\\.claude\\\\plugins\\\\cache\\\\claude-plugins-official\\\\superpowers\\\\5.0.5\\\\skills\\\\brainstorming\\\\scripts\\\\start-server.sh\" --project-dir \"C:\\\\GitHub\\\\promnetnetxtjs\")"
+    ]
+  }
+}
