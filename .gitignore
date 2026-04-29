@@ -33,3 +33,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# superpowers brainstorm working directory
+.superpowers/
+
+# screenshots / scratch
+screencapture-*.png
