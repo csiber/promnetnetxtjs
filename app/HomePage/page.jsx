@@ -42,14 +42,41 @@ const PROCESS = [
 
 const TICKER_ITEMS = [...STACK, ...STACK, ...STACK, ...STACK];
 
+const OFFICE_HOURS = {
+  1: [{ start: 9 * 60, end: 17 * 60 }],
+  2: [{ start: 9 * 60, end: 17 * 60 }],
+  3: [{ start: 9 * 60, end: 17 * 60 }],
+  4: [{ start: 9 * 60, end: 17 * 60 }],
+  5: [{ start: 9 * 60, end: 16 * 60 }],
+  6: [{ start: 10 * 60, end: 14 * 60 }],
+};
+
+const computeAvailability = () => {
+  const now = new Date(
+    new Date().toLocaleString("en-US", { timeZone: "Europe/Budapest" })
+  );
+  const today = now.getDay();
+  const minutes = now.getHours() * 60 + now.getMinutes();
+  const slots = OFFICE_HOURS[today] ?? [];
+  return slots.some((s) => minutes >= s.start && minutes < s.end);
+};
+
 export default function Homepage() {
   const [scrolled, setScrolled]     = useState(false);
   const [refFilter, setRefFilter]   = useState("all");
+  const [available, setAvailable]   = useState(false);
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", h, { passive: true });
     return () => window.removeEventListener("scroll", h);
+  }, []);
+
+  useEffect(() => {
+    const tick = () => setAvailable(computeAvailability());
+    tick();
+    const id = setInterval(tick, 60_000);
+    return () => clearInterval(id);
   }, []);
 
   const references = useMemo(() =>
@@ -231,8 +258,9 @@ export default function Homepage() {
                   <div className="pn-about-role">Backend / infra mérnök</div>
                   <div style={{
                     marginTop: ".5rem", fontFamily: "var(--mono)", fontSize: ".5625rem",
-                    letterSpacing: ".12em", textTransform: "uppercase", color: "#28C840",
-                  }}>● Elérhető</div>
+                    letterSpacing: ".12em", textTransform: "uppercase",
+                    color: available ? "#28C840" : "#FF5F57",
+                  }}>{available ? "● Elérhető" : "● Nem elérhető"}</div>
                 </div>
               </div>
               <p className="pn-about-bio">
