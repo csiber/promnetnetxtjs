@@ -460,7 +460,7 @@ function ServiceClient() {
                   Gyors hívás foglalása
                 </Link>
                 <Link
-                  href="#lead-form"
+                  href="mailto:info@promnet.hu"
                   className="inline-flex items-center justify-center rounded-full border border-accent/40 px-5 py-2 font-RubikMedium text-foreground transition hover:-translate-y-0.5 hover:border-white/10"
                   onClick={() => trackCtaClick("service-lead", { service: "it-service" })}
                 >
